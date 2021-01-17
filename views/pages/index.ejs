@@ -2,10 +2,7 @@
 <html>
     <head>
         <title>theJobListr - Free jobs listing for you</title>
-        <meta name="viewport" content="width=device-width,initial-scale=1.0" />
-        <link rel="stylesheet" type="text/css" href="<%= config.root %>css/site.css" />
-        <link rel="stylesheet" type="text/css" href="<%= config.root %>assets/fontawesome/css/all.min.css" />
-        <link rel="shortcut icon" type="image/png" href="<%= config.root %>images/logo-min-transparentbg.png" />
+        <%- include('../templates/html-head'); %>
     </head>
     <body>
         <%- include('../templates/header'); %>
@@ -16,7 +13,7 @@
             <div class="marquee"></div>
             <span class="topic">Newest Posts</span>
             <div class="posts">
-                <a href="#" class="post-box">
+                <a href="<%= config.root %>/post/1" class="post-box">
                     <span class="category">ICSE</span>
                     <span class="title">AP 6247 Grama/ Ward Volunteer (Guntur) Online Form</span>
                     <span class="timestamp">10:43PM at 09 December, 2020</span>
@@ -124,19 +121,19 @@
             <span class="topic">Featured Organizations</span>
             <div class="posts">
                 <a href="#" class="post-box feat-org">
-                    <img src="<%= config.root %>images/organizations/upsc.jpg" />
+                    <img src="<%= config.root %>/images/organizations/upsc.jpg" />
                     <span>UPSC</span>
                 </a>
                 <a href="#" class="post-box feat-org">
-                    <img src="<%= config.root %>images/organizations/upsc.jpg" />
+                    <img src="<%= config.root %>/images/organizations/upsc.jpg" />
                     <span>UPSC</span>
                 </a>
                 <a href="#" class="post-box feat-org">
-                    <img src="<%= config.root %>images/organizations/upsc.jpg" />
+                    <img src="<%= config.root %>/images/organizations/upsc.jpg" />
                     <span>UPSC</span>
                 </a>
                 <a href="#" class="post-box feat-org">
-                    <img src="<%= config.root %>images/organizations/upsc.jpg" />
+                    <img src="<%= config.root %>/images/organizations/upsc.jpg" />
                     <span>UPSC</span>
                 </a>
             </div>
@@ -144,19 +141,19 @@
             <span class="topic">New Vacancies</span>
             <div class="posts">
                 <a href="#" class="post-box feat-org">
-                    <img src="<%= config.root %>images/organizations/upsc.jpg" />
+                    <img src="<%= config.root %>/images/organizations/upsc.jpg" />
                     <span>UPSC</span>
                 </a>
                 <a href="#" class="post-box feat-org">
-                    <img src="<%= config.root %>images/organizations/upsc.jpg" />
+                    <img src="<%= config.root %>/images/organizations/upsc.jpg" />
                     <span>UPSC</span>
                 </a>
                 <a href="#" class="post-box feat-org">
-                    <img src="<%= config.root %>images/organizations/upsc.jpg" />
+                    <img src="<%= config.root %>/images/organizations/upsc.jpg" />
                     <span>UPSC</span>
                 </a>
                 <a href="#" class="post-box feat-org">
-                    <img src="<%= config.root %>images/organizations/upsc.jpg" />
+                    <img src="<%= config.root %>/images/organizations/upsc.jpg" />
                     <span>UPSC</span>
                 </a>
             </div>

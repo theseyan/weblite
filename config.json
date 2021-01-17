@@ -2,6 +2,6 @@
     "frontendPort": 8080,
     "adminPort": 7080,
     "website": {
-        "root": "http://localhost:8080/"
+        "root": "http://localhost:8080"
     }
 }

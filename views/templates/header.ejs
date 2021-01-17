@@ -1,12 +1,12 @@
 <header class="header">
     <a href="<%=config.root%>" class="h-logo">
-        <img src="<%=config.root%>images/logo-full-whitebg.png" />
+        <img src="<%=config.root%>/images/logo-full-whitebg.png" />
     </a>
 
-    <div class="search-box">
-        <input type="text" placeholder="Search for jobs..." />
-        <span class="fa fa-search"></span>
-    </div>
+    <form onsubmit="return searchForm.submit()" class="search-box">
+        <input value="<%= (url.startsWith("/search/")===true) ? decodeURIComponent(query) : "" %>" id="searchInput" type="text" placeholder="Search for jobs..." />
+        <span onclick="searchForm.submit()" class="fa fa-search"></span>
+    </form>
 
     <div class="h-right">
         <a href="#" class="h-btn"><span class="fa fa-rss"></span> Subscribe</a>

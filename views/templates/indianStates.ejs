@@ -2,10 +2,10 @@
     <span class="topic">States</span>
     <div class="x-scrollable">
         <span onclick="xScrollable.prev(this)" class="fa fa-angle-left ctrl prev-ctrl"></span>
-        <% for(var id in states) { %>
+        <% for(var id in menus.indianStates) { %>
             <a href="#" class="state-box">
                 <div class="icon <%= id %>"></div>
-                <span class="title"><%= states[id] %></span>
+                <span class="title"><%= menus.indianStates[id] %></span>
                 <span class="text">1023 Vacancies</span>
             </a>
         <% } %>

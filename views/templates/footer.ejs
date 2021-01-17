@@ -1,6 +1,6 @@
 <footer class="footer">
     <div class="brand">
-        <img src="<%= config.root %>images/logo-min-transparentbg.png" />
+        <img src="<%= config.root %>/images/logo-min-transparentbg.png" />
         <h3>theJobListr</h3>
         <span>Tekyon Develop &copy; <%= new Date().getFullYear() %></span><br /><br />
         <div class="social-ic">
@@ -10,23 +10,14 @@
         </div>
     </div>
     <div class="in">
-        <ul>
-            <li class="tp">Join Tekyon</li>
-            <li><a href="#">Sign Up</a></li>
-            <li><a href="#">Log In</a></li>
-            <li><a href="#">Explore Art</a></li>
-        </ul>
-        <ul>
-            <li class="tp">Service</li>
-            <li><a href="#">Art Licenses</a></li>
-            <li><a href="#">Buyer Protection</a></li>
-        </ul>
-        <ul>
-            <li class="tp">Legal</li>
-            <li><a href="#">Privacy Policy</a></li>
-            <li><a href="#">Terms of Use</a></li>
-            <li><a href="#">DMCA</a></li>
-        </ul>
+        <% for(var cat in menus.footer) { %>
+            <ul>
+                <li class="tp"><%= cat %></li>
+                <% for(var item in menus.footer[cat]) { %>
+                    <li><a href="<%= config.root + menus.footer[cat][item].route %>"><%= menus.footer[cat][item].label %></a></li>
+                <% } %>
+            </ul>
+        <% } %>
     </div>
 </footer>
-<script type="text/javascript" src="<%=config.root%>scripts/main.js"></script>
+<script type="text/javascript" src="<%=config.root%>/scripts/main.js"></script>

@@ -1,0 +1,32 @@
+{
+    "Jobs": {
+        "latestPosts": {
+            "label": "Latest Posts",
+            "route": "/posts/t/latest"
+        },
+        "upcomingJobs": {
+            "label": "Upcoming Jobs",
+            "route": "/posts/t/upcoming"
+        }
+    },
+    "Menu": {
+        "subscribe": {
+            "label": "Subscribe",
+            "route": "/subscribe"
+        }
+    },
+    "Site": {
+        "contact": {
+            "label": "Contact Us",
+            "route": "/contact"
+        },
+        "about": {
+            "label": "About",
+            "route": "/about"
+        },
+        "privacyPolicy": {
+            "label": "Privacy Policy",
+            "route": "/privacypolicy"
+        }
+    }
+}

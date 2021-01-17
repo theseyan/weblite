@@ -1,19 +1,23 @@
 {
     "home": {
         "icon": "fa-home",
-        "label": "Home"
+        "label": "Home",
+        "route": "/"
     },
     "states": {
         "icon": "fa-location-arrow",
         "label": "States",
-        "menu": "IndianStates"
+        "menu": "indianStates",
+        "route": "/state"
     },
     "about": {
         "icon": "fa-info",
-        "label": "About"
+        "label": "About",
+        "route": "/about"
     },
     "contact": {
         "icon": "fa-phone-alt",
-        "label": "Contact Us"
+        "label": "Contact Us",
+        "route": "/contact"
     }
 }
