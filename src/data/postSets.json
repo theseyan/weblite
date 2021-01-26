@@ -1,0 +1,10 @@
+{
+    "latest": {
+        "query": 1,
+        "orderBy": "date DESC"
+    },
+    "exams": {
+        "query": "tags LIKE '%exam%'",
+        "orderBy": "date DESC"
+    }
+}

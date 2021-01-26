@@ -13,46 +13,14 @@
             <div class="marquee"></div>
             <span class="topic">Newest Posts</span>
             <div class="posts">
-                <a href="<%= config.root %>/post/1" class="post-box">
-                    <span class="category">ICSE</span>
-                    <span class="title">AP 6247 Grama/ Ward Volunteer (Guntur) Online Form</span>
-                    <span class="timestamp">10:43PM at 09 December, 2020</span>
-                </a>
-                <a href="#" class="post-box">
-                    <span class="category">ICSE</span>
-                    <span class="title">AP 6247 Grama/ Ward Volunteer (Guntur) Online Form</span>
-                    <span class="timestamp">10:43PM at 09 December, 2020</span>
-                </a>
-                <a href="#" class="post-box">
-                    <span class="category">ICSE</span>
-                    <span class="title">AP 6247 Grama/ Ward Volunteer (Guntur) Online Form</span>
-                    <span class="timestamp">10:43PM at 09 December, 2020</span>
-                </a>
-                <a href="#" class="post-box">
-                    <span class="category">ICSE</span>
-                    <span class="title">AP 6247 Grama/ Ward Volunteer (Guntur) Online Form</span>
-                    <span class="timestamp">10:43PM at 09 December, 2020</span>
-                </a>
-                <a href="#" class="post-box">
-                    <span class="category">ICSE</span>
-                    <span class="title">AP 6247 Grama/ Ward Volunteer (Guntur) Online Form</span>
-                    <span class="timestamp">10:43PM at 09 December, 2020</span>
-                </a>
-                <a href="#" class="post-box">
-                    <span class="category">ICSE</span>
-                    <span class="title">AP 6247 Grama/ Ward Volunteer (Guntur) Online Form</span>
-                    <span class="timestamp">10:43PM at 09 December, 2020</span>
-                </a>
-                <a href="#" class="post-box">
-                    <span class="category">ICSE</span>
-                    <span class="title">AP 6247 Grama/ Ward Volunteer (Guntur) Online Form</span>
-                    <span class="timestamp">10:43PM at 09 December, 2020</span>
-                </a>
-                <a href="#" class="post-box">
-                    <span class="category">ICSE</span>
-                    <span class="title">AP 6247 Grama/ Ward Volunteer (Guntur) Online Form</span>
-                    <span class="timestamp">10:43PM at 09 December, 2020</span>
-                </a>
+                <% posts.forEach((post) => { %>
+                    <a href="<%= config.root %>/post/<%= post.id %>" class="post-box">
+                        <span class="category"><%= post.cat %></span>
+                        <span class="title"><%= post.title %></span>
+                        <span class="timestamp"><%= post.dateString %></span>
+                    </a>
+                <% }); %>
+                <a href="<%= config.root %>/posts/t/latest" class="viewall"><span class="fa fa-angle-right"></span> All Posts</a>
             </div>
             <span class="topic">Trending Jobs</span>
             <div class="cards">

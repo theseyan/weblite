@@ -129,7 +129,6 @@ html, body {
 .posts {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
 }
 .posts > .post-box {
     min-width: 220px;
@@ -434,6 +433,8 @@ html, body {
     color: #151f25;
     margin: 100px 0 0px 0px;
     overflow: auto;
+    display: block;
+    width: calc(100% - 200px);
 }
 .footer .brand {
     float: left;
@@ -547,4 +548,25 @@ html, body {
     background-color: #d4d4d4;
     width: 10%;
     border-radius: 20px;
+}
+.post-body .image {
+    max-height: 300px;
+    text-align: center;
+    margin: 0px 0px 15px;
+}
+.post-body .image > img {
+    max-height: 300px;
+}
+.viewall {
+    display: block;
+    min-width: 100%;
+    text-align: center;
+    background-color: #eaeaea;
+    margin: 0px 0px 15px;
+    color: #2a68a9;
+    border-radius: 7px;
+    text-decoration: none;
+    padding: 6px 0;
+    font-weight: 700;
+    font-size: 16px;
 }

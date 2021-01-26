@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Create new Post - theJobListr</title>
+        <%- include('../templates/html-head'); %>
+        <script type="text/javascript" src="<%= config.admin.root %>/assets/tinymce/js/tinymce/tinymce.min.js"></script>
+    </head>
+    <body>
+        <%- include('../templates/header'); %>
+        <%- include('../templates/sidebar'); %>
+        <div class="body">
+            <h1 class="title">Create a new Post</h1>
+
+            <form enctype="multipart/form-data" method="POST" action="<%= config.api.root %>/admin/createPost" class="form">
+                <span class="label">Post Title</span>
+                <input name="title" class="input" placeholder="Enter a title for this post..." type="text" />
+
+                <span class="label">Post Image</span>
+                <input name="image" class="input" placeholder="Select a thumbnail for this post..." type="file" />
+                
+                <span class="label">Body</span>
+                <textarea name="body" id="postBodyEditor"></textarea>
+                <br />
+
+                <span class="label">Category</span>
+                <input name="cat" class="input" placeholder="Enter the category of this post" type="text" />
+
+                <span class="label">Tags</span>
+                <input name="tags" class="input" placeholder="Enter a comma separated list of tags..." type="text" />
+
+                <input type="hidden" name="author" value="Administrator" />
+                <input type="hidden" name="asyncRedirect" value="<%= config.admin.root + url %>" />
+                <input type="hidden" name="authToken" value="<%= auth.token %>" />
+
+                <p></p>
+                <a onclick="Form.submit(this.parentNode, true)" href="#" class="btn btn-primary btn-full-width">Post</a>
+                <br /><br />
+            </form>
+        </div>
+        <script>
+            tinymce.init({
+                selector:'#postBodyEditor',
+                height: 500,
+                plugins: [
+                'advlist autolink link image lists charmap print preview hr anchor pagebreak',
+                'searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media nonbreaking',
+                'table emoticons template paste help'
+                ],
+                toolbar: 'undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | ' +
+                'bullist numlist outdent indent | link image | print preview media fullpage | ' +
+                'forecolor backcolor emoticons | help'
+            });
+        </script>
+    </body>
+</html>

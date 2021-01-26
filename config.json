@@ -1,7 +1,23 @@
 {
-    "frontendPort": 8080,
-    "adminPort": 7080,
     "website": {
-        "root": "http://localhost:8080"
+        "port": 8080,
+        "root": "http://localhost:8080",
+        "uploads": "/images/uploads"
+    },
+    "admin": {
+        "port": 2053,
+        "root": "http://localhost:2053",
+        "authSecret": "27252dfd-99e7-4402-a683-eac471b223de61f83e4a-afa2-4055-aad5-ef2878f01e12"
+    },
+    "api": {
+        "port": 2083,
+        "root": "http://localhost:2083"
+    },
+    "database": {
+        "host": "localhost",
+        "port": 3306,
+        "user": "root",
+        "password": "",
+        "db": "thejoblistr"
     }
 }

@@ -3,6 +3,8 @@ var indianStates = require('./data/IndianStates.json');
 var mainMenu = require('./data/mainMenu.json');
 var footerMenu = require('./data/footerMenu.json');
 
+var api = require('../api/site');
+
 var data = (req, res) => {
     return {
         config: config.website,
@@ -17,18 +19,36 @@ var data = (req, res) => {
 
 module.exports = {
 
-    setup: (app, admin) => {
+    setup: (app) => {
 
         // Home Page
         app.get('/', function(req, res) {
-            res.render('pages/index', data(req, res));
+            api.getPosts({
+                query: 1,
+                orderBy: 'date DESC',
+                limit: 8
+            }, (result) => {
+                if(result.error) {
+                    res.send('An error occurred.');
+                    return;
+                }
+                res.render('pages/index', Object.assign(data(req, res), {posts: result.posts}));
+            });
         });
 
         // View Post Page
         app.get('/post/:id', function(req, res) {
-            res.render('pages/post', Object.assign(data(req, res), {
-                id: req.params.id
-            }));
+            api.getPosts({
+                query: 'id = ' + req.params.id
+            }, (result) => {
+                if(result.error) {
+                    res.send('An error occurred.');
+                    return;
+                }
+                res.render('pages/post', Object.assign(data(req, res), {
+                    post: result.posts[0]
+                }));
+            });
         });
 
         // Search Page
@@ -53,11 +73,6 @@ module.exports = {
         // Contact Us Page
         app.get('/contact', function(req, res) {
             res.render('pages/contact', data(req, res));
-        });
-
-        // Administration Home Page
-        admin.get('/', function(req, res) {
-            res.render('index', data(req, res));
         });
 
     }

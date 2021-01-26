@@ -10,38 +10,26 @@
         <%- include('../templates/sidebar'); %>
         <div class="body">
             <div class="post-body">
-                <span class="date">Posted on 17th January, 2021</span>
-                <h2 class="title">Apply online for 98 Higher Judicial Service Post<div></div></h2>
+                <span class="date">Posted on <%= post.dateString %></span>
+                <h2 class="title"><%= post.title %><div></div></h2>
+                <div class="image">
+                    <img src="<%= config.root %>/images/uploads/<%= post.image %>" />
+                </div>
                 <div class="tags">
-                    <a href="#">Tripura</a>
-                    <a href="#">UPSC</a>
-                    <a href="#">Banking</a>
+                    <% post.tags.split(",").forEach((tag) => { %>
+                        <a href="<%= config.root %>/tag/<%= tag %>"><%= tag %></a>
+                    <% }); %>
                 </div>
 
-                <div class="content">
-                    <h1>Adding users to sudo</h1>
-                    In order for a non-root user to make use of sudo, they either have to be added to the sudoers file using visudo, or added to the sudo group. Because this is Debian, everyone that is in the sudo group has full sudo access. So instead of messing with the sudoers file, we're going to add our users to the sudo group. I've always found this a much cleaner method on Debian. To do this, open your terminal window, su to the root user, and issue the following command:
-
-                    usermod -aG sudo USERNAME
-                    Where USERNAME is the name of the user to be added.
-
-                    Once the user logs out and logs back in, they will have full access to sudo. At this point, you no longer have to log into your Debian minimal server as root to get things done. Log in as a user who belongs to the sudo group and you'll have full admin rights to your server.
-
-                    <h1>An important step</h1>
-                    The last thing you want is to be logged into your Debian server as the root user. Don't do it. This is the very reason why sudo was created--to prevent administrators from logging in as root and find themselves possibly vulnerable to attacks. Install sudo, add users to that group, and forget about that root user, unless absolutely necessary. This is an important step in securing your Debian server.
-                </div>
+                <div class="content"><%- post.body %></div>
             </div>
             <div id="disqus_thread"></div>
             <script>
-                /**
-                *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
-                *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables    */
-                /*
                 var disqus_config = function () {
-                this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
-                this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+                this.page.url = "<%= config.root + "/post/" + post.id %>";  // Replace PAGE_URL with your page's canonical URL variable
+                this.page.identifier = <%= post.id %>; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
                 };
-                */
+                
                 (function() { // DON'T EDIT BELOW THIS LINE
                 var d = document, s = d.createElement('script');
                 s.src = 'https://thejoblistr.disqus.com/embed.js';

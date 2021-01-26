@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Delete Post - theJobListr</title>
+        <%- include('../templates/html-head'); %>
+    </head>
+    <body>
+        <%- include('../templates/header'); %>
+        <%- include('../templates/sidebar'); %>
+        <div class="body">
+            <h1 class="title">Delete Post</h1>
+            <p>
+                Are you sure you want to delete post with ID <code><%= postId %></code>?
+            </p>
+            <form method="POST" action="<%= config.api.root + '/admin/deletePost' %>" class="form">
+                <input type="hidden" value="<%= postId %>" name="id" />
+                <input type="hidden" name="authToken" value="<%= auth.token %>" />
+                <a onclick="Form.submit(this.parentNode)" href="#" class="btn btn-danger btn-full-width">Delete Post Permanently</a>
+                <a href="<%= config.admin.root + '/managePosts' %>" class="btn btn-primary">Go Back</a>
+                <input type="hidden" name="asyncRedirect" value="<%= config.admin.root + '/managePosts' %>" />
+            </form>
+        </div>
+    </body>
+</html>

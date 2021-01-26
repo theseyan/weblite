@@ -1,0 +1,21 @@
+{
+    "Dashboard": {
+        "index": {
+            "label": "Home",
+            "icon": "fa fa-home",
+            "route": "/"
+        }
+    },
+    "Content": {
+        "newPost": {
+            "label": "Create new Post",
+            "icon": "fa fa-plus-circle",
+            "route": "/createPost"
+        },
+        "managePosts": {
+            "label": "Manage Posts",
+            "icon": "fa fa-edit",
+            "route": "/managePosts"
+        }
+    }
+}
