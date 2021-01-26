@@ -1,0 +1,14 @@
+@media only screen and (max-width: 800px) {
+    .sidebar {
+        transform: translateX(-255px);
+        position: absolute;
+        transition: transform 200ms;
+        z-index: 10;
+    }
+    .header .menu-btn {
+        display: inline-block !important;
+    }
+    .header .lu-txt {
+        display: none;
+    }
+}

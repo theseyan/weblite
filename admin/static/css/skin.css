@@ -1,3 +1,5 @@
+@import url('responsive.css');
+
 html, body {
     font-family: Montserrat, Roboto, "Segoe UI", Nunito, sans-serif;
     margin: 0;
@@ -233,4 +235,11 @@ html, body {
 }
 .header .right {
     min-width: max-content;
+}
+.header .menu-btn {
+    font-size: 20px;
+    margin-right: 10px;
+    padding: 10px 10px;
+    cursor: pointer;
+    display: none;
 }

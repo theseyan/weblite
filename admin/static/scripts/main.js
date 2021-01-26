@@ -1,3 +1,4 @@
+function _(q) {return document.getElementById(q);}
 function ajaxReq(data) {
     // Create new request
     var HttpRequest=window.ActiveXObject?new ActiveXObject('Microsoft.XMLHttp'):new XMLHttpRequest();
@@ -67,5 +68,20 @@ var Form = {
                 alert("Error: " + data);
             }
         });
+    }
+};
+
+var Menu = {
+    open: function(el) {
+        _('sidebar').style.transform = "translateX(0)";
+        el.classList.remove('fa-bars');
+        el.classList.add('fa-times');
+        el.setAttribute("onclick", "Menu.close(this)");
+    },
+    close: function(el) {
+        _('sidebar').style.transform = "translateX(-255px)";
+        el.classList.remove('fa-times');
+        el.classList.add('fa-bars');
+        el.setAttribute("onclick", "Menu.open(this)");
     }
 };
