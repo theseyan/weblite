@@ -17,9 +17,9 @@
                 <b>Latest: </b> <%= update.body.version %><p></p>
                 
                 <h4>Changelog</h4>
-                <div class="update-changelog">lolol nigga</div>
+                <div class="update-changelog"><%- update.body.changes %></div>
                 
-                <a href="#" class="btn btn-primary"><span class="fa fa-sync"></span> Install Updates</a>
+                <a onclick="Update.updateSystem(this, '<%= auth.token %>')" class="btn btn-primary"><span class="fa fa-sync"></span> Install Updates</a>
             <% } %>
         </div>
     </body>

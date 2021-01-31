@@ -13,6 +13,8 @@ var jwt = require('jsonwebtoken');
 var request = require('request');
 var semverCompare = require('semver/functions/gt');
 var semverParse = require('semver/functions/parse');
+var git = require('simple-git')();
+var editJson = require("edit-json-file");
 
 module.exports = {
 
@@ -183,6 +185,23 @@ module.exports = {
                     error: !error ? "Status Code " + response.statusCode : error
                 });
             }
+        });
+    },
+
+    update: (cb) => {
+        git.pull('origin', 'main').then((result) => {
+            var config = editJson('config.json');
+            var updatefile = JSON.parse(fs.readFileSync('.updatefile', {encoding: 'utf8'}));
+            config.set("version", updatefile.version);
+            config.save(() => {
+                cb({
+                    result: result
+                });
+            });
+        }).catch((err) => {
+            cb({
+                error: err
+            })
         });
     }
 

@@ -85,3 +85,28 @@ var Menu = {
         el.setAttribute("onclick", "Menu.open(this)");
     }
 };
+
+var Update = {
+    updateSystem: function(el, token) {
+        el.innerHTML = "<span class='fa fa-spin fa-sync'></span> Installing Update...";
+        el.classList.add("disabled");
+        el.setAttribute("onclick", "");
+
+        ajaxReq({
+            type: 'get',
+            url: config.apiUrl + "/admin/update",
+            content: {},
+            headers: [{
+                header: 'Authorization',
+                content: 'Basic ' + token
+            }],
+            onload: function(data) {
+                el.innerHTML = "<span class='fa fa-check'></span> Successfully installed updates";
+                window.location.reload();
+            },
+            onerror: function(data) {
+                alert("Error: " + data);
+            }
+        });
+    }
+};

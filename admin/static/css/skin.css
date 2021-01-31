@@ -253,3 +253,9 @@ html, body {
     height: 200px;
     overflow-y: auto;
 }
+.btn.disabled {
+    box-shadow: none;
+    background-color: #cecece;
+    color: #3e3e3e;
+    cursor: not-allowed;
+}
