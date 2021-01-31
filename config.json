@@ -19,5 +19,6 @@
         "user": "root",
         "password": "",
         "db": "thejoblistr"
-    }
+    },
+    "update": "https://github.com/sayanjyotidas/thejoblistr"
 }

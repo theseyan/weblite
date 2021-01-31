@@ -52,14 +52,14 @@ module.exports = {
             if (req.fileValidationError) {
                 return cb({error: req.fileValidationError});
             }
-            else if (!req.file) {
-                return cb({error: 'Please select an image to upload'});
-            }
             else if (err instanceof multer.MulterError) {
                 return cb({error: err});
             }
             else if (err) {
                 return cb({error: err});
+            }
+            else if (!req.file) {
+                return cb({error: 'Please select an image to upload'});
             }
     
             cb({

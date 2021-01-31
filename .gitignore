@@ -1,3 +1,4 @@
 node_modules
 .env
 static/images/uploads
+config.json
