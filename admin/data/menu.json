@@ -17,5 +17,12 @@
             "icon": "fa fa-edit",
             "route": "/managePosts"
         }
+    },
+    "System": {
+        "update": {
+            "label": "Updates",
+            "icon": "fa fa-sync",
+            "route": "/system/update"
+        }
     }
 }

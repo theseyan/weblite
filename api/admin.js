@@ -10,6 +10,9 @@ var path = require('path');
 var fs = require('fs');
 var storage = require('./storage').storage;
 var jwt = require('jsonwebtoken');
+var request = require('request');
+var semverCompare = require('semver/functions/gt');
+var semverParse = require('semver/functions/parse');
 
 module.exports = {
 
@@ -145,6 +148,41 @@ module.exports = {
                 return;
             }
             cb({posts: res});
+        });
+    },
+
+    checkUpdates: (cb) => {
+        var repo = config.update.repo.split("/").reverse();
+        var updateFile = "https://raw.githubusercontent.com/" + repo[1] + "/" + repo[0] + "/master/.updatefile";
+        request.get(updateFile, function (error, response, body) {
+            if (!error && response.statusCode == 200) {
+                
+                var updateObj = JSON.parse(body);
+
+                if(semverCompare(updateObj.version, config.version) === true) {
+                    var remote = semverParse(updateObj.version);
+                    var local = semverParse(config.version);
+                    var type = 'PATCH';
+                    
+                    if(remote.major > local.major) type = 'MAJOR';
+                    else if(remote.minor > local.minor) type = 'MINOR';
+
+                    cb({
+                        update: true,
+                        type: type,
+                        body: updateObj
+                    });
+                }else {
+                    cb({
+                        update: false
+                    });
+                }
+
+            }else {
+                cb({
+                    error: !error ? "Status Code " + response.statusCode : error
+                });
+            }
         });
     }
 

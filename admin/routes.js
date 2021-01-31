@@ -95,6 +95,18 @@ module.exports = {
             return;
         });
 
+        // Update Page
+        admin.get('/system/update', function(req, res) {
+            adminApi.checkUpdates((rdata) => {
+                if(rdata.error) {
+                    res.send("Error: " + rdata.error);
+                    return;
+                }
+
+                res.render('pages/update', Object.assign(data(req, res), {update: rdata}));
+            });
+        });
+
     }
 
 };
