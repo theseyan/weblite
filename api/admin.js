@@ -15,6 +15,7 @@ var semverCompare = require('semver/functions/gt');
 var semverParse = require('semver/functions/parse');
 var git = require('simple-git')();
 var editJson = require("edit-json-file");
+var pm2 = require('pm2');
 
 module.exports = {
 
@@ -188,20 +189,49 @@ module.exports = {
         });
     },
 
-    update: (cb) => {
-        git.pull('origin', 'main').then((result) => {
-            var config = editJson('config.json');
-            var updatefile = JSON.parse(fs.readFileSync('.updatefile', {encoding: 'utf8'}));
-            config.set("version", updatefile.version);
-            config.save(() => {
+    update: (cb, async) => {
+        pm2.connect(function(err) {
+
+            if (err) {
                 cb({
-                    result: result
+                    error: err
                 });
+                return;
+            }
+            
+            git.pull('origin', 'main').then((result) => {
+                var config = editJson('config.json');
+                var updatefile = JSON.parse(fs.readFileSync('.updatefile', {encoding: 'utf8'}));
+                config.set("version", updatefile.version);
+                config.save(() => {
+
+                    var reload = () => {
+                        pm2.reload('server', function(err) {
+                            pm2.disconnect();
+                            if (err) {
+                                throw err;
+                            }
+                        });
+                    };
+                    if(typeof async!="undefined" && async === true) {
+                        cb({
+                            result: result,
+                            reload: reload
+                        });
+                    }else {
+                        cb({
+                            result: result
+                        });
+                        reload();
+                    }
+
+                });
+            }).catch((err) => {
+                cb({
+                    error: err
+                })
             });
-        }).catch((err) => {
-            cb({
-                error: err
-            })
+
         });
     }
 

@@ -101,8 +101,8 @@ var Update = {
                 content: 'Basic ' + token
             }],
             onload: function(data) {
-                el.innerHTML = "<span class='fa fa-check'></span> Successfully installed updates";
-                window.location.reload();
+                el.innerHTML = "<span class='fa fa-check'></span> Restarting...";
+                setTimeout(window.location.reload.bind(window.location), 5000);
             },
             onerror: function(data) {
                 alert("Error: " + data);

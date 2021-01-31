@@ -21,7 +21,9 @@ module.exports = {
                 result: result
             });
 
-        });
+            result.reload();
+
+        }, true);
     }
 
 };
