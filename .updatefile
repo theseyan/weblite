@@ -1,4 +1,4 @@
 {
-    "version": "1.0.2",
-    "changes": "Test updating system."
+    "version": "1.0.3",
+    "changes": "Fixed font issues on devices without pre-installed theme fonts."
 }
