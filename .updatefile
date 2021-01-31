@@ -1,4 +1,4 @@
 {
-    "version": "1.0.3",
-    "changes": "Fixed font issues on devices without pre-installed theme fonts."
+    "version": "1.0.4",
+    "changes": "Fixed font issues on website"
 }
