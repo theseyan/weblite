@@ -1,4 +1,4 @@
 {
-    "version": "1.0.42",
-    "changes": "Created API endpoint for System Health Status at /system/status"
+    "version": "1.0.43",
+    "changes": "Fixed /system/status for HTTPS sites"
 }
