@@ -16,7 +16,7 @@ var semverParse = require('semver/functions/parse');
 var git = require('simple-git')();
 var editJson = require("edit-json-file");
 var pm2 = require('pm2');
-var http = require('http');
+var https = require('https');
 
 module.exports = {
 
@@ -246,7 +246,7 @@ module.exports = {
         }
 
         // Check SITE status
-        http.get(config.website.root, function (res) {
+        https.get(config.website.root, function (res) {
             if(res.statusCode < 500) {
                 check('site', 'online');
             }else {
@@ -257,7 +257,7 @@ module.exports = {
         });
 
         // Check ADMIN PANEL status
-        http.get(config.admin.root, function (res) {
+        https.get(config.admin.root, function (res) {
             if(res.statusCode < 500) {
                 check('admin', 'online');
             }else {
@@ -268,7 +268,7 @@ module.exports = {
         });
 
         // Check API status
-        http.get(config.api.root, function (res) {
+        https.get(config.api.root, function (res) {
             if(res.statusCode < 500) {
                 check('api', 'online');
             }else {
