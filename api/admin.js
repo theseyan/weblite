@@ -246,36 +246,45 @@ module.exports = {
         }
 
         // Check SITE status
-        https.get(config.website.root, function (res) {
+        request(config.website.root, function (err, res, body) {
+            if(err) {
+                check('site', 'offline');
+                return;
+            }
+
             if(res.statusCode < 500) {
                 check('site', 'online');
             }else {
                 check('site', 'HTTP_CODE_' + res.statusCode);
             }
-        }).on('error', function(e) {
-            check('site', 'offline');
         });
 
         // Check ADMIN PANEL status
-        https.get(config.admin.root, function (res) {
+        request(config.admin.root, function (err, res, body) {
+            if(err) {
+                check('admin', 'offline');
+                return;
+            }
+
             if(res.statusCode < 500) {
                 check('admin', 'online');
             }else {
                 check('admin', 'HTTP_CODE_' + res.statusCode);
             }
-        }).on('error', function(e) {
-            check('admin', 'offline');
         });
 
         // Check API status
-        https.get(config.api.root, function (res) {
+        request(config.api.root, function (err, res, body) {
+            if(err) {
+                check('api', 'offline');
+                return;
+            }
+
             if(res.statusCode < 500) {
                 check('api', 'online');
             }else {
                 check('api', 'HTTP_CODE_' + res.statusCode);
             }
-        }).on('error', function(e) {
-            check('api', 'offline');
         });
 
         // Check MySQL database status
