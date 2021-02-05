@@ -16,6 +16,7 @@ var semverParse = require('semver/functions/parse');
 var git = require('simple-git')();
 var editJson = require("edit-json-file");
 var pm2 = require('pm2');
+var http = require('http');
 
 module.exports = {
 
@@ -233,6 +234,59 @@ module.exports = {
             });
 
         });
+    },
+
+    getSystemStatus: (cb) => {
+        var checks = {};
+        var totalChecks = 4;
+
+        function check(name, val) {
+            checks[name] = val;
+            if(Object.keys(checks).length >= totalChecks) cb(checks);
+        }
+
+        // Check SITE status
+        http.get(config.website.root, function (res) {
+            if(res.statusCode < 500) {
+                check('site', 'online');
+            }else {
+                check('site', 'HTTP_CODE_' + res.statusCode);
+            }
+        }).on('error', function(e) {
+            check('site', 'offline');
+        });
+
+        // Check ADMIN PANEL status
+        http.get(config.admin.root, function (res) {
+            if(res.statusCode < 500) {
+                check('admin', 'online');
+            }else {
+                check('admin', 'HTTP_CODE_' + res.statusCode);
+            }
+        }).on('error', function(e) {
+            check('admin', 'offline');
+        });
+
+        // Check API status
+        http.get(config.api.root, function (res) {
+            if(res.statusCode < 500) {
+                check('api', 'online');
+            }else {
+                check('api', 'HTTP_CODE_' + res.statusCode);
+            }
+        }).on('error', function(e) {
+            check('api', 'offline');
+        });
+
+        // Check MySQL database status
+        db.query('SELECT NULL LIMIT 0', (err, res) => {
+            if(err) {
+                check('database', 'offline');
+                return;
+            }
+            check('database', 'online');
+        });
+
     }
 
 };
