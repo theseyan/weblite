@@ -1,4 +1,4 @@
 {
-    "version": "1.0.45",
-    "changes": "Patched admin API to return internal errors for enhanced debugging"
+    "version": "1.0.5",
+    "changes": "Entirely new folder structure for site structure and updated Core update mechanism"
 }
