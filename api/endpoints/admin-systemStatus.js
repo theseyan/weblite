@@ -11,6 +11,7 @@ module.exports = {
 
             if(result.error) {
                 res.status(500).send({
+                    message: "An error occurred while trying to get system status",
                     error: result.error
                 });
                 return;

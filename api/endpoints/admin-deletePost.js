@@ -12,7 +12,8 @@ module.exports = {
         }, (data) => {
             if(data.error) {
                 res.status(500).send({
-                    message: 'Failed to delete post'
+                    message: 'Failed to delete post',
+                    error: data.error
                 });
                 return;
             }

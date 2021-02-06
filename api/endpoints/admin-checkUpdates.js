@@ -11,6 +11,7 @@ module.exports = {
 
             if(data.error) {
                 res.status(200).send({
+                    message: "An error occurred while trying to check for new updates",
                     error: data.error
                 });
                 return;

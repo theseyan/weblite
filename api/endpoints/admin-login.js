@@ -13,7 +13,8 @@ module.exports = {
         }, (data) => {
             if(data.error) {
                 res.status(500).send({
-                    message: "An error occurred while trying to authenticate your credentials"
+                    message: "An error occurred while trying to authenticate your credentials",
+                    error: data.error
                 });
                 return;
             }

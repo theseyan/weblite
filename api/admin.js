@@ -16,7 +16,6 @@ var semverParse = require('semver/functions/parse');
 var git = require('simple-git')();
 var editJson = require("edit-json-file");
 var pm2 = require('pm2');
-var https = require('https');
 
 module.exports = {
 

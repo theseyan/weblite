@@ -10,7 +10,8 @@ module.exports = {
         admin.uploadImage('image', req, res, (data) => {
             if(data.error) {
                 res.status(500).send({
-                    message: 'Failed to upload image'
+                    message: 'Failed to upload image',
+                    error: data.error
                 });
                 return;
             }

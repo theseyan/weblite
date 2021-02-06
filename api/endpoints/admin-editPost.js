@@ -19,7 +19,8 @@ module.exports = {
             admin.uploadImage('image', req, res, (data) => {
                 if(data.error && newThumb===true) {
                     res.status(500).send({
-                        message: 'Failed to upload image from post'
+                        message: 'Failed to upload image from post',
+                        error: data.error
                     });
                     return;
                 }
@@ -38,7 +39,8 @@ module.exports = {
                 admin.editPost(args, (data) => {
                     if(data.error) {
                         res.status(500).send({
-                            message: 'Failed to update post'
+                            message: 'Failed to update post',
+                            error: data.error
                         });
                         return;
                     }

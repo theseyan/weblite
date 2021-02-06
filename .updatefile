@@ -1,4 +1,4 @@
 {
-    "version": "1.0.44",
-    "changes": "Finalized /system/status for both HTTP & HTTPS sites"
+    "version": "1.0.45",
+    "changes": "Patched admin API to return internal errors for enhanced debugging"
 }
