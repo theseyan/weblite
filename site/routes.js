@@ -1,7 +1,7 @@
 var config = require('../config.json');
-var indianStates = require('./data/IndianStates.json');
-var mainMenu = require('./data/mainMenu.json');
-var footerMenu = require('./data/footerMenu.json');
+var indianStates = require('./src/data/IndianStates.json');
+var mainMenu = require('./src/data/mainMenu.json');
+var footerMenu = require('./src/data/footerMenu.json');
 
 var api = require('../api/site');
 

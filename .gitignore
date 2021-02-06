@@ -1,4 +1,4 @@
 node_modules
 .env
-static/images/uploads
+site/static/images/uploads
 config.json

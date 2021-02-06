@@ -10,7 +10,7 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var cors = require('cors');
 
-var routes = require('./src/routes');
+var routes = require('./site/routes');
 var adminRoutes = require('./admin/routes');
 var apiRoutes = require('./api/routes');
 
@@ -32,13 +32,14 @@ api.use(cors());
 
 // Set view engine for frontend
 app.set('view engine', 'ejs');
+app.set('views', './site/views');
 
 // Set view engine for admin panel
 admin.set('view engine', 'ejs');
 admin.set('views', './admin/views');
 
 // Serve static files
-app.use(express.static('static'));
+app.use(express.static('site/static'));
 admin.use(express.static('admin/static'));
 
 // Set up routes
