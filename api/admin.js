@@ -16,6 +16,7 @@ var semverParse = require('semver/functions/parse');
 var git = require('simple-git')();
 var editJson = require("edit-json-file");
 var pm2 = require('pm2');
+var exec = require('child_process').exec;
 
 module.exports = {
 
@@ -199,32 +200,43 @@ module.exports = {
                 return;
             }
             
-            git.pull('origin', 'main').then((result) => {
-                var config = editJson('config.json');
-                var updatefile = JSON.parse(fs.readFileSync('.updatefile', {encoding: 'utf8'}));
-                config.set("version", updatefile.version);
-                config.save(() => {
+            git.fetch(['--all']).reset('hard').then((result) => {
+                var cmd = 'npm update';
 
-                    var reload = () => {
-                        pm2.reload('server', function(err) {
-                            pm2.disconnect();
-                            if (err) {
-                                throw err;
-                            }
-                        });
-                    };
-                    if(typeof async!="undefined" && async === true) {
+                exec(cmd, function(error, stdout, stderr) {
+                    if(error) {
                         cb({
-                            result: result,
-                            reload: reload
+                            error: error
                         });
-                    }else {
-                        cb({
-                            result: result
-                        });
-                        reload();
+                        return;
                     }
 
+                    var config = editJson('config.json');
+                    var updatefile = JSON.parse(fs.readFileSync('.updatefile', {encoding: 'utf8'}));
+                    config.set("version", updatefile.version);
+                    config.save(() => {
+
+                        var reload = () => {
+                            pm2.reload('server', function(err) {
+                                pm2.disconnect();
+                                if (err) {
+                                    throw err;
+                                }
+                            });
+                        };
+                        if(typeof async!="undefined" && async === true) {
+                            cb({
+                                result: result,
+                                reload: reload
+                            });
+                        }else {
+                            cb({
+                                result: result
+                            });
+                            reload();
+                        }
+
+                    });
                 });
             }).catch((err) => {
                 cb({
