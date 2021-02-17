@@ -15,4 +15,21 @@ var searchForm = {
         window.location.href = "/search/" + encodeURIComponent(q);
         return false;
     }
-}
+};
+
+var Menu = {
+    open: function() {
+        _('menu-sidebar').style.transform = "translateX(0)";
+        _('fade').style.display = "block";
+        _('fade').onclick = Menu.close;
+    },
+    close: function() {
+        _('menu-sidebar').style.transform = "translateX(calc(-100% - 10px))";
+        _('fade').style.display = "none";
+        _('fade').onclick = function() {};
+    },
+    openSearch: function() {
+        Menu.open();
+        _('sidebarSearchInp').focus();
+    }
+};

@@ -269,7 +269,6 @@ html, body {
     justify-content: space-between;
 }
 .cards .card {
-    width: 175px;
     height: 70px;
     border-radius: 10px;
     display: flex;
@@ -283,6 +282,9 @@ html, body {
     cursor: pointer;
     transition: box-shadow, transform 100ms linear;
     margin-bottom: 15px;
+    flex-grow: 1;
+    flex-basis: calc(22% - 5px);
+    margin-right: 5px;
 }
 .cards .card > span {
     margin: auto;
@@ -569,4 +571,75 @@ html, body {
     padding: 6px 0;
     font-weight: 700;
     font-size: 16px;
+}
+.header .menu-btn {
+    margin-right: 15px;
+    font-size: 19px;
+    padding: 10px 10px;
+    display: none;
+}
+.bodySb {
+    display: block;
+}
+.menu-sidebar {
+    position: fixed;
+    height: 100%;
+    width: 70%;
+    background-color: white;
+    box-shadow: 2px 0px 10px #00000021;
+    z-index: 99999;
+    overflow-y: auto;
+    transform: translateX(calc(-100% - 10px));
+    transition: transform 200ms;
+}
+.menu-sidebar .msb-close {
+    display: block;
+    margin: 20px 10px;
+    background-color: #ececec;
+    border-radius: 7px;
+    text-align: center;
+    padding: 10px 0px;
+    font-weight: 700;
+    font-size: 20px;
+    cursor: pointer;
+}
+.menu-sidebar .item {
+    display: block;
+    padding: 5px 20px;
+    font-size: 19px;
+    color: #0072ff;
+}
+.fade {
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    background-color: #0000001f;
+    z-index: 9999;
+    display: none;
+}
+.header .h-right .icon {
+    font-size: 19px;
+    padding: 10px;
+}
+.menu-sidebar .search-box {
+    display: flex;
+    align-items: center;
+    background-color: #f1f1f1;
+    margin: 0 10px 10px;
+    border-radius: 7px;
+}
+.menu-sidebar .search-box .search-inp {
+    width: 80%;
+    font-family: Nunito, "Open Sans", "Segoe UI";
+    padding: 5px 10px;
+    font-size: 19px;
+    outline: none !important;
+    border: none;
+    background-color: transparent;
+}
+.menu-sidebar .search-box > .fa-search {
+    display: block;
+    width: 20%;
+    text-align: center;
+    font-size: 19px;
 }

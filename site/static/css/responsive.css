@@ -1,0 +1,49 @@
+@media only screen and (max-width: 800px) {
+    .header {
+        padding: 0px 20px !important;
+    }
+    .header .menu-btn {
+        display: inline-block !important;
+    }
+    .header .search-box, .header .h-right .h-btn, .menu, .ad-728x90 {
+        display: none !important;
+    }
+    .bodySb .body {
+        order: 1;
+        padding: 30px 0 !important;
+    }
+    .bodySb .sidebar {
+        order: 2;
+        margin: 0 !important;
+        width: 100% !important;
+    }
+    .bodySb {
+        display: flex !important;
+        flex-direction: column;
+        padding: 0px 20px;
+    }
+    .body.indian-states {
+        padding: 30px 20px 30px 20px !important;
+    }
+    .bodySb .body .posts .post-box {
+        min-width: auto !important;
+        width: auto !important;
+        flex-basis: calc(50% - 5px);
+        flex-grow: 1;
+    }
+    .footer {
+        padding: 20px 30px !important;
+        width: calc(100% - 60px) !important;
+    }
+    .footer .brand {
+        float: none !important;
+        display: block !important;
+        width: auto !important;
+    }
+    .footer .in ul {
+        width: 100% !important;
+    }
+    .body .table > div {
+        flex-direction: column;
+    }
+}

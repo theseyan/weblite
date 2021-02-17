@@ -5,125 +5,129 @@
         <%- include('../templates/html-head'); %>
     </head>
     <body>
+        <div class="fade" id="fade"></div>
+        <%- include('../templates/sidebarMenu'); %>
         <%- include('../templates/header'); %>
         <%- include('../templates/menu'); %>
         <%- include('../templates/indianStates'); %>
-        <%- include('../templates/sidebar'); %>
-        <div class="body">
-            <div class="marquee"></div>
-            <span class="topic">Newest Posts</span>
-            <div class="posts">
-                <% posts.forEach((post) => { %>
-                    <a href="<%= config.root %>/post/<%= post.id %>" class="post-box">
-                        <span class="category"><%= post.cat %></span>
-                        <span class="title"><%= post.title %></span>
-                        <span class="timestamp"><%= post.dateString %></span>
-                    </a>
-                <% }); %>
-                <a href="<%= config.root %>/posts/t/latest" class="viewall"><span class="fa fa-angle-right"></span> All Posts</a>
-            </div>
-            <span class="topic">Trending Jobs</span>
-            <div class="cards">
-                <div class="card sbg s1"><span>UPSC</span></div>
-                <div class="card sbg s2"><span>State</span></div>
-                <div class="card sbg s3"><span>UPSC</span></div>
-                <div class="card sbg s4"><span>UPSC</span></div>
-                <div class="card sbg s5"><span>UPSC</span></div>
-                <div class="card sbg s6"><span>UPSC</span></div>
-                <div class="card sbg s7"><span>State</span></div>
-                <div class="card sbg s8"><span>UPSC</span></div>
-                <div class="card sbg s9"><span>UPSC</span></div>
-                <div class="card sbg s10"><span>UPSC</span></div>
-            </div>
-
-            <span class="topic">Notifications</span>
-            <div class="table">
-                <span>Notifications</span>
-                <div>
-                    <table>
-                        <tr>
-                            <th>Govt. Jobs</th>
-                            <th>Last Date</th>
-                        </tr>
-                        <tr>
-                            <td><a href="#" class="link">WB Health – Apply online for 170 FTMO, Staff Nurse & Lab Technician Post</a></td>
-                            <td>12/12/12</td>
-                        </tr>
-                        <tr>
-                            <td><a href="#" class="link">WB Health – Apply online for 170 FTMO, Staff Nurse & Lab Technician Post</a></td>
-                            <td>12/12/12</td>
-                        </tr>
-                    </table>
-                    <table>
-                        <tr>
-                            <th>State Jobs</th>
-                            <th>Last Date</th>
-                        </tr>
-                        <tr>
-                            <td><a href="#" class="link">WB Health – Apply online for 170 FTMO, Staff Nurse & Lab Technician Post</a></td>
-                            <td>12/12/12</td>
-                        </tr>
-                        <tr>
-                            <td><a href="#" class="link">WB Health – Apply online for 170 FTMO, Staff Nurse & Lab Technician Post</a></td>
-                            <td>12/12/12</td>
-                        </tr>
-                    </table>
-                    <table>
-                        <tr>
-                            <th>Exam Results</th>
-                            <th>Last Date</th>
-                        </tr>
-                        <tr>
-                            <td><a href="#" class="link">WB Health – Apply online for 170 FTMO, Staff Nurse & Lab Technician Post</a></td>
-                            <td>12/12/12</td>
-                        </tr>
-                        <tr>
-                            <td><a href="#" class="link">WB Health – Apply online for 170 FTMO, Staff Nurse & Lab Technician Post</a></td>
-                            <td>12/12/12</td>
-                        </tr>
-                    </table>
+        <div class="bodySb">
+            <%- include('../templates/sidebar'); %>
+            <div class="body">
+                <div class="marquee"></div>
+                <span class="topic">Newest Posts</span>
+                <div class="posts">
+                    <% posts.forEach((post) => { %>
+                        <a href="<%= config.root %>/post/<%= post.id %>" class="post-box">
+                            <span class="category"><%= post.cat %></span>
+                            <span class="title"><%= post.title %></span>
+                            <span class="timestamp"><%= post.dateString %></span>
+                        </a>
+                    <% }); %>
+                    <a href="<%= config.root %>/posts/t/latest" class="viewall"><span class="fa fa-angle-right"></span> All Posts</a>
                 </div>
-            </div>
+                <span class="topic">Trending Jobs</span>
+                <div class="cards">
+                    <div class="card sbg s1"><span>UPSC</span></div>
+                    <div class="card sbg s2"><span>State</span></div>
+                    <div class="card sbg s3"><span>UPSC</span></div>
+                    <div class="card sbg s4"><span>UPSC</span></div>
+                    <div class="card sbg s5"><span>UPSC</span></div>
+                    <div class="card sbg s6"><span>UPSC</span></div>
+                    <div class="card sbg s7"><span>State</span></div>
+                    <div class="card sbg s8"><span>UPSC</span></div>
+                    <div class="card sbg s9"><span>UPSC</span></div>
+                    <div class="card sbg s10"><span>UPSC</span></div>
+                </div>
 
-            <br />
-            <span class="topic">Featured Organizations</span>
-            <div class="posts">
-                <a href="#" class="post-box feat-org">
-                    <img src="<%= config.root %>/images/organizations/upsc.jpg" />
-                    <span>UPSC</span>
-                </a>
-                <a href="#" class="post-box feat-org">
-                    <img src="<%= config.root %>/images/organizations/upsc.jpg" />
-                    <span>UPSC</span>
-                </a>
-                <a href="#" class="post-box feat-org">
-                    <img src="<%= config.root %>/images/organizations/upsc.jpg" />
-                    <span>UPSC</span>
-                </a>
-                <a href="#" class="post-box feat-org">
-                    <img src="<%= config.root %>/images/organizations/upsc.jpg" />
-                    <span>UPSC</span>
-                </a>
-            </div>
+                <span class="topic">Notifications</span>
+                <div class="table">
+                    <span>Notifications</span>
+                    <div>
+                        <table>
+                            <tr>
+                                <th>Govt. Jobs</th>
+                                <th>Last Date</th>
+                            </tr>
+                            <tr>
+                                <td><a href="#" class="link">WB Health – Apply online for 170 FTMO, Staff Nurse & Lab Technician Post</a></td>
+                                <td>12/12/12</td>
+                            </tr>
+                            <tr>
+                                <td><a href="#" class="link">WB Health – Apply online for 170 FTMO, Staff Nurse & Lab Technician Post</a></td>
+                                <td>12/12/12</td>
+                            </tr>
+                        </table>
+                        <table>
+                            <tr>
+                                <th>State Jobs</th>
+                                <th>Last Date</th>
+                            </tr>
+                            <tr>
+                                <td><a href="#" class="link">WB Health – Apply online for 170 FTMO, Staff Nurse & Lab Technician Post</a></td>
+                                <td>12/12/12</td>
+                            </tr>
+                            <tr>
+                                <td><a href="#" class="link">WB Health – Apply online for 170 FTMO, Staff Nurse & Lab Technician Post</a></td>
+                                <td>12/12/12</td>
+                            </tr>
+                        </table>
+                        <table>
+                            <tr>
+                                <th>Exam Results</th>
+                                <th>Last Date</th>
+                            </tr>
+                            <tr>
+                                <td><a href="#" class="link">WB Health – Apply online for 170 FTMO, Staff Nurse & Lab Technician Post</a></td>
+                                <td>12/12/12</td>
+                            </tr>
+                            <tr>
+                                <td><a href="#" class="link">WB Health – Apply online for 170 FTMO, Staff Nurse & Lab Technician Post</a></td>
+                                <td>12/12/12</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
 
-            <span class="topic">New Vacancies</span>
-            <div class="posts">
-                <a href="#" class="post-box feat-org">
-                    <img src="<%= config.root %>/images/organizations/upsc.jpg" />
-                    <span>UPSC</span>
-                </a>
-                <a href="#" class="post-box feat-org">
-                    <img src="<%= config.root %>/images/organizations/upsc.jpg" />
-                    <span>UPSC</span>
-                </a>
-                <a href="#" class="post-box feat-org">
-                    <img src="<%= config.root %>/images/organizations/upsc.jpg" />
-                    <span>UPSC</span>
-                </a>
-                <a href="#" class="post-box feat-org">
-                    <img src="<%= config.root %>/images/organizations/upsc.jpg" />
-                    <span>UPSC</span>
-                </a>
+                <br />
+                <span class="topic">Featured Organizations</span>
+                <div class="posts">
+                    <a href="#" class="post-box feat-org">
+                        <img src="<%= config.root %>/images/organizations/upsc.jpg" />
+                        <span>UPSC</span>
+                    </a>
+                    <a href="#" class="post-box feat-org">
+                        <img src="<%= config.root %>/images/organizations/upsc.jpg" />
+                        <span>UPSC</span>
+                    </a>
+                    <a href="#" class="post-box feat-org">
+                        <img src="<%= config.root %>/images/organizations/upsc.jpg" />
+                        <span>UPSC</span>
+                    </a>
+                    <a href="#" class="post-box feat-org">
+                        <img src="<%= config.root %>/images/organizations/upsc.jpg" />
+                        <span>UPSC</span>
+                    </a>
+                </div>
+
+                <span class="topic">New Vacancies</span>
+                <div class="posts">
+                    <a href="#" class="post-box feat-org">
+                        <img src="<%= config.root %>/images/organizations/upsc.jpg" />
+                        <span>UPSC</span>
+                    </a>
+                    <a href="#" class="post-box feat-org">
+                        <img src="<%= config.root %>/images/organizations/upsc.jpg" />
+                        <span>UPSC</span>
+                    </a>
+                    <a href="#" class="post-box feat-org">
+                        <img src="<%= config.root %>/images/organizations/upsc.jpg" />
+                        <span>UPSC</span>
+                    </a>
+                    <a href="#" class="post-box feat-org">
+                        <img src="<%= config.root %>/images/organizations/upsc.jpg" />
+                        <span>UPSC</span>
+                    </a>
+                </div>
             </div>
         </div>
         <div class="ad-728x90"></div>

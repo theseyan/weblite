@@ -1,0 +1,11 @@
+<div class="menu-sidebar" id="menu-sidebar">
+    <span onclick="Menu.close()" class="msb-close"><span class="fa fa-times"></span> Close</span>
+    <form class="search-box">
+        <input id="sidebarSearchInp" type="text" class="search-inp" placeholder="Search this site..." />
+        <span class="fa fa-search"></span>
+    </form>
+
+    <% for(var item in menus.main) { %>
+        <a href="<%= config.root + menus.main[item].route %>" class="item"><%= menus.main[item].label %></a>
+    <% } %>
+</div>
