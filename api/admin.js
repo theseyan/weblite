@@ -202,7 +202,7 @@ module.exports = {
                 return;
             }
             
-            git.fetch(['--all']).reset('hard').then((result) => {
+            git.fetch(['--all']).reset('hard', ['origin/main']).then((result) => {
                 var cmd = 'npm update';
 
                 exec(cmd, function(error, stdout, stderr) {

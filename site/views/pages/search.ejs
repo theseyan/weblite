@@ -5,32 +5,36 @@
         <%- include('../templates/html-head'); %>
     </head>
     <body>
+        <div class="fade" id="fade"></div>
+        <%- include('../templates/sidebarMenu'); %>
         <%- include('../templates/header'); %>
         <%- include('../templates/menu'); %>
-        <%- include('../templates/sidebar'); %>
-        <div class="body">
-            <span class="topic">Search results for "<%= decodeURIComponent(query) %>"</span>
-            <div class="posts">
-                <a href="<%= config.root %>/post/1" class="post-box">
-                    <span class="category">ICSE</span>
-                    <span class="title">AP 6247 Grama/ Ward Volunteer (Guntur) Online Form</span>
-                    <span class="timestamp">10:43PM at 09 December, 2020</span>
-                </a>
-                <a href="#" class="post-box">
-                    <span class="category">ICSE</span>
-                    <span class="title">AP 6247 Grama/ Ward Volunteer (Guntur) Online Form</span>
-                    <span class="timestamp">10:43PM at 09 December, 2020</span>
-                </a>
-                <a href="#" class="post-box">
-                    <span class="category">ICSE</span>
-                    <span class="title">AP 6247 Grama/ Ward Volunteer (Guntur) Online Form</span>
-                    <span class="timestamp">10:43PM at 09 December, 2020</span>
-                </a>
-                <a href="#" class="post-box">
-                    <span class="category">ICSE</span>
-                    <span class="title">AP 6247 Grama/ Ward Volunteer (Guntur) Online Form</span>
-                    <span class="timestamp">10:43PM at 09 December, 2020</span>
-                </a>
+        <div class="bodySb">
+            <%- include('../templates/sidebar'); %>
+            <div class="body">
+                <span class="topic">Search results for "<%= decodeURIComponent(query) %>"</span>
+                <div class="posts">
+                    <a href="<%= config.root %>/post/1" class="post-box">
+                        <span class="category">ICSE</span>
+                        <span class="title">AP 6247 Grama/ Ward Volunteer (Guntur) Online Form</span>
+                        <span class="timestamp">10:43PM at 09 December, 2020</span>
+                    </a>
+                    <a href="#" class="post-box">
+                        <span class="category">ICSE</span>
+                        <span class="title">AP 6247 Grama/ Ward Volunteer (Guntur) Online Form</span>
+                        <span class="timestamp">10:43PM at 09 December, 2020</span>
+                    </a>
+                    <a href="#" class="post-box">
+                        <span class="category">ICSE</span>
+                        <span class="title">AP 6247 Grama/ Ward Volunteer (Guntur) Online Form</span>
+                        <span class="timestamp">10:43PM at 09 December, 2020</span>
+                    </a>
+                    <a href="#" class="post-box">
+                        <span class="category">ICSE</span>
+                        <span class="title">AP 6247 Grama/ Ward Volunteer (Guntur) Online Form</span>
+                        <span class="timestamp">10:43PM at 09 December, 2020</span>
+                    </a>
+                </div>
             </div>
         </div>
         <%- include('../templates/footer'); %>

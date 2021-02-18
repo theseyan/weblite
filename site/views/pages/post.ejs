@@ -5,39 +5,43 @@
         <%- include('../templates/html-head'); %>
     </head>
     <body>
+        <div class="fade" id="fade"></div>
+        <%- include('../templates/sidebarMenu'); %>
         <%- include('../templates/header'); %>
         <%- include('../templates/menu'); %>
-        <%- include('../templates/sidebar'); %>
-        <div class="body">
-            <div class="post-body">
-                <span class="date">Posted on <%= post.dateString %></span>
-                <h2 class="title"><%= post.title %><div></div></h2>
-                <div class="image">
-                    <img src="<%= config.root %>/images/uploads/<%= post.image %>" />
-                </div>
-                <div class="tags">
-                    <% post.tags.split(",").forEach((tag) => { %>
-                        <a href="<%= config.root %>/tag/<%= tag %>"><%= tag %></a>
-                    <% }); %>
-                </div>
+        <div class="bodySb">
+            <%- include('../templates/sidebar'); %>
+            <div class="body">
+                <div class="post-body">
+                    <span class="date">Posted on <%= post.dateString %></span>
+                    <h2 class="title"><%= post.title %><div></div></h2>
+                    <div class="image">
+                        <img src="<%= config.root %>/images/uploads/<%= post.image %>" />
+                    </div>
+                    <div class="tags">
+                        <% post.tags.split(",").forEach((tag) => { %>
+                            <a href="<%= config.root %>/tag/<%= tag %>"><%= tag %></a>
+                        <% }); %>
+                    </div>
 
-                <div class="content"><%- post.body %></div>
+                    <div class="content"><%- post.body %></div>
+                </div>
+                <div id="disqus_thread"></div>
+                <script>
+                    var disqus_config = function () {
+                    this.page.url = "<%= config.root + "/post/" + post.id %>";  // Replace PAGE_URL with your page's canonical URL variable
+                    this.page.identifier = <%= post.id %>; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+                    };
+                    
+                    (function() { // DON'T EDIT BELOW THIS LINE
+                    var d = document, s = d.createElement('script');
+                    s.src = 'https://thejoblistr.disqus.com/embed.js';
+                    s.setAttribute('data-timestamp', +new Date());
+                    (d.head || d.body).appendChild(s);
+                    })();
+                </script>
+                <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
             </div>
-            <div id="disqus_thread"></div>
-            <script>
-                var disqus_config = function () {
-                this.page.url = "<%= config.root + "/post/" + post.id %>";  // Replace PAGE_URL with your page's canonical URL variable
-                this.page.identifier = <%= post.id %>; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
-                };
-                
-                (function() { // DON'T EDIT BELOW THIS LINE
-                var d = document, s = d.createElement('script');
-                s.src = 'https://thejoblistr.disqus.com/embed.js';
-                s.setAttribute('data-timestamp', +new Date());
-                (d.head || d.body).appendChild(s);
-                })();
-            </script>
-            <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
         </div>
         <%- include('../templates/footer'); %>
     </body>

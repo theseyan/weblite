@@ -8,6 +8,9 @@
     .header .search-box, .header .h-right .h-btn, .menu, .ad-728x90 {
         display: none !important;
     }
+    .header .h-right .icon {
+        display: inline-block !important;
+    }
     .bodySb .body {
         order: 1;
         padding: 30px 0 !important;

@@ -5,19 +5,20 @@
         <%- include('../templates/html-head'); %>
     </head>
     <body>
+        <div class="fade" id="fade"></div>
+        <%- include('../templates/sidebarMenu'); %>
         <%- include('../templates/header'); %>
         <%- include('../templates/menu'); %>
-        <%- include('../templates/sidebar'); %>
-
-        <div class="cf">
-        <div class="body">
-            <span class="topic">About</span>
-            <p>
-                About descriptoin goes here
-            </p>
+        <div class="bodySb">
+            <%- include('../templates/sidebar'); %>
+            <div class="body">
+                <span class="topic">About</span>
+                <p>
+                    About descriptoin goes here
+                </p>
+            </div>
         </div>
 
         <%- include('../templates/footer'); %>
-        </div>
     </body>
 </html>

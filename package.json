@@ -9,7 +9,7 @@
     "cors": "^2.8.5",
     "dotenv": "^8.2.0",
     "edit-json-file": "^1.5.0",
-    "ejs": "^3.1.5",
+    "ejs": "^3.1.6",
     "express": "^4.17.1",
     "express-jwt": "^6.0.0",
     "express-validator": "^6.9.2",
@@ -21,7 +21,7 @@
     "pm2": "^4.5.2",
     "request": "^2.88.2",
     "semver": "^7.3.4",
-    "simple-git": "^2.31.0"
+    "simple-git": "^2.35.0"
   },
   "devDependencies": {},
   "scripts": {
