@@ -309,6 +309,23 @@ module.exports = {
             check('database', 'online');
         });
 
+    },
+
+    editCollection: (file, collection, newCollection, cb) => {
+        console.log(file);
+        var collections = editJson(file);
+        collections.set(collection, newCollection);
+        collections.save(() => {
+            cb({});
+        });
+    },
+
+    deleteCollection: (file, collection, cb) => {
+        var collections = editJson(file);
+        collections.unset(collection);
+        collections.save(() => {
+            cb({});
+        });
     }
 
 };

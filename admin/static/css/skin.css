@@ -259,3 +259,50 @@ html, body {
     color: #3e3e3e;
     cursor: not-allowed;
 }
+.body .collections .collection {
+    background-color: white;
+    padding: 10px 15px;
+    border-radius: 7px;
+    box-shadow: 0px 2px 4px #0000000f;
+}
+.body .collections .collection > .title {
+    font-weight: 600;
+}
+.body .collections .collection > .cats {
+    margin: 10px 0px 0px;
+    padding: 0px 10px;
+}
+.body .collections .collection > .cats > .cat > .title {
+    color: #0084ff;
+    border-bottom: 2px solid;
+    display: inline-block;
+    margin-bottom: 5px;
+}
+.body .collections .collection > .cats > .cat > .items {
+    padding: 10px 10px;
+}
+.body .collections .collection > .cats > .cat > .items > .item:hover {
+    background-color: #f3f3f3;
+}
+.body .collections .collection > .cats > .cat > .items > .item > .item-edit {
+    padding: 10px 10px 10px;
+    background-color: #f3f3f3;
+    border-radius: 7px;
+}
+.body .collections .collection > .cats > .cat > .items > .item > .item-edit .inp {
+    border: none;
+    outline: none !important;
+    font-size: 15px;
+    border-radius: 4px;
+    padding: 5px 5px;
+    border-bottom: 1px solid #cecece;
+}
+.body .collections .collection > .cats > .cat > .items > .item > .item-edit .label {
+    text-transform: uppercase;
+    font-size: 15px;
+    margin-right: 10px;
+    color: black;
+}
+.body .collections .collection > .cats > .cat > .items > .item > .item-edit > div {
+    margin-bottom: 5px;
+}

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title><%= label %> - theJobListr</title>
+        <%- include('../templates/html-head'); %>
+    </head>
+    <body>
+        <%- include('../templates/header'); %>
+        <%- include('../templates/sidebar'); %>
+        <div class="body">
+            <h1 class="title"><%= label %></h1>
+            <div class="collections">
+                <div class="collection">
+                    <span class="title">IndianStates</span>
+                    <span class="fa fa-angle-down"></span>
+                    <div class="cats">
+                        <div class="cat">
+                            <span class="title">states</span>
+                            <span class="fa fa-angle-down"></span>
+                            <div class="items">
+                                <div class="item">
+                                    <span class="title">lul</span>
+                                    <span class="fa fa-angle-down"></span>
+                                    <div class="item-edit">
+                                        <div>
+                                            <span class="label">Value</span>
+                                            <input class="inp" type="text" />
+                                        </div>
+                                        <div>
+                                            <span class="label">Value</span>
+                                            <input class="inp" type="text" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

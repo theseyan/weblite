@@ -1,0 +1,59 @@
+{
+    "main": {
+        "MainMenu": {
+            "home": {
+                "icon": "fa-home",
+                "label": "Home",
+                "route": "/"
+            },
+            "states": {
+                "icon": "fa-location-arrow",
+                "label": "States",
+                "menu": "indianStates",
+                "route": "/state"
+            },
+            "about": {
+                "icon": "fa-info",
+                "label": "About",
+                "route": "/about"
+            },
+            "contact": {
+                "icon": "fa-phone-alt",
+                "label": "Contact Us",
+                "route": "/contact"
+            }
+        }
+    },
+    "footer": {
+        "Jobs": {
+            "latestPosts": {
+                "label": "Latest Posts",
+                "route": "/posts/t/latest"
+            },
+            "upcomingJobs": {
+                "label": "Upcoming Jobs",
+                "route": "/posts/t/upcoming"
+            }
+        },
+        "Menu": {
+            "subscribe": {
+                "label": "Subscribe",
+                "route": "/subscribe"
+            }
+        },
+        "Site": {
+            "contact": {
+                "label": "Contact Us",
+                "route": "/contact"
+            },
+            "about": {
+                "label": "About",
+                "route": "/about"
+            },
+            "privacyPolicy": {
+                "label": "Privacy Policy",
+                "route": "/privacypolicy"
+            }
+        }
+    }
+}

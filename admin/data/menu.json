@@ -16,6 +16,16 @@
             "label": "Manage Posts",
             "icon": "fa fa-edit",
             "route": "/managePosts"
+        },
+        "menus": {
+            "label": "Menus",
+            "icon": "fa fa-bars",
+            "route": "/menus"
+        },
+        "collections": {
+            "label": "Collections",
+            "icon": "fa fa-th-large",
+            "route": "/collections"
         }
     },
     "System": {

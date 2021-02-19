@@ -107,6 +107,15 @@ module.exports = {
             });
         });
 
+        // Collections Page
+        admin.get('/collections', function(req, res) {
+            var collections = require('../site/src/data/Collections.json');
+            res.render('pages/collections', Object.assign(data(req, res), {
+                collections: collections,
+                label: 'Collections'
+            }));
+        });
+
     }
 
 };
