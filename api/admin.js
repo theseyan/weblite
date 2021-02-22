@@ -203,7 +203,7 @@ module.exports = {
             }
             
             git.fetch(['--all']).reset('hard', ['origin/main']).then((result) => {
-                var cmd = 'npm update';
+                var cmd = 'npm install';
 
                 exec(cmd, function(error, stdout, stderr) {
                     if(error) {

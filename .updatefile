@@ -1,4 +1,4 @@
 {
-    "version": "1.0.63",
-    "changes": "More updates"
+    "version": "1.0.64",
+    "changes": "Fixed a potential issue in updating system"
 }
