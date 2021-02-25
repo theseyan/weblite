@@ -1,4 +1,4 @@
 {
-    "version": "1.0.64",
-    "changes": "Fixed a potential issue in updating system"
+    "version": "1.0.65",
+    "changes": "Added new menu items, Added support for menu overflowing"
 }
