@@ -1,6 +1,6 @@
 {
-    "indianStates": {
-        "states": {
+    "subMenus": {
+        "indianStates": {
             "kashmir": "Kashmir",
             "uttarakhand": "Uttarakhand",
             "punjab": "Punjab",
@@ -27,6 +27,18 @@
             "tripura": "Tripura",
             "goa": "Goa",
             "sikkim": "Sikkim"
+        },
+        "jobs": {
+            "lgovt": "Latest Govt. Jobs",
+            "sjob": "State Jobs",
+            "sarkari": "Sarkari Naukri",
+            "bank": "Bank Jobs",
+            "railway": "Railway Jobs",
+            "postal": "Postal Jobs",
+            "police": "Police/Defense Jobs",
+            "teaching": "Teaching Jobs",
+            "engineering": "Engineering Jobs",
+            "medical": "Medical Jobs"
         }
     },
     "homepageCards": {

@@ -1,4 +1,6 @@
-<div class="menu">
+<span id="menu.moveLeft" onclick="Menu.moveLeft()" class="fa fa-angle-left menu-prev-btn"></span>
+<span id="menu.moveRight" onclick="Menu.moveRight()" class="fa fa-angle-right menu-next-btn"></span>
+<div id="menu" class="menu">
     <% for(var item in menus.main) { %>
         <% if(!menus.main[item].menu) { %>
             <a href="<%= config.root + menus.main[item].route %>" class="item <%= (url==menus.main[item].route) ? "active" : "" %>">

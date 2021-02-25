@@ -1,7 +1,8 @@
 var config = require('../config.json');
 var menus = require('./src/data/Menus.json');
 var collections = require('./src/data/Collections.json');
-var indianStates = collections.indianStates.states;
+var indianStates = collections.subMenus.indianStates;
+var jobs = collections.subMenus.jobs;
 var mainMenu = menus.main.MainMenu;
 var footerMenu = menus.footer;
 
@@ -15,7 +16,8 @@ var data = (req, res) => {
             indianStates: indianStates,
             footer: footerMenu,
             cards: collections.homepageCards.cards,
-            orgs: collections.homepageOrgs
+            orgs: collections.homepageOrgs,
+            jobs: jobs
         },
         url: req.url
     };

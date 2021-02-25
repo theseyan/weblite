@@ -6,11 +6,52 @@
                 "label": "Home",
                 "route": "/"
             },
+            "jobs": {
+                "icon": "fa-briefcase",
+                "label": "Jobs",
+                "menu": "jobs",
+                "route": "/job"
+            },
             "states": {
                 "icon": "fa-location-arrow",
                 "label": "States",
                 "menu": "indianStates",
                 "route": "/state"
+            },
+            "jobalert": {
+                "icon": "fa-bell",
+                "label": "Job Alert",
+                "route": "/jobalert"
+            },
+            "sarkarires": {
+                "icon": "fa-list-ol",
+                "label": "Sarkari Result",
+                "route": "/sarkariresult"
+            },
+            "syllabus": {
+                "icon": "fa-book",
+                "label": "Syllabus",
+                "route": "/syllabus"
+            },
+            "pass": {
+                "icon": "fa-stream",
+                "label": "10th/12th Pass",
+                "route": "/resultspass"
+            },
+            "admitcards": {
+                "icon": "fa-id-card",
+                "label": "Admit Cards",
+                "route": "/admitcards"
+            },
+            "admissions": {
+                "icon": "fa-plus",
+                "label": "Admissions",
+                "route": "/admissions"
+            },
+            "answerkeys": {
+                "icon": "fa-question-cirle",
+                "label": "Answer Keys",
+                "route": "/answerkeys"
             },
             "about": {
                 "icon": "fa-info",

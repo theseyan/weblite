@@ -31,5 +31,12 @@ var Menu = {
     openSearch: function() {
         Menu.open();
         _('sidebarSearchInp').focus();
+    },
+    moveLeft: function(el) {
+        _('menu').scrollLeft -= 100;
+    },
+    moveRight: function(el) {
+        _('menu').scrollLeft += 100;
+        _('menu.moveLeft').style.display = "inline-block";
     }
 };
