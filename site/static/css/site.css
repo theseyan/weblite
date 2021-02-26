@@ -233,7 +233,7 @@ html, body {
 }
 .menu .dropdown > .dropdown-menu {
     display: none;
-    position: absolute;
+    position: fixed;
     width: 250px;
     background-color: white;
     box-shadow: 0px 2px 10px #00000038;

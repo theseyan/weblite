@@ -44,7 +44,7 @@
                 "route": "/admitcards"
             },
             "admissions": {
-                "icon": "fa-plus",
+                "icon": "fa-plus-circle",
                 "label": "Admissions",
                 "route": "/admissions"
             },

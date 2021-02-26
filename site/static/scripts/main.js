@@ -38,5 +38,8 @@ var Menu = {
     moveRight: function(el) {
         _('menu').scrollLeft += 100;
         _('menu.moveLeft').style.display = "inline-block";
+    },
+    adjustSubMenu: function(el) {
+        el.lastElementChild.style.marginLeft = (-el.parentNode.scrollLeft) + 'px';
     }
 };

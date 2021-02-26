@@ -10,7 +10,7 @@
                 <%= menus.main[item].label %>
             </a>
         <% }else { %>
-            <span class="item dropdown">
+            <span onmouseenter="Menu.adjustSubMenu(this)" class="item dropdown">
                 <span>
                     <% if(menus.main[item].icon) { %>
                         <span class="fa <%= menus.main[item].icon %>"></span> 
