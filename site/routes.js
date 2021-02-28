@@ -37,7 +37,7 @@ module.exports = {
                 }
                 results[name] = result;
 
-                if(Object.keys(results).length >= 4) {
+                if(Object.keys(results).length >= 7) {
                     res.render('pages/index', Object.assign(data(req, res), {posts: results}));
                 }
             }
@@ -64,6 +64,24 @@ module.exports = {
                 orderBy: 'date DESC',
                 limit: 3
             }, (result) => add('exams', result));
+
+            api.getPosts({
+                query: "tags LIKE '%admit-cards%'",
+                orderBy: 'date DESC',
+                limit: 3
+            }, (result) => add('admitCards', result));
+
+            api.getPosts({
+                query: "tags LIKE '%syllabus%'",
+                orderBy: 'date DESC',
+                limit: 3
+            }, (result) => add('syllabus', result));
+
+            api.getPosts({
+                query: "tags LIKE '%answer-keys%'",
+                orderBy: 'date DESC',
+                limit: 3
+            }, (result) => add('answerKeys', result));
         });
 
         // View Post Page

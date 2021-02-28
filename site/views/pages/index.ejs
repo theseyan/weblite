@@ -38,8 +38,8 @@
                     <div>
                         <table>
                             <tr>
-                                <th>Govt. Jobs</th>
-                                <th>Posted on</th>
+                                <th>Latest Govt. Jobs</th>
+                                <th>Last Date</th>
                             </tr>
                             <% posts.government.posts.forEach((post) => { %>
                                 <tr>
@@ -51,7 +51,7 @@
                         <table>
                             <tr>
                                 <th>State Jobs</th>
-                                <th>Posted on</th>
+                                <th>Last Date</th>
                             </tr>
                             <% posts.state.posts.forEach((post) => { %>
                                 <tr>
@@ -63,9 +63,47 @@
                         <table>
                             <tr>
                                 <th>Exam Results</th>
-                                <th>Posted on</th>
+                                <th>Last Date</th>
                             </tr>
                             <% posts.exams.posts.forEach((post) => { %>
+                                <tr>
+                                    <td><a href="<%= config.root %>/post/<%= post.id %>" class="link"><%= post.title %></a></td>
+                                    <td><%= post.dateString %></td>
+                                </tr>
+                            <% }); %>
+                        </table>
+                    </div>
+                    <div>
+                        <table>
+                            <tr>
+                                <th>Admit Cards</th>
+                                <th>Last Date</th>
+                            </tr>
+                            <% posts.admitCards.posts.forEach((post) => { %>
+                                <tr>
+                                    <td><a href="<%= config.root %>/post/<%= post.id %>" class="link"><%= post.title %></a></td>
+                                    <td><%= post.dateString %></td>
+                                </tr>
+                            <% }); %>
+                        </table>
+                        <table>
+                            <tr>
+                                <th>Answer Keys</th>
+                                <th>Posted on</th>
+                            </tr>
+                            <% posts.answerKeys.posts.forEach((post) => { %>
+                                <tr>
+                                    <td><a href="<%= config.root %>/post/<%= post.id %>" class="link"><%= post.title %></a></td>
+                                    <td><%= post.dateString %></td>
+                                </tr>
+                            <% }); %>
+                        </table>
+                        <table>
+                            <tr>
+                                <th>Syllabus</th>
+                                <th>Posted on</th>
+                            </tr>
+                            <% posts.syllabus.posts.forEach((post) => { %>
                                 <tr>
                                     <td><a href="<%= config.root %>/post/<%= post.id %>" class="link"><%= post.title %></a></td>
                                     <td><%= post.dateString %></td>
