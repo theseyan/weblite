@@ -1,6 +1,7 @@
 {
     "subMenus": {
         "indianStates": {
+            "india": "Central",
             "kashmir": "Kashmir",
             "uttarakhand": "Uttarakhand",
             "punjab": "Punjab",
