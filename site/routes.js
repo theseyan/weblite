@@ -157,6 +157,11 @@ module.exports = {
             res.render('pages/contact', data(req, res));
         });
 
+        // Privacy Policy Page
+        app.get('/privacypolicy', function(req, res) {
+            res.render('pages/privacypolicy', data(req, res));
+        });
+
     }
 
 }
