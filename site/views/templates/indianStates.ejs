@@ -3,7 +3,7 @@
     <div class="x-scrollable">
         <span onclick="xScrollable.prev(this)" class="fa fa-angle-left ctrl prev-ctrl"></span>
         <% for(var id in menus.indianStates) { %>
-            <a href="#" class="state-box">
+            <a href="<%= config.root + "/state/" + id %>" class="state-box">
                 <div class="icon <%= id %>"></div>
                 <span class="title"><%= menus.indianStates[id] %></span>
                 <span class="text">See Vacancies</span>

@@ -201,6 +201,7 @@ html, body {
     font-weight: 700;
     margin-bottom: 15px;
     border-bottom: 3px solid #cecece;
+    text-transform: capitalize;
 }
 .link {
     color: #0072ff;

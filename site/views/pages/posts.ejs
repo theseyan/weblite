@@ -12,7 +12,7 @@
         <div class="bodySb">
             <%- include('../templates/sidebar'); %>
             <div class="body">
-                <span class="topic"><%= decodeURIComponent(tag) %></span>
+                <span class="topic"><%= label %><%= decodeURIComponent(tag) %></span>
                 <div class="posts">
                     <% posts.forEach((post) => { %>
                         <a href="<%= config.root %>/post/<%= post.id %>" class="post-box">

@@ -107,7 +107,22 @@ module.exports = {
             }, (result) => {
                 res.render('pages/posts', Object.assign(data(req, res), {
                     tag: req.params.t,
-                    posts: result.posts
+                    posts: result.posts,
+                    label: "Jobs tagged "
+                }));
+            });
+        });
+
+        // States Page
+        app.get('/state/:state', function(req, res) {
+            api.getPosts({
+                query: `tags LIKE '%${req.params.state}%'`,
+                orderBy: 'date DESC'
+            }, (result) => {
+                res.render('pages/posts', Object.assign(data(req, res), {
+                    tag: req.params.state,
+                    posts: result.posts,
+                    label: "Jobs in "
                 }));
             });
         });
