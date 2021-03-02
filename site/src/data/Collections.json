@@ -30,9 +30,9 @@
             "sikkim": "Sikkim"
         },
         "jobs": {
-            "lgovt": "Latest Govt. Jobs",
-            "sjob": "State Jobs",
-            "sarkari": "Sarkari Naukri",
+            "government": "Latest Govt. Jobs",
+            "state": "State Jobs",
+            "sarkari-naukri": "Sarkari Naukri",
             "bank": "Bank Jobs",
             "railway": "Railway Jobs",
             "postal": "Postal Jobs",

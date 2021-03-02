@@ -99,6 +99,19 @@ module.exports = {
             });
         });
 
+        // Posts Page
+        app.get('/posts/:t', function(req, res) {
+            api.getPosts({
+                query: `tags LIKE '%${req.params.t}%'`,
+                orderBy: 'date DESC'
+            }, (result) => {
+                res.render('pages/posts', Object.assign(data(req, res), {
+                    tag: req.params.t,
+                    posts: result.posts
+                }));
+            });
+        });
+
         // Search Page
         app.get('/search/:q', function(req, res) {
             res.render('pages/search', Object.assign(data(req, res), {

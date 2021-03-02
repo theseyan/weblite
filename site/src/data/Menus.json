@@ -10,7 +10,7 @@
                 "icon": "fa-briefcase",
                 "label": "Jobs",
                 "menu": "jobs",
-                "route": "/job"
+                "route": "/posts"
             },
             "states": {
                 "icon": "fa-location-arrow",
@@ -26,32 +26,32 @@
             "sarkarires": {
                 "icon": "fa-list-ol",
                 "label": "Sarkari Result",
-                "route": "/sarkariresult"
+                "route": "/posts/sarkari-result"
             },
             "syllabus": {
                 "icon": "fa-book",
                 "label": "Syllabus",
-                "route": "/syllabus"
+                "route": "/posts/syllabus"
             },
             "pass": {
                 "icon": "fa-stream",
                 "label": "10th/12th Pass",
-                "route": "/resultspass"
+                "route": "/posts/10th%2F12th-pass"
             },
             "admitcards": {
                 "icon": "fa-id-card",
                 "label": "Admit Cards",
-                "route": "/admitcards"
+                "route": "/posts/admit-cards"
             },
             "admissions": {
                 "icon": "fa-plus-circle",
                 "label": "Admissions",
-                "route": "/admissions"
+                "route": "/posts/admissions"
             },
             "answerkeys": {
                 "icon": "fa-question-cirle",
                 "label": "Answer Keys",
-                "route": "/answerkeys"
+                "route": "/posts/answer-keys"
             },
             "about": {
                 "icon": "fa-info",

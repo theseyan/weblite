@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>theJobListr - Free jobs listing for you</title>
+        <%- include('../templates/html-head'); %>
+    </head>
+    <body>
+        <div class="fade" id="fade"></div>
+        <%- include('../templates/sidebarMenu'); %>
+        <%- include('../templates/header'); %>
+        <%- include('../templates/menu'); %>
+        <div class="bodySb">
+            <%- include('../templates/sidebar'); %>
+            <div class="body">
+                <span class="topic"><%= decodeURIComponent(tag) %></span>
+                <div class="posts">
+                    <% posts.forEach((post) => { %>
+                        <a href="<%= config.root %>/post/<%= post.id %>" class="post-box">
+                            <span class="category"><%= post.cat %></span>
+                            <span class="title"><%= post.title %></span>
+                            <span class="timestamp"><%= post.dateString %></span>
+                        </a>
+                    <% }); %>
+                </div>
+            </div>
+        </div>
+        <%- include('../templates/footer'); %>
+    </body>
+</html>
