@@ -5,7 +5,7 @@ var path = require('path');
 // Storage for Image Uploads
 module.exports.storage = multer.diskStorage({
     destination: function(req, file, cb) {
-        cb(null, 'static' + config.website.uploads + '/');
+        cb(null, 'site/static' + config.website.uploads + '/');
     },
 
     // By default, multer removes file extensions so let's add them back

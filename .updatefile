@@ -1,4 +1,4 @@
 {
-    "version": "1.0.67",
-    "changes": "New site icon, Added central logo"
+    "version": "1.0.68",
+    "changes": "Fixed image uploads issue"
 }
