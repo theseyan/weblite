@@ -1,4 +1,4 @@
 {
-    "version": "1.0.68",
-    "changes": "Fixed image uploads issue"
+    "version": "1.0.69",
+    "changes": "Fixed issues in deleting posts"
 }
