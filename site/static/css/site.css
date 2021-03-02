@@ -470,14 +470,14 @@ html, body {
     color: #717980;
     font-weight: 500;
 }
-.footer .brand .social-ic span {
+.footer .brand .social-ic a {
     display: inline-block;
     padding: 5px 20px 25px 0;
     fill: rgb(6 12 24 / 35%);
     cursor: pointer;
     transition: fill 0.15s ease 0s;
 }
-.footer .brand .social-ic span:hover {
+.footer .brand .social-ic a:hover {
     fill: rgb(6 12 24 / 55%);
 }
 .footer .in ul {
@@ -682,4 +682,29 @@ html, body {
     cursor: pointer;
     z-index: 1;
     display: none;
+}
+.sidebar .sb-states {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+.sidebar .sb-states .state {
+    display: flex;
+    flex-grow: 1;
+    flex-basis: calc(50% - 24px);
+    text-align: center;
+    padding: 10px 5px;
+    border-radius: 7px;
+    border: 2px solid #e6e6e6;
+    color: #00b144;
+    font-weight: 800;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    text-decoration: none;
+}
+.sidebar .sb-states .state:hover {
+    border: 2px solid #bbbbbb;
+}
+.sidebar .sb-states .state > span {
+    margin: auto;
 }

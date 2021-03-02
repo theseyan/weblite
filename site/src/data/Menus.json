@@ -71,15 +71,27 @@
                 "label": "Latest Posts",
                 "route": "/posts/t/latest"
             },
-            "upcomingJobs": {
-                "label": "Upcoming Jobs",
-                "route": "/posts/t/upcoming"
+            "stateJobs": {
+                "label": "State Jobs",
+                "route": "/posts/state"
+            },
+            "sarkariNaukri": {
+                "label": "Sarkari Naukri",
+                "route": "/posts/sarkari-naukri"
             }
         },
         "Menu": {
             "subscribe": {
                 "label": "Subscribe",
                 "route": "/subscribe"
+            },
+            "answerKeys": {
+                "label": "Answer Keys",
+                "route": "/posts/answer-keys"
+            },
+            "syllabus": {
+                "label": "Syllabus",
+                "route": "/posts/syllabus"
             }
         },
         "Site": {

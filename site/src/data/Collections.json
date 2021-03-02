@@ -93,5 +93,28 @@
                 "logo": "indianoil.webp"
             }
         }
+    },
+    "sidebar": {
+        "latestNotifications": {
+            "label": "Latest Notifications",
+            "items": {
+                "centralJobs": {
+                    "label": "Government Jobs",
+                    "route": "/posts/government"
+                },
+                "stateJobs": {
+                    "label": "State Jobs",
+                    "route": "/posts/state"
+                },
+                "admitCards": {
+                    "label": "Admit Cards",
+                    "route": "/posts/admit-cards"
+                },
+                "admissions": {
+                    "label": "Admissions",
+                    "route": "/posts/admissions"
+                }
+            }
+        }
     }
 }

@@ -5,6 +5,7 @@ var indianStates = collections.subMenus.indianStates;
 var jobs = collections.subMenus.jobs;
 var mainMenu = menus.main.MainMenu;
 var footerMenu = menus.footer;
+var sidebarMenu = collections.sidebar.latestNotifications;
 
 var api = require('../api/site');
 
@@ -17,7 +18,8 @@ var data = (req, res) => {
             footer: footerMenu,
             cards: collections.homepageCards.cards,
             orgs: collections.homepageOrgs,
-            jobs: jobs
+            jobs: jobs,
+            sidebar: sidebarMenu
         },
         url: req.url
     };

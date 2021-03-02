@@ -1,14 +1,16 @@
 <div class="sidebar cf">
     <div class="box">
-        <span style="margin-top:0px;" class="topic">Latest Posts</span>
-        <a href="#" class="s-link">Latest Posts</a>
-        <a href="#" class="s-link">Upcoming News</a>
-        <a href="#" class="s-link">Exams Information</a>
+        <span style="margin-top:0px;" class="topic"><%= menus.sidebar.label %></span>
+        <% for(var item in menus.sidebar.items) { %>
+            <a href="<%= config.root + menus.sidebar.items[item].route %>" class="s-link"><%= menus.sidebar.items[item].label %></a>
+        <% } %>
 
-        <span class="topic">Latest Posts</span>
-        <a href="#" class="s-link">Latest Posts</a>
-        <a href="#" class="s-link">Upcoming News</a>
-        <a href="#" class="s-link">Exams Information</a>
+        <span class="topic">State-wise Jobs</span>
+        <div class="sb-states">
+            <% for(var item in menus.indianStates) { %>
+                <a href="<%= config.root + "/state/" + item %>" class="state"><span><%= menus.indianStates[item] %></span></a>
+            <% } %>
+        </div>
     </div>
     <div class="ad-300x250"></div>
     <div class="box">
