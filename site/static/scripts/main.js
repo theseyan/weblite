@@ -41,5 +41,10 @@ var Menu = {
     },
     adjustSubMenu: function(el) {
         el.lastElementChild.style.marginLeft = (-el.parentNode.scrollLeft) + 'px';
+    },
+    submitSearch: function() {
+        var q = _('sidebarSearchInp').value;
+        window.location.href = "/search/" + encodeURIComponent(q);
+        return false;
     }
 };

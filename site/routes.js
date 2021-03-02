@@ -129,9 +129,15 @@ module.exports = {
 
         // Search Page
         app.get('/search/:q', function(req, res) {
-            res.render('pages/search', Object.assign(data(req, res), {
-                query: req.params.q
-            }));
+            api.getPosts({
+                query: `title LIKE '%${req.params.q}%' OR cat LIKE '%${req.params.q}%' OR tags LIKE '%${req.params.q}%'`,
+                orderBy: 'date DESC'
+            }, (result) => {
+                res.render('pages/search', Object.assign(data(req, res), {
+                    query: req.params.q,
+                    posts: result.posts
+                }));
+            });
         });
 
         // Posts Page
