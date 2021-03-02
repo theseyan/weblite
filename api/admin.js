@@ -124,7 +124,7 @@ module.exports = {
             }
 
             // Delete image file
-            fs.unlink('./static' + config.website.uploads + '/' + res[0].image, (err) => {
+            fs.unlink('.' + config.website.staticRoot + config.website.uploads + '/' + res[0].image, (err) => {
                 if(err) {
                     cb({error: err});
                     return;
