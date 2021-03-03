@@ -31,7 +31,8 @@ module.exports = {
                     body: body.body,
                     tags: body.tags,
                     author: body.author,
-                    category: body.cat
+                    category: body.cat,
+                    lastDate: Number(req.body.lastDate)
                 };
 
                 if(newThumb===true) Object.assign(args, {image: req.file.filename});

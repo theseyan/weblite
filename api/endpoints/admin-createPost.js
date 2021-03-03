@@ -26,7 +26,8 @@ module.exports = {
                 body: req.body.body,
                 tags: req.body.tags,
                 author: req.body.author,
-                category: req.body.cat
+                category: req.body.cat,
+                lastDate: Number(req.body.lastDate)
             }, (data) => {
                 if(data.error) {
                     res.status(500).send({

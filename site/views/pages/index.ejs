@@ -44,7 +44,7 @@
                             <% posts.government.posts.forEach((post) => { %>
                                 <tr>
                                     <td><a href="<%= config.root %>/post/<%= post.id %>" class="link"><%= post.title %></a></td>
-                                    <td><%= post.dateString %></td>
+                                    <td><%= post.lastDateString %></td>
                                 </tr>
                             <% }); %>
                         </table>
@@ -56,14 +56,14 @@
                             <% posts.state.posts.forEach((post) => { %>
                                 <tr>
                                     <td><a href="<%= config.root %>/post/<%= post.id %>" class="link"><%= post.title %></a></td>
-                                    <td><%= post.dateString %></td>
+                                    <td><%= post.lastDateString %></td>
                                 </tr>
                             <% }); %>
                         </table>
                         <table>
                             <tr>
                                 <th>Exam Results</th>
-                                <th>Last Date</th>
+                                <th>Posted on</th>
                             </tr>
                             <% posts.exams.posts.forEach((post) => { %>
                                 <tr>
@@ -82,7 +82,7 @@
                             <% posts.admitCards.posts.forEach((post) => { %>
                                 <tr>
                                     <td><a href="<%= config.root %>/post/<%= post.id %>" class="link"><%= post.title %></a></td>
-                                    <td><%= post.dateString %></td>
+                                    <td><%= post.lastDateString %></td>
                                 </tr>
                             <% }); %>
                         </table>

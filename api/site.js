@@ -16,7 +16,9 @@ module.exports = {
 
             res.forEach((post) => {
                 var time = new Date(Number(post.date)*1000).toGMTString();
+                var lastDate = new Date(Number(post.lastDate)*1000).toDateString();
                 post.dateString = time;
+                post.lastDateString = lastDate;
             });
 
             cb({posts: res});

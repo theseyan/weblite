@@ -30,6 +30,18 @@
                 <span class="label">Tags</span>
                 <input value="<%= post.tags %>" name="tags" class="input" placeholder="Enter a comma separated list of tags..." type="text" />
 
+                <%
+                    function zero(num) {
+                        if(num < 10) return '0' + String(num);
+                        else return String(num);
+                    }
+                    var lastDate = new Date(post.lastDate * 1000);
+                    var lastDateVal = lastDate.getUTCFullYear() + '-' + (zero(lastDate.getUTCMonth()+1)) + '-' + zero(lastDate.getUTCDate());
+                %>
+                <span class="label">Last Date</span>
+                <input value="<%= lastDateVal %>" oninput="document.getElementById('lastDate').value=this.valueAsNumber/1000;" class="input" type="date" />
+
+                <input id="lastDate" type="hidden" name="lastDate" value="0" />
                 <input value="<%= post.author %>" type="hidden" name="author" value="Administrator" />
                 <input type="hidden" name="asyncRedirect" value="<%= config.admin.root + url %>" />
                 <input type="hidden" name="authToken" value="<%= auth.token %>" />
