@@ -5,6 +5,7 @@
 */
 
 require('dotenv').config();
+require('./data/module/Data');
 var config = require('./config.json');
 var express = require('express');
 var bodyParser = require('body-parser');

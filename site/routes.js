@@ -1,15 +1,15 @@
 var config = require('../config.json');
-var menus = require('./src/data/Menus.json');
-var collections = require('./src/data/Collections.json');
-var indianStates = collections.subMenus.indianStates;
-var jobs = collections.subMenus.jobs;
-var mainMenu = menus.main.MainMenu;
-var footerMenu = menus.footer;
-var sidebarMenu = collections.sidebar.latestNotifications;
-
 var api = require('../api/site');
 
 var data = (req, res) => {
+    var menus = global.Data.Menus;
+    var collections = global.Data.Collections;
+    var indianStates = collections.subMenus.indianStates;
+    var jobs = collections.subMenus.jobs;
+    var mainMenu = menus.main.MainMenu;
+    var footerMenu = menus.footer;
+    var sidebarMenu = collections.sidebar.latestNotifications;
+
     return {
         config: config.website,
         menus: {
