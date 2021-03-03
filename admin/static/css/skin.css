@@ -306,3 +306,18 @@ html, body {
 .body .collections .collection > .cats > .cat > .items > .item > .item-edit > div {
     margin-bottom: 5px;
 }
+.body .collections-editor {
+    height: 400px;
+    width: 100%;
+}
+.body .collections-editor .jsoneditor {
+    background-color: white;
+    box-shadow: 0px 2px 4px #00000014;
+    border: none !important;
+}
+.body .collections-editor .jsoneditor div.jsoneditor-field {
+    font-size: 17px !important;
+}
+.body .collections-editor .jsoneditor div.jsoneditor-value {
+    font-size: 16px !important;
+}

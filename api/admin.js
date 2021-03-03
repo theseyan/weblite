@@ -312,12 +312,24 @@ module.exports = {
     },
 
     editCollection: (file, collection, newCollection, cb) => {
-        console.log(file);
         var collections = editJson(file);
         collections.set(collection, newCollection);
         collections.save(() => {
             cb({});
         });
+    },
+
+    setCollections: (file, newCollection, cb) => {
+        fs.writeFile(file, newCollection, 'utf-8', (err, data) => {
+            if (err) {
+                cb({
+                    error: err
+                });
+                return;
+            }
+            cb({data: data});
+        });
+
     },
 
     deleteCollection: (file, collection, cb) => {

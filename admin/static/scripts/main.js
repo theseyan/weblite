@@ -110,3 +110,37 @@ var Update = {
         });
     }
 };
+
+var CollectionsEditor = {
+
+    save: function(el, token) {
+        var data = JSON.stringify(editor.get());
+        var onclick = el.getAttribute('onclick');
+        var html = el.innerHTML;
+        el.innerHTML = "<span class='fa fa-spin fa-sync'></span> Saving changes...";
+        el.classList.add("disabled");
+        el.setAttribute("onclick", "");
+
+        ajaxReq({
+            type: 'post',
+            url: config.apiUrl + "/data/setCollections",
+            content: {
+                collections: data
+            },
+            headers: [{
+                header: 'Authorization',
+                content: 'Basic ' + token
+            }],
+            onload: function(data) {
+                alert("Collections edited successfully");
+                el.innerHTML = html;
+                el.classList.remove('disabled');
+                el.setAttribute("onclick", onclick);
+            },
+            onerror: function(data) {
+                alert("Error: " + data);
+            }
+        });
+    }
+
+};
