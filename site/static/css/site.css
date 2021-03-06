@@ -709,3 +709,6 @@ html, body {
 .sidebar .sb-states .state > span {
     margin: auto;
 }
+.post-body .content table td {
+    padding: 5px 10px;
+}
