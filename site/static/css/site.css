@@ -571,6 +571,7 @@ html, body {
 }
 .post-body .image > img {
     max-height: 300px;
+    max-width: 100%;
 }
 .viewall {
     display: block;
