@@ -15,47 +15,47 @@
             "latestgovt": {
                 "icon": "",
                 "label": "Latest Govt. Jobs",
-                "route": "/government"
+                "route": "/posts/government"
             },
             "sarkarinaukri": {
                 "icon": "",
                 "label": "Sarkari Naukri",
-                "route": "/sarkari-naukri"
+                "route": "/posts/sarkari-naukri"
             },
             "bankjobs": {
                 "icon": "",
                 "label": "Bank Jobs",
-                "route": "/bank"
+                "route": "/posts/bank"
             },
             "railwayjobs": {
                 "icon": "",
                 "label": "Railway Jobs",
-                "route": "/railway"
+                "route": "/posts/railway"
             },
             "postaljobs": {
                 "icon": "",
                 "label": "Postal Jobs",
-                "route": "/postal"
+                "route": "/posts/postal"
             },
             "policejobs": {
                 "icon": "",
                 "label": "Police/Defense Jobs",
-                "route": "/police"
+                "route": "/posts/police"
             },
             "teachingjobs": {
                 "icon": "",
                 "label": "Teaching Jobs",
-                "route": "/teaching"
+                "route": "/posts/teaching"
             },
             "engineeringjobs": {
                 "icon": "",
                 "label": "Engineering Jobs",
-                "route": "/engineering"
+                "route": "/posts/engineering"
             },
             "medicaljobs": {
                 "icon": "",
                 "label": "Medical Jobs",
-                "route": "/medical"
+                "route": "/posts/medical"
             },
             "jobalert": {
                 "icon": "fa-bell",

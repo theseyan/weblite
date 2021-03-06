@@ -297,6 +297,7 @@ html, body {
     flex-basis: calc(22% - 5px);
     margin-right: 5px;
     padding: 5px 10px;
+    text-decoration: none;
 }
 .cards .card > span {
     margin: auto;

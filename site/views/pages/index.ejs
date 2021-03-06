@@ -28,7 +28,7 @@
                 <span class="topic">Trending Jobs</span>
                 <div class="cards">
                     <% var i=0;for(var item in menus.cards) {i++; %>
-                        <div class="card sbg s<%= i %>"><span><%= menus.cards[item] %></span></div>
+                        <a href="<%= menus.cards[item].url %>" class="card sbg s<%= i %>"><span><%= menus.cards[item].label %></span></a>
                     <% } %>
                 </div>
 
