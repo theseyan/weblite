@@ -6,17 +6,56 @@
                 "label": "Home",
                 "route": "/"
             },
-            "jobs": {
-                "icon": "fa-briefcase",
-                "label": "Jobs",
-                "menu": "jobs",
-                "route": "/posts"
-            },
             "states": {
                 "icon": "fa-location-arrow",
                 "label": "States",
                 "menu": "indianStates",
                 "route": "/state"
+            },
+            "latestgovt": {
+                "icon": "",
+                "label": "Latest Govt. Jobs",
+                "route": "/government"
+            },
+            "sarkarinaukri": {
+                "icon": "",
+                "label": "Sarkari Naukri",
+                "route": "/sarkari-naukri"
+            },
+            "bankjobs": {
+                "icon": "",
+                "label": "Bank Jobs",
+                "route": "/bank"
+            },
+            "railwayjobs": {
+                "icon": "",
+                "label": "Railway Jobs",
+                "route": "/railway"
+            },
+            "postaljobs": {
+                "icon": "",
+                "label": "Postal Jobs",
+                "route": "/postal"
+            },
+            "policejobs": {
+                "icon": "",
+                "label": "Police/Defense Jobs",
+                "route": "/police"
+            },
+            "teachingjobs": {
+                "icon": "",
+                "label": "Teaching Jobs",
+                "route": "/teaching"
+            },
+            "engineeringjobs": {
+                "icon": "",
+                "label": "Engineering Jobs",
+                "route": "/engineering"
+            },
+            "medicaljobs": {
+                "icon": "",
+                "label": "Medical Jobs",
+                "route": "/medical"
             },
             "jobalert": {
                 "icon": "fa-bell",
