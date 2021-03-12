@@ -71,21 +71,6 @@ var Form = {
     }
 };
 
-var Menu = {
-    open: function(el) {
-        _('sidebar').style.transform = "translateX(0)";
-        el.classList.remove('fa-bars');
-        el.classList.add('fa-times');
-        el.setAttribute("onclick", "Menu.close(this)");
-    },
-    close: function(el) {
-        _('sidebar').style.transform = "translateX(-255px)";
-        el.classList.remove('fa-times');
-        el.classList.add('fa-bars');
-        el.setAttribute("onclick", "Menu.open(this)");
-    }
-};
-
 var Update = {
     updateSystem: function(el, token) {
         el.innerHTML = "<span class='fa fa-spin fa-sync'></span> Installing Update...";

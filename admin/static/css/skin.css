@@ -28,7 +28,7 @@ html, body {
 }
 .sidebar {
     width: 250px;
-    height: calc(100vh - 60px);
+    height: 100vh;
     background-color: #3091ec;
     box-shadow: 2px 5px 5px #00000026;
     color: white;
@@ -329,4 +329,15 @@ html, body {
 }
 .body .collections-editor .jsoneditor div.jsoneditor-value {
     font-size: 16px !important;
+}
+.fade {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    z-index: 10;
+    background-color: transparent;
+    visibility: hidden;
+    transition: background-color 200ms;
 }

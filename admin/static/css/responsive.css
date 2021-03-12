@@ -1,9 +1,10 @@
 @media only screen and (max-width: 800px) {
     .sidebar {
-        transform: translateX(-255px);
+        transform: translateX(-100%);
         position: absolute;
         transition: transform 200ms;
-        z-index: 10;
+        z-index: 11;
+        width: 60% !important;
     }
     .header .menu-btn {
         display: inline-block !important;
