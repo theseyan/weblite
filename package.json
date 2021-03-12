@@ -10,7 +10,7 @@
     "cors": "^2.8.5",
     "dotenv": "^8.2.0",
     "edit-json-file": "^1.5.0",
-    "ejs": "^3.1.6",
+    "ejs-compiled-loader": "^3.0.0",
     "express": "^4.17.1",
     "express-jwt": "^6.0.0",
     "express-validator": "^6.9.2",
@@ -18,13 +18,19 @@
     "jsonwebtoken": "^8.5.1",
     "multer": "^1.4.2",
     "mysql2": "^2.2.5",
+    "navigo": "^8.9.1",
     "nodemon": "^2.0.7",
     "pm2": "^4.5.2",
     "request": "^2.88.2",
     "semver": "^7.3.4",
     "simple-git": "^2.35.0"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "@babel/core": "^7.13.10",
+    "@babel/preset-env": "^7.13.10",
+    "babel-loader": "^8.2.2",
+    "ejs": "^3.1.6"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js"

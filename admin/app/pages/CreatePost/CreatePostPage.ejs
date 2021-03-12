@@ -1,0 +1,29 @@
+<h1 class="title">Create a new Post</h1>
+
+<form id="cp-form" enctype="multipart/form-data" class="form">
+    <span class="label">Post Title</span>
+    <input name="title" class="input" placeholder="Enter a title for this post..." type="text" />
+
+    <span class="label">Post Image</span>
+    <input name="image" class="input" placeholder="Select a thumbnail for this post..." type="file" />
+    
+    <span class="label">Body</span>
+    <textarea name="body" id="postBodyEditor"></textarea>
+    <br />
+
+    <span class="label">Category</span>
+    <input name="cat" class="input" placeholder="Enter the category of this post" type="text" />
+
+    <span class="label">Tags</span>
+    <input name="tags" class="input" placeholder="Enter a comma separated list of tags..." type="text" />
+
+    <span class="label">Last Date</span>
+    <input oninput="document.getElementById('lastDate').value=this.valueAsNumber/1000;" class="input" type="date" />
+
+    <input id="lastDate" type="hidden" name="lastDate" value="0" />
+    <input type="hidden" name="author" value="Administrator" />
+
+    <p></p>
+    <a id="post-btn" class="btn btn-primary btn-full-width"><span class="fa fa-plus-circle"></span> Post</a>
+    <br /><br />
+</form>

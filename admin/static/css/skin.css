@@ -226,6 +226,15 @@ html, body {
     font-weight: 600;
     border-radius: 7px;
     cursor: pointer;
+    text-align: center;
+}
+.login .submit-btn.disabled {
+    background-color: #d0d0d0 !important;
+    color: #5d5d5d !important;
+    cursor: not-allowed;
+}
+.login .submit-btn.disabled:hover {
+    background-color: #d0d0d0 !important;
 }
 .login .submit-btn:active, .login .submit-btn:focus {
     outline: none;

@@ -1,0 +1,12 @@
+<h1 class="title">Manage Posts</h1>
+<div class="posts-list">
+    <% posts.forEach(post => { %>
+        <div class="post">
+            <span class="title"><span class="id"><%= post.id %></span><%= post.title %></span>
+            <div class="right">
+                <a class="icon" href="<%= adminUrl %>/#/editPost/<%= post.id %>"><span class="fa fa-edit"></span></a>
+                <a class="icon delete" href="<%= adminUrl %>/#/deletePost/<%= post.id %>"><span class="fa fa-trash"></span></a>
+            </div>
+        </div>
+    <% }); %>
+</div>

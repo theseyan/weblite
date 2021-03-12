@@ -1,8 +1,0 @@
-<div id="sidebar" class="sidebar">
-    <% for(var cat in menus.main) { %>
-        <span class="topic"><%= cat %></span>
-        <% for(var item in menus.main[cat]) { %>
-            <a href="<%= config.admin.root + menus.main[cat][item].route %>" class="item <%= (url==menus.main[cat][item].route) ? "active" : "" %>"><span class="<%= menus.main[cat][item].icon %>"></span> <%= menus.main[cat][item].label %></a>
-        <% } %>
-    <% } %>
-</div>

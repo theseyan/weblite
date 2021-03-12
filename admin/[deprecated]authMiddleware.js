@@ -3,7 +3,10 @@ var config = require('../config.json');
 
 var openRoutes = [
     "/login",
-    "/authenticate"
+    "/authenticate",
+    "/v2/login",
+    "/v2/authenticate",
+    "/v2"
 ];
 
 module.exports.middleware = (req, res, next) => {
@@ -20,7 +23,7 @@ module.exports.middleware = (req, res, next) => {
     if(openRoute === true) return;
 
     if(!cookies.get('authToken')) {
-        res.redirect(config.admin.root + '/login');
+        res.redirect(config.admin.root + '/v2/login');
         res.end();
         return;
     }else {

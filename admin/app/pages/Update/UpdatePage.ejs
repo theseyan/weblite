@@ -1,0 +1,13 @@
+<h1 class="title">System Update</h1>
+<% if(update.update == false) { %>
+    <h3><span style="color:#20cc65;" class="fa fa-check-circle"></span> No updates are available.</h3>
+<% }else { %>
+    <h3><span style="color:#e89600;" class="fa fa-exclamation-circle"></span> New updates are available.</h3>
+    <b>Local: </b> <%= localVersion %><br />
+    <b>Latest: </b> <%= update.body.version %><p></p>
+    
+    <h4>Changelog</h4>
+    <div class="update-changelog"><%- update.body.changes %></div>
+    
+    <a id="update-btn" class="btn btn-primary"><span class="fa fa-sync"></span> Install Updates</a>
+<% } %>

@@ -146,7 +146,7 @@ module.exports = {
     },
 
     getPosts: (data, cb) => {
-        db.query('SELECT * FROM posts WHERE ' + data.query + ' ORDER BY ' + (data.orderBy ? data.orderBy : 1), (err, res) => {
+        db.query('SELECT ' + (data.select ? data.select : '*') + ' FROM posts WHERE ' + data.query + ' ORDER BY ' + (data.orderBy ? data.orderBy : 1), (err, res) => {
             if(err) {
                 cb({error: err});
                 return;
@@ -162,14 +162,12 @@ module.exports = {
             if (!error && response.statusCode == 200) {
                 
                 var updateObj = JSON.parse(body);
-                console.log(config.version);
-                console.log(semverCompare(updateObj.version, config.version));
 
                 if(semverCompare(updateObj.version, config.version) === true) {
                     var remote = semverParse(updateObj.version);
                     var local = semverParse(config.version);
                     var type = 'PATCH';
-                    console.log(remote);
+                    
                     if(remote.major > local.major) type = 'MAJOR';
                     else if(remote.minor > local.minor) type = 'MINOR';
 

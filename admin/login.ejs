@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Login - weblite</title>
+        <meta name="viewport" content="width=device-width,initial-scale=1" />
+        <link rel="stylesheet" type="text/css" href="/css/skin.css" />
+        <link rel="stylesheet" type="text/css" href="/assets/fontawesome/css/all.min.css" />
+        <link rel="shortcut icon" type="image/ong" href="/images/logo-min-transparentbg.png" />
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&display=swap" rel="stylesheet">
+        <script type="text/javascript">
+            var config={
+                apiUrl: '<%= config.api.root %>',
+                adminUrl: '<%= v2 %>',
+                websiteUrl: '<%= config.website.root %>'
+            };
+        </script>
+        <script type="text/javascript" src="/admin.login.js"></script>
+    </head>
+    <body>
+        <div class="login">
+            <div>
+                <img src="<%= config.admin.root %>/images/logo-min-transparentbg.png" class="logo" />
+                <form class="login-form">
+                    <span class="label">Username</span>
+                    <input id="username" class="input" placeholder="Enter your username..." type="text" />
+                    
+                    <span class="label">Password</span>
+                    <input id="password" class="input" placeholder="Enter your password..." type="password" />
+
+                    <span onclick="login(this)" class="submit-btn"><span class="fa fa-angle-right"></span> Login</span>
+                </form>
+            </div>
+        </div>
+    </body>
+</html>
