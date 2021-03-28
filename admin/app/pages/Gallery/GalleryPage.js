@@ -38,6 +38,7 @@ Router.on('/gallery', ({data, params, queryString}) => {
         for(var i=0; i<=data.length-1; i++) {
             if(data[i].dir && data[i].dir == true) {
                 folders.push(data.splice(i, 1));
+                i--;
             }
         }
 
@@ -89,7 +90,7 @@ Router.on('/gallery', ({data, params, queryString}) => {
             Util.submitForm(Util._('uploadImageForm'), window.config.apiUrl + '/admin/uploadImage', (data) => {
                 event.target.classList.remove('disabled');
                 event.target.innerHTML = html;
-                
+
                 Notify('success', 'Uploaded image successfully');
 
                 Router.reload();
