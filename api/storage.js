@@ -26,3 +26,14 @@ module.exports.createStorage = (dir) => {
         }
     });
 };
+
+module.exports.reqStorage = multer.diskStorage({
+    destination: function(req, file, cb) {
+        cb(null, '.' + config.website.staticRoot + req.body.path + '/');
+    },
+
+    // By default, multer removes file extensions so let's add them back
+    filename: function(req, file, cb) {
+        cb(null, file.fieldname + '-' + Date.now() + path.extname(file.originalname));
+    }
+});

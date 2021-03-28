@@ -1,6 +1,6 @@
 var admin = require('../admin');
 var config = require('../../config.json');
-var multerStorage = require('../storage').storage;
+var multerStorage = require('../storage').reqStorage;
 var helpers = require('../helpers');
 var multer = require('multer')({ storage: multerStorage, fileFilter: helpers.imageFilter });
 

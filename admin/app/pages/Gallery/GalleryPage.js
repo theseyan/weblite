@@ -86,7 +86,7 @@ Router.on('/gallery', ({data, params, queryString}) => {
             event.target.classList.add('disabled');
             event.target.innerHTML = "<span class='fa fa-spin fa-circle-notch'></span> Uploading image...";
 
-            Util._('imageUploadPath').value = "/images/uploads" + route;
+            Util._('imageUploadPath').value = "/images/uploads" + route.substring(0, route.length-1);
             Util.submitForm(Util._('uploadImageForm'), window.config.apiUrl + '/admin/uploadImage', (data) => {
                 event.target.classList.remove('disabled');
                 event.target.innerHTML = html;
