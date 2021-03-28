@@ -1,3 +1,5 @@
+import {Router} from './Router';
+
 var _ = (id) => {return document.getElementById(id)};
 
 export var Util = {
@@ -48,6 +50,14 @@ export var Util = {
         document.head.appendChild(scr);
     },
 
+    loadCSS: (url) => {
+        var scr = document.createElement('link');
+        scr.type = 'text/css';
+        scr.rel = "stylesheet";
+        scr.href = url;
+        document.head.appendChild(scr);
+    },
+
     submitForm: (form, url, onl, onerr) => {
         var data = new FormData(form);
         var send = {};
@@ -95,3 +105,46 @@ export var Page = {
     }
 
 };
+
+export var EventListener = {
+
+    listeners: [],
+
+    on: (evt, target, handler) => {
+        EventListener.listeners.push({
+            target: target,
+            evt: evt,
+            handler: handler
+        });
+        target.addEventListener(evt, EventListener.listeners[EventListener.listeners.length-1].handler);
+        var index = EventListener.listeners.length-1;
+
+        return {
+            remove: () => {
+                EventListener.remove(index);
+            }
+        };
+    },
+
+    remove: (index) => {
+        var item = EventListener.listeners[index];
+
+        item.target.removeEventListener(item.evt, item.handler);
+        EventListener.listeners.splice(index, 1);
+    },
+
+    removeAll: () => {
+        for(var i=0; i<EventListener.listeners.length; i++) {
+            EventListener.remove(i);
+        }
+    }
+
+};
+
+// Remove all event listeners before changing route
+Router.hooks({
+    before(done, match) {
+        EventListener.removeAll();
+        done();
+    }
+});

@@ -17,6 +17,11 @@
             "icon": "fa fa-edit",
             "route": "/managePosts"
         },
+        "gallery": {
+            "label": "Media Gallery",
+            "icon": "fa fa-photo-video",
+            "route": "/gallery"
+        },
         "menus": {
             "label": "Menus",
             "icon": "fa fa-bars",

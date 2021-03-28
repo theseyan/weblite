@@ -1,61 +1,32 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <title><%= label %> - theJobListr</title>
-        <%- include('../templates/html-head'); %>
-        <link href="<%= config.admin.root %>/assets/jsoneditor/dist/jsoneditor.min.css" rel="stylesheet" type="text/css">
-        <script src="<%= config.admin.root %>/assets/jsoneditor/dist/jsoneditor.min.js"></script>
-    </head>
-    <body>
-        <%- include('../templates/header'); %>
-        <%- include('../templates/sidebar'); %>
-        <div class="body">
-            <h1 class="title"><%= label %></h1>
-            <div class="collections-editor" id="editor"></div>
-            <!--<div class="collections">
-                <div class="collection">
-                    <span class="title">IndianStates</span>
-                    <span class="fa fa-angle-down"></span>
-                    <div class="cats">
-                        <div class="cat">
-                            <span class="title">states</span>
-                            <span class="fa fa-angle-down"></span>
-                            <div class="items">
-                                <div class="item">
-                                    <span class="title">lul</span>
-                                    <span class="fa fa-angle-down"></span>
-                                    <div class="item-edit">
-                                        <div>
-                                            <span class="label">Value</span>
-                                            <input class="inp" type="text" />
-                                        </div>
-                                        <div>
-                                            <span class="label">Value</span>
-                                            <input class="inp" type="text" />
-                                        </div>
-                                    </div>
-                                </div>
+<h1 class="title"><%= label %></h1>
+<div class="collections-editor" id="editor"></div>
+<!--<div class="collections">
+    <div class="collection">
+        <span class="title">IndianStates</span>
+        <span class="fa fa-angle-down"></span>
+        <div class="cats">
+            <div class="cat">
+                <span class="title">states</span>
+                <span class="fa fa-angle-down"></span>
+                <div class="items">
+                    <div class="item">
+                        <span class="title">lul</span>
+                        <span class="fa fa-angle-down"></span>
+                        <div class="item-edit">
+                            <div>
+                                <span class="label">Value</span>
+                                <input class="inp" type="text" />
+                            </div>
+                            <div>
+                                <span class="label">Value</span>
+                                <input class="inp" type="text" />
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>-->
-            <br />
-            <span onclick="CollectionsEditor.save(this, '<%= auth.token %>')" class="btn btn-primary"><span class="fa fa-save"></span> Save</span>
+            </div>
         </div>
-        <script>
-            // create the editor
-            var container = document.getElementById("editor");
-            window.editor = new JSONEditor(container);
-            var collections = <%- JSON.stringify(collections) %>;
-    
-            editor.set(collections);
-        
-            // get json
-            function getJSON() {
-                var json = editor.get();
-                alert(JSON.stringify(json, null, 2));
-            }
-        </script>
-    </body>
-</html>
+    </div>
+</div>-->
+<br />
+<span id="saveBtn" class="btn btn-primary"><span class="fa fa-save"></span> Save</span>

@@ -341,3 +341,74 @@ html, body {
     visibility: hidden;
     transition: background-color 200ms;
 }
+.files-box {
+    display: flex;
+    flex-wrap: wrap;
+}
+.files-box .item:hover {
+    outline: solid #afccff;
+}
+.files-box > .item {
+    flex-basis: calc(20% - 10px );
+    margin: 0px 10px 15px 0px;
+    background-color: white;
+    border-radius: 7px;
+    box-shadow: 0px 2px 5px #00000014;
+    height: 200px;
+    flex-direction: column;
+    display: flex;
+    text-decoration: none;
+    color: initial;
+}
+.files-box > .item > .img {
+    display: flex;
+    height: 60%;
+    align-items: center;
+}
+.files-box > .item > .img > img {
+    max-width: 100%;
+    max-height: 100%;
+    margin: auto;
+}
+.files-box > .item > .labels {
+    padding: 10px 10px 5px;
+    height: 100%;
+    background-color: #ffffff;
+    border-radius: 0px 0px 7px 7px;
+    border-top: 1px solid #eaeaea;
+}
+.files-box > .item > .labels > .buttons > .fa {
+    display: inline-block;
+    color: #ff4d4d;
+    padding: 5px 5px;
+    cursor: pointer;
+}
+.files-box .folder .img {
+    height: 100%;
+}
+.files-box .folder .labels {
+    height: initial;
+}
+.files-box .folder .img .fa-folder {
+    display: block;
+    margin: auto;
+    font-size: 50px;
+    color: #fbc344;
+}
+.files-box .folder {
+    cursor: pointer;
+}
+.navigation {
+    margin: 0px 0px 15px;
+}
+.navigation .item a {
+    text-decoration: none;
+    color: #3091ec;
+}
+.navigation .item a:hover {
+    text-decoration: underline;
+}
+.navigation .item .fa-angle-right {
+    margin: 0px 10px;
+    color: #a2a2a2;
+}

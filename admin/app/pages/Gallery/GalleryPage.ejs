@@ -1,0 +1,43 @@
+<h1 class="title">Media Gallery</h1>
+<form id="uploadImageForm" enctype="multipart/form-data" class="add-new-box form">
+    <input name="image" type="file" class="input" placeholder="Select image to upload..." />
+    <input name="path" type="hidden" id="imageUploadPath" value="" />
+    <span id="imageUploadBtn" class="btn btn-primary"><span class="fa fa-plus-circle"></span> Upload</span>
+</div>
+<div class="navigation">
+    <span class="item"><a href="#/gallery">/</a><span class="fa fa-angle-right"></span></span>
+    <%
+    for(var i=0; i<routes.length; i++) {
+        var fullRoute = "/";
+        for(var j=0; j<=i; j++) fullRoute += routes[j] + "/";
+
+    %>
+    <span class="item"><a href="#/gallery?route=<%= encodeURIComponent(fullRoute) %>"><%= routes[i] %></a><span class="fa fa-angle-right"></span></span>
+    <% } %>
+</div>
+<div class="files-box">
+<% for(var item in folders) { %>
+    <a href="#/gallery?route=<%= encodeURIComponent(route + folders[item][0].file + "/") %>" class="item folder">
+        <div class="img">
+            <span class="fa fa-folder"></span>
+        </div>
+        <div class="labels">
+            <span class="title"><%= folders[item][0].file %></span>
+        </div>
+    </a>
+<% } %>
+<% for(var item in files) { %>
+    <div class="item image">
+        <div class="img">
+            <img src="<%= siteRoot %>/images/uploads<%= route + files[item].file %>" class="img" />
+        </div>
+        <div class="labels">
+            <span class="title"><%= files[item].file %></span>
+
+            <div class="buttons">
+                <span data-filename="<%= files[item].file %>" class="deleteImageBtn fa fa-trash"></span>
+            </div>
+        </div>
+    </div>
+<% } %>
+</div>

@@ -72,8 +72,6 @@
                                 </tr>
                             <% }); %>
                         </table>
-                    </div>
-                    <div>
                         <table>
                             <tr>
                                 <th>Admit Cards</th>
@@ -118,7 +116,7 @@
                 <div class="posts">
                     <% for(var item in menus.orgs.featured) { %>
                         <a href="#" class="post-box feat-org">
-                            <img src="<%= config.root %>/images/organizations/<%= menus.orgs.featured[item].logo %>" />
+                            <img src="<%= config.root %>/images/uploads/organizations/<%= menus.orgs.featured[item].logo %>" />
                             <span><%= menus.orgs.featured[item].label %></span>
                         </a>
                     <% } %>
@@ -128,7 +126,7 @@
                 <div class="posts">
                     <% for(var item in menus.orgs.vacancies) { %>
                         <a href="#" class="post-box feat-org">
-                            <img src="<%= config.root %>/images/organizations/<%= menus.orgs.vacancies[item].logo %>" />
+                            <img src="<%= config.root %>/images/uploads/organizations/<%= menus.orgs.vacancies[item].logo %>" />
                             <span><%= menus.orgs.vacancies[item].label %></span>
                         </a>
                     <% } %>

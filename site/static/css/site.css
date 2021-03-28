@@ -321,9 +321,10 @@ html, body {
 }
 .table > div {
     display: flex;
+    flex-wrap: wrap;
 }
 .table > div > table {
-    width: 100%;
+    flex-basis: 50%;
 }
 .table > div > table tr td {
     padding: 10px 15px;

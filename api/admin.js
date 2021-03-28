@@ -9,6 +9,7 @@ var multer = require('multer');
 var path = require('path');
 var fs = require('fs');
 var storage = require('./storage').storage;
+var createStorage = require('./storage').createStorage;
 var jwt = require('jsonwebtoken');
 var request = require('request');
 var semverCompare = require('semver/functions/gt');
@@ -52,8 +53,8 @@ module.exports = {
 
     },
 
-    uploadImage: (field, req, res, cb) => {
-        var upload = multer({ storage: storage, fileFilter: helpers.imageFilter }).single(field);
+    uploadImage: (field, req, res, cb, src) => {
+        var upload = multer({ storage: typeof src=="undefined" ? storage : createStorage(src), fileFilter: helpers.imageFilter }).single(field);
 
         upload(req, res, function(err) {    
             if (req.fileValidationError) {
@@ -334,6 +335,49 @@ module.exports = {
         var collections = editJson(file);
         collections.unset(collection);
         collections.save(() => {
+            cb({});
+        });
+    },
+
+    getCollections: (cb) => {
+        cb({collections: global.Data.Collections});
+    },
+
+    getMediaFiles: (dir, cb) => {
+        var data = [];
+        fs.readdir(dir, (err, files) => {
+            if(err) {
+                cb({
+                    error: err
+                });
+                return;
+            }
+
+            files.forEach((file) => {
+                var filePath = path.join(dir, file);
+                var stat = fs.statSync(filePath);
+
+                data.push(stat.isDirectory() ? {
+                    file: file,
+                    dir: stat.isDirectory()
+                } : {
+                    file: file
+                });
+            });
+
+            cb({
+                files: data
+            });
+        });
+    },
+
+    deleteFile: (src, cb) => {
+        // Delete image file
+        fs.unlink(src, (err) => {
+            if(err) {
+                cb({error: err});
+                return;
+            }
             cb({});
         });
     }
