@@ -91,19 +91,19 @@ module.exports = {
     editPost: (data, cb) => {
         db.query(`SELECT image FROM posts WHERE id = ${data.id}`, (error, result) => {
             if(error) {
-                if(data.image) fs.unlink('.' + config.website.staticRoot + config.website.uploads + '/' + data.image, (err) => {});
+                if(data.image) fs.unlink('.' + config.website.staticRoot + config.website.postImages + '/' + data.image, (err) => {});
                 cb({error: error});
                 return;
             }
             db.query(`UPDATE posts SET title = '${data.title}', body = '${data.body}', cat = '${data.category}', tags = '${data.tags}', ` + (data.image ? `image = '${data.image}',` : ``) + ` author = '${data.author}', lastUpdated = '${Math.floor((new Date()).getTime() / 1000)}', lastDate = '${data.lastDate}' WHERE id = ${data.id}`, (err, res) => {
                 if(err) {
-                    if(data.image) fs.unlink('.' + config.website.staticRoot + config.website.uploads + '/' + data.image, (err) => {});
+                    if(data.image) fs.unlink('.' + config.website.staticRoot + config.website.postImages + '/' + data.image, (err) => {});
                     cb({error: err});
                     return;
                 }
     
                 if(data.image) {
-                    fs.unlink('.' + config.website.staticRoot + config.website.uploads + '/' + result[0].image, (err) => {
+                    fs.unlink('.' + config.website.staticRoot + config.website.postImages + '/' + result[0].image, (err) => {
                         if(err) {
                             cb({error: err});
                             return;
@@ -125,7 +125,7 @@ module.exports = {
             }
 
             // Delete image file
-            fs.unlink('.' + config.website.staticRoot + config.website.uploads + '/' + res[0].image, (err) => {
+            fs.unlink('.' + config.website.staticRoot + config.website.postImages + '/' + res[0].image, (err) => {
                 if(err) {
                     cb({error: err});
                     return;
