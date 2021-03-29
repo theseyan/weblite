@@ -66,7 +66,7 @@ module.exports = {
                     });
                 }
             });
-        }, config.website.staticRoot + config.website.uploads);
+        });
 
     }
 
