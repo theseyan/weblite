@@ -4,3 +4,15 @@
 <link rel="shortcut icon" type="image/png" href="<%= config.root %>/images/logo-min-transparentbg.png" />
 <link rel="preconnect" href="https://fonts.gstatic.com">
 <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async=""></script>
+<script>
+  window.OneSignal = window.OneSignal || [];
+  OneSignal.push(function() {
+    OneSignal.init({
+      appId: "8cd7c685-6bc0-41c2-bcbd-8304393b6f73",
+      notifyButton: {
+        enable: true,
+      },
+    });
+  });
+</script>
