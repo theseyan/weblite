@@ -1,7 +1,7 @@
 const path = require('path');
 
 // Whether it is development mode
-const DEVMODE = true;
+const DEVMODE = false;
 
 module.exports = {
     entry: './App.js',
