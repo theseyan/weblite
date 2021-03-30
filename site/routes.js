@@ -50,6 +50,11 @@ module.exports = {
             });
         });
 
+        // Subscribe Page
+        app.get('/subscribe', function(req, res) {
+            res.render('pages/subscribe', data(req, res));
+        });
+
         // Home Page
         app.get('/', function(req, res) {
             var results = {};

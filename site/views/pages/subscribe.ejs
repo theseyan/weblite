@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>theJobListr - Subscribe to new Job postings</title>
+        <%- include('../templates/html-head'); %>
+    </head>
+    <body>
+        <div class="fade" id="fade"></div>
+        <%- include('../templates/sidebarMenu'); %>
+        <%- include('../templates/header'); %>
+        <%- include('../templates/menu'); %>
+        <div class="bodySb">
+            <%- include('../templates/sidebar'); %>
+            <div class="body">
+                <span class="topic">Subscribe</span>
+                <form class="feedburner-subscribe" action="https://feedburner.google.com/fb/a/mailverify" method="post" target="popupwindow" onsubmit="window.open('https://feedburner.google.com/fb/a/mailverify?uri=Thejoblistr', 'popupwindow', 'scrollbars=yes,width=550,height=520');return true"><p>Get new Job listings and Posts delivered directly to your inbox</p><p><input placeholder="Enter your email address..." type="text" name="email"/></p><input type="hidden" value="Thejoblistr" name="uri"/><input type="hidden" name="loc" value="en_US"/><input type="submit" value="Subscribe" /><p>Delivered by <a href="https://feedburner.google.com" target="_blank">FeedBurner</a></p></form>
+                <br />
+                You can also subscribe to our <a href="/feeds/rss" class="link">RSS Feed</a> or <a href="/feeds/json" class="link">JSON Feed</a>.
+            </div>
+        </div>
+        <%- include('../templates/footer'); %>
+    </body>
+</html>
