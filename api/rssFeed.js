@@ -37,7 +37,7 @@ module.exports = {
             result.posts.forEach(post => {
                 feed.addItem({
                     title: post.title,
-                    id: post.id,
+                    id: config.website.root + '/post/' + post.id,
                     link: config.website.root + '/post/' + post.id,
                     description: escape(post.body.length > 500 ? post.body.substring(0, 500) + ' [...continued]' : post.body),
                     content: "A new post published by theJobListr.",
