@@ -1,5 +1,6 @@
 var config = require('../config.json');
 var api = require('../api/site');
+var feed = require('../api/rssFeed');
 
 var data = (req, res) => {
     var menus = global.Data.Menus;
@@ -28,6 +29,26 @@ var data = (req, res) => {
 module.exports = {
 
     setup: (app) => {
+
+        // RSS Feed
+        app.get('/feeds/:type', function(req, res) {
+            var feeds = {rss: ["rss2", "application/xml"], json: ["json1", "application/json"]};
+            if(feeds.hasOwnProperty(req.params.type) !== true) return res.status(404).end();
+
+            feed.generateFeed(feeds[req.params.type][0], {
+                query: `1`,
+                orderBy: 'date DESC',
+                limit: 10
+            }, (data) => {
+                if(data.error) {
+                    res.status(500).end();
+                    return;
+                }
+
+                res.type(feeds[req.params.type][1]);
+                res.send(data.feed);
+            });
+        });
 
         // Home Page
         app.get('/', function(req, res) {
