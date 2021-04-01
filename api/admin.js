@@ -380,6 +380,15 @@ module.exports = {
             }
             cb({});
         });
+    },
+
+    createTag: (data, cb) => {
+        db.query(`SELECT image FROM posts WHERE id = ${data.id}`, (err, res) => {
+            if(err) {
+                cb({error: err});
+                return;
+            }
+        });
     }
 
 };

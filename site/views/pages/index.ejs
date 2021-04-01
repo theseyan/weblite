@@ -44,7 +44,7 @@
                             <% posts.government.posts.forEach((post) => { %>
                                 <tr>
                                     <td><a href="<%= config.root %>/post/<%= post.id %>" class="link"><%= post.title %></a></td>
-                                    <td><%= post.lastDateString %></td>
+                                    <td><%= post.lastDateStringMin %></td>
                                 </tr>
                             <% }); %>
                         </table>
@@ -56,7 +56,7 @@
                             <% posts.state.posts.forEach((post) => { %>
                                 <tr>
                                     <td><a href="<%= config.root %>/post/<%= post.id %>" class="link"><%= post.title %></a></td>
-                                    <td><%= post.lastDateString %></td>
+                                    <td><%= post.lastDateStringMin %></td>
                                 </tr>
                             <% }); %>
                         </table>
@@ -68,7 +68,7 @@
                             <% posts.exams.posts.forEach((post) => { %>
                                 <tr>
                                     <td><a href="<%= config.root %>/post/<%= post.id %>" class="link"><%= post.title %></a></td>
-                                    <td><%= post.dateString %></td>
+                                    <td><%= post.dateStringMin %></td>
                                 </tr>
                             <% }); %>
                         </table>
@@ -80,7 +80,7 @@
                             <% posts.admitCards.posts.forEach((post) => { %>
                                 <tr>
                                     <td><a href="<%= config.root %>/post/<%= post.id %>" class="link"><%= post.title %></a></td>
-                                    <td><%= post.lastDateString %></td>
+                                    <td><%= post.lastDateStringMin %></td>
                                 </tr>
                             <% }); %>
                         </table>
@@ -92,7 +92,7 @@
                             <% posts.answerKeys.posts.forEach((post) => { %>
                                 <tr>
                                     <td><a href="<%= config.root %>/post/<%= post.id %>" class="link"><%= post.title %></a></td>
-                                    <td><%= post.dateString %></td>
+                                    <td><%= post.dateStringMin %></td>
                                 </tr>
                             <% }); %>
                         </table>
@@ -104,7 +104,7 @@
                             <% posts.syllabus.posts.forEach((post) => { %>
                                 <tr>
                                     <td><a href="<%= config.root %>/post/<%= post.id %>" class="link"><%= post.title %></a></td>
-                                    <td><%= post.dateString %></td>
+                                    <td><%= post.dateStringMin %></td>
                                 </tr>
                             <% }); %>
                         </table>
@@ -115,7 +115,7 @@
                 <span class="topic">Featured Organizations</span>
                 <div class="posts">
                     <% for(var item in menus.orgs.featured) { %>
-                        <a href="#" class="post-box feat-org">
+                        <a href="<%= menus.orgs.featured[item].url %>" class="post-box feat-org">
                             <img src="<%= config.root %>/images/uploads/organizations/<%= menus.orgs.featured[item].logo %>" />
                             <span><%= menus.orgs.featured[item].label %></span>
                         </a>
@@ -125,7 +125,7 @@
                 <span class="topic">New Vacancies</span>
                 <div class="posts">
                     <% for(var item in menus.orgs.vacancies) { %>
-                        <a href="#" class="post-box feat-org">
+                        <a href="<%= menus.orgs.vacancies[item].url %>" class="post-box feat-org">
                             <img src="<%= config.root %>/images/uploads/organizations/<%= menus.orgs.vacancies[item].logo %>" />
                             <span><%= menus.orgs.vacancies[item].label %></span>
                         </a>

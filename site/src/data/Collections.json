@@ -1,1 +1,174 @@
-{"subMenus":{"indianStates":{"india":"Central","kashmir":"Kashmir","uttarakhand":"Uttarakhand","punjab":"Punjab","haryana":"Haryana","uttarpradesh":"Uttar Pradesh","chandigarh":"Chandigarh","rajasthan":"Rajasthan","madhyapradesh":"Madhya Pradesh","maharashtra":"Maharashtra","karnataka":"Karnataka","telangana":"Telangana","tamilnadu":"Tamil Nadu","gujarat":"Gujarat","chattisgarh":"Chattisgarh","himachalpradesh":"Himachal Pradesh","bihar":"Bihar","kerala":"Kerala","westbengal":"West Bengal","assam":"Assam","jharkhand":"Jharkhand","manipur":"Manipur","odisha":"Odisha","andhrapradesh":"Andhra Pradesh","tripura":"Tripura","goa":"Goa","sikkim":"Sikkim"},"jobs":{"government":"Latest Govt. Jobs","state":"State Jobs","sarkari-naukri":"Sarkari Naukri","bank":"Bank Jobs","railway":"Railway Jobs","postal":"Postal Jobs","police":"Police/Defense Jobs","teaching":"Teaching Jobs","engineering":"Engineering Jobs","medical":"Medical Jobs"}},"homepageCards":{"cards":{"sscmts":{"label":"SSC MTS Apply Online","url":"#"},"rrccr":{"label":"RRCCR Apprentice Apply Online","url":"#"},"ntr":{"label":"Navy Tradesman Apply Online","url":"#"},"nyks":{"label":"NYKS Volunteer Apply Online","url":"#"},"iocl":{"label":"IOCL Apprentice Apply Online","url":"#"},"army":{"label":"Army 10+2 TES 45 Apply Online","url":"#"},"rrbntpc":{"label":"RRB NTPC Admit Card","url":"#"},"abacio":{"label":"IB ACIO Admit Card","url":"#"},"gate":{"label":"GATE 2021 Answer Key","url":"#"},"defence":{"label":"Defence Jobs Apply Online","url":"#"}}},"homepageOrgs":{"vacancies":{"iimc":{"label":"Indian Institute of Mass Communication","logo":"iiomc.webp"},"thsti":{"label":"Translational Health Science and Technology Institute","logo":"thsti.webp"},"iitd":{"label":"IIT Delhi","logo":"iitdelhi.webp"},"csir":{"label":"Council of Scientific & Industrial Research","logo":"csir.jpg"}},"featured":{"upsc":{"label":"UPSC","logo":"upsc.jpg"},"dsssb":{"label":"Delhi Subordinate Services Selection Board","logo":"dsssb.webp"},"tnpsc":{"label":"TNPSC - Tamil Nadu Public Service Commission","logo":"tnpsc.webp"},"indianoil":{"label":"Indian Oil Corporation Limited","logo":"indianoil.webp"}}},"sidebar":{"latestNotifications":{"label":"Latest Notifications","items":{"10th12thpass":{"label":"10th/12th Pass","route":"/posts/10th%2F12th-pass"},"teachingJobs":{"label":"Teaching Jobs","route":"/posts/teaching"},"sscJobs":{"label":"SSC Jobs","route":"/posts/ssc"},"bankJobs":{"label":"Bank Jobs","route":"/posts/bank"},"centralJobs":{"label":"Government Jobs","route":"/posts/government"},"stateJobs":{"label":"State Jobs","route":"/posts/state"},"admitCards":{"label":"Admit Cards","route":"/posts/admit-cards"},"admissions":{"label":"Admissions","route":"/posts/admissions"}}}}}
+{
+    "subMenus": {
+        "indianStates": {
+            "india": "Central",
+            "kashmir": "Kashmir",
+            "uttarakhand": "Uttarakhand",
+            "punjab": "Punjab",
+            "haryana": "Haryana",
+            "uttarpradesh": "Uttar Pradesh",
+            "chandigarh": "Chandigarh",
+            "rajasthan": "Rajasthan",
+            "madhyapradesh": "Madhya Pradesh",
+            "maharashtra": "Maharashtra",
+            "karnataka": "Karnataka",
+            "telangana": "Telangana",
+            "tamilnadu": "Tamil Nadu",
+            "gujarat": "Gujarat",
+            "chattisgarh": "Chattisgarh",
+            "himachalpradesh": "Himachal Pradesh",
+            "bihar": "Bihar",
+            "kerala": "Kerala",
+            "westbengal": "West Bengal",
+            "assam": "Assam",
+            "jharkhand": "Jharkhand",
+            "manipur": "Manipur",
+            "odisha": "Odisha",
+            "andhrapradesh": "Andhra Pradesh",
+            "tripura": "Tripura",
+            "goa": "Goa",
+            "sikkim": "Sikkim"
+        },
+        "jobs": {
+            "government": "Latest Govt. Jobs",
+            "state": "State Jobs",
+            "sarkari-naukri": "Sarkari Naukri",
+            "bank": "Bank Jobs",
+            "railway": "Railway Jobs",
+            "postal": "Postal Jobs",
+            "police": "Police/Defense Jobs",
+            "teaching": "Teaching Jobs",
+            "engineering": "Engineering Jobs",
+            "medical": "Medical Jobs"
+        }
+    },
+    "homepageCards": {
+        "cards": {
+            "sscmts": {
+                "label": "SSC MTS Apply Online",
+                "url": "#"
+            },
+            "rrccr": {
+                "label": "RRCCR Apprentice Apply Online",
+                "url": "#"
+            },
+            "ntr": {
+                "label": "Navy Tradesman Apply Online",
+                "url": "#"
+            },
+            "nyks": {
+                "label": "NYKS Volunteer Apply Online",
+                "url": "#"
+            },
+            "iocl": {
+                "label": "IOCL Apprentice Apply Online",
+                "url": "#"
+            },
+            "army": {
+                "label": "Army 10+2 TES 45 Apply Online",
+                "url": "#"
+            },
+            "rrbntpc": {
+                "label": "RRB NTPC Admit Card",
+                "url": "#"
+            },
+            "abacio": {
+                "label": "IB ACIO Admit Card",
+                "url": "#"
+            },
+            "gate": {
+                "label": "GATE 2021 Answer Key",
+                "url": "#"
+            },
+            "defence": {
+                "label": "Defence Jobs Apply Online",
+                "url": "#"
+            }
+        }
+    },
+    "homepageOrgs": {
+        "vacancies": {
+            "iimc": {
+                "label": "Indian Institute of Mass Communication",
+                "logo": "iiomc.webp",
+                "url": "#"
+            },
+            "thsti": {
+                "label": "Translational Health Science and Technology Institute",
+                "logo": "thsti.webp",
+                "url": "#"
+            },
+            "iitd": {
+                "label": "IIT Delhi",
+                "logo": "iitdelhi.webp",
+                "url": "#"
+            },
+            "csir": {
+                "label": "Council of Scientific & Industrial Research",
+                "logo": "csir.jpg",
+                "url": "#"
+            }
+        },
+        "featured": {
+            "upsc": {
+                "label": "UPSC",
+                "logo": "upsc.jpg",
+                "url": "#"
+            },
+            "dsssb": {
+                "label": "Delhi Subordinate Services Selection Board",
+                "logo": "dsssb.webp",
+                "url": "#"
+            },
+            "tnpsc": {
+                "label": "TNPSC - Tamil Nadu Public Service Commission",
+                "logo": "tnpsc.webp",
+                "url": "#"
+            },
+            "indianoil": {
+                "label": "Indian Oil Corporation Limited",
+                "logo": "indianoil.webp",
+                "url": "#"
+            }
+        }
+    },
+    "sidebar": {
+        "latestNotifications": {
+            "label": "Latest Notifications",
+            "items": {
+                "10th12thpass": {
+                    "label": "10th/12th Pass",
+                    "route": "/posts/10th%2F12th-pass"
+                },
+                "teachingJobs": {
+                    "label": "Teaching Jobs",
+                    "route": "/posts/teaching"
+                },
+                "sscJobs": {
+                    "label": "SSC Jobs",
+                    "route": "/posts/ssc"
+                },
+                "bankJobs": {
+                    "label": "Bank Jobs",
+                    "route": "/posts/bank"
+                },
+                "centralJobs": {
+                    "label": "Government Jobs",
+                    "route": "/posts/government"
+                },
+                "stateJobs": {
+                    "label": "State Jobs",
+                    "route": "/posts/state"
+                },
+                "admitCards": {
+                    "label": "Admit Cards",
+                    "route": "/posts/admit-cards"
+                },
+                "admissions": {
+                    "label": "Admissions",
+                    "route": "/posts/admissions"
+                }
+            }
+        }
+    }
+}

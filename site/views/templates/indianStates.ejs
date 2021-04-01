@@ -6,7 +6,7 @@
             <a href="<%= config.root + "/state/" + id %>" class="state-box">
                 <div class="icon <%= id %>"></div>
                 <span class="title"><%= menus.indianStates[id] %></span>
-                <span class="text">See Vacancies</span>
+                <span class="text"><%= vacancies[id] %> Vacancies</span>
             </a>
         <% } %>
         <span onclick="xScrollable.next(this)" class="fa fa-angle-right ctrl next-ctrl"></span>

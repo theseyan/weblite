@@ -15,10 +15,13 @@ module.exports = {
             }
 
             res.forEach((post) => {
-                var time = new Date(Number(post.date)*1000).toGMTString();
-                var lastDate = new Date(Number(post.lastDate)*1000).toDateString();
-                post.dateString = time;
-                post.lastDateString = lastDate;
+                var postDate = new Date(Number(post.date)*1000);
+                var lastDate = new Date(Number(post.lastDate)*1000);
+
+                post.dateStringMin = postDate.getDate() + '/' + (postDate.getMonth()+1) + '/' + postDate.getFullYear();
+                post.lastDateStringMin = lastDate.getDate() + '/' + (lastDate.getMonth()+1) + '/' + lastDate.getFullYear();
+                post.dateString = postDate.toGMTString();
+                post.lastDateString = lastDate.toDateString();
             });
 
             cb({posts: res});
@@ -26,3 +29,18 @@ module.exports = {
     }
 
 };
+
+global.Vacancies = {};
+var states = global.Data.Collections.subMenus.indianStates;
+
+function add(id, total) {
+    global.Vacancies[id] = total;
+}
+
+for(var id in states) {
+    (function(id) {
+        db.query("SELECT COUNT(*) AS total FROM posts WHERE tags LIKE '%" + id + "%'", (err, res) => {
+            add(id, res[0].total);
+        });
+    })(id);
+}

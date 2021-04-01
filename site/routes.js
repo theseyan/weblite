@@ -10,8 +10,10 @@ var data = (req, res) => {
     var mainMenu = menus.main.MainMenu;
     var footerMenu = menus.footer;
     var sidebarMenu = collections.sidebar.latestNotifications;
+    var vacancies = global.Vacancies;
 
     return {
+        vacancies: vacancies,
         config: config.website,
         menus: {
             main: mainMenu,
