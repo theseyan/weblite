@@ -9,7 +9,9 @@ Router.on('/createPost', () => {
 
     Util.loadScript('/assets/tinymce/js/tinymce/tinymce.min.js', () => {
         
-        Page.setContent(Template());
+        Page.setContent(Template({
+            siteRoot: window.config.websiteUrl
+        }));
 
         window.tinyMCE.init({
             selector:'textarea#postBodyEditor',
@@ -43,6 +45,14 @@ Router.on('/createPost', () => {
 
                 Notify('failure', 'An error occured: ' + err);
             });
+        };
+
+        Util._('permalink-inp').oninput = () => {
+            var val = Util._('permalink-inp').value;
+            val = encodeURIComponent(val.replace(/\s+/g, '-').toLowerCase());
+
+            Util._('permalink-value').value = val;
+            Util._('permalink-preview').innerHTML = val;
         };
 
     }, (err) => {

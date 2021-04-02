@@ -15,7 +15,7 @@
                 <span class="topic">Search results for "<%= decodeURIComponent(query) %>"</span>
                 <div class="posts">
                     <% posts.forEach((post) => { %>
-                        <a href="<%= config.root %>/post/<%= post.id %>" class="post-box">
+                        <a href="<%= config.root %>/post/<%= post.link %>" class="post-box">
                             <span class="category"><%= post.cat %></span>
                             <span class="title"><%= post.title %></span>
                             <span class="timestamp"><%= post.dateString %></span>

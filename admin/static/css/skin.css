@@ -412,3 +412,16 @@ html, body {
     margin: 0px 10px;
     color: #a2a2a2;
 }
+.form .permalink-preview {
+    background-color: #eaeaea;
+    padding: 14px 17px 10px;
+    margin-top: -19px;
+    border-radius: 0 0 7px 7px;
+    width: 70%;
+    font-family: consolas;
+    color: #3e3e3e;
+}
+.form .permalink-preview > span {
+    color: black;
+    font-weight: 600;
+}

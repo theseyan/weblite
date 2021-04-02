@@ -28,6 +28,7 @@ module.exports = {
                 tags: req.body.tags,
                 author: req.body.author,
                 category: req.body.cat,
+                permalink: req.body.permalink,
                 lastDate: Number(req.body.lastDate)
             }, (data) => {
                 if(data.error) {

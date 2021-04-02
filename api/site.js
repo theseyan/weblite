@@ -22,6 +22,7 @@ module.exports = {
                 post.lastDateStringMin = lastDate.getDate() + '/' + (lastDate.getMonth()+1) + '/' + lastDate.getFullYear();
                 post.dateString = postDate.toGMTString();
                 post.lastDateString = lastDate.toDateString();
+                post.link = (post.permalink && post.permalink != "") ? post.permalink : post.id;
             });
 
             cb({posts: res});

@@ -23,7 +23,8 @@ Router.on('/editPost/:id', ({data}) => {
         
                 Page.setContent(Template({
                     post: post,
-                    adminUrl: window.config.adminUrl
+                    adminUrl: window.config.adminUrl,
+                    siteRoot: window.config.websiteUrl
                 }));
         
                 window.tinyMCE.init({
@@ -57,6 +58,14 @@ Router.on('/editPost/:id', ({data}) => {
         
                         Notify('failure', 'An error occured: ' + err);
                     });
+                };
+
+                Util._('permalink-inp').oninput = () => {
+                    var val = Util._('permalink-inp').value;
+                    val = encodeURIComponent(val.replace(/\s+/g, '-').toLowerCase());
+        
+                    Util._('permalink-value').value = val;
+                    Util._('permalink-preview').innerHTML = val;
                 };
         
             }, (err) => {

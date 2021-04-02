@@ -32,6 +32,7 @@ module.exports = {
                     tags: body.tags,
                     author: body.author,
                     category: body.cat,
+                    permalink: body.permalink,
                     lastDate: Number(body.lastDate)
                 };
 

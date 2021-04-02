@@ -17,7 +17,7 @@
                 <span class="topic">Newest Posts</span>
                 <div class="posts">
                     <% posts.latest.posts.forEach((post) => { %>
-                        <a href="<%= config.root %>/post/<%= post.id %>" class="post-box">
+                        <a href="<%= config.root %>/post/<%= post.link %>" class="post-box">
                             <span class="category"><%= post.cat %></span>
                             <span class="title"><%= post.title %></span>
                             <span class="timestamp"><%= post.dateString %></span>
@@ -43,7 +43,7 @@
                             </tr>
                             <% posts.government.posts.forEach((post) => { %>
                                 <tr>
-                                    <td><a href="<%= config.root %>/post/<%= post.id %>" class="link"><%= post.title %></a></td>
+                                    <td><a href="<%= config.root %>/post/<%= post.link %>" class="link"><%= post.title %></a></td>
                                     <td><%= post.lastDateStringMin %></td>
                                 </tr>
                             <% }); %>
@@ -55,7 +55,7 @@
                             </tr>
                             <% posts.state.posts.forEach((post) => { %>
                                 <tr>
-                                    <td><a href="<%= config.root %>/post/<%= post.id %>" class="link"><%= post.title %></a></td>
+                                    <td><a href="<%= config.root %>/post/<%= post.link %>" class="link"><%= post.title %></a></td>
                                     <td><%= post.lastDateStringMin %></td>
                                 </tr>
                             <% }); %>
@@ -67,7 +67,7 @@
                             </tr>
                             <% posts.exams.posts.forEach((post) => { %>
                                 <tr>
-                                    <td><a href="<%= config.root %>/post/<%= post.id %>" class="link"><%= post.title %></a></td>
+                                    <td><a href="<%= config.root %>/post/<%= post.link %>" class="link"><%= post.title %></a></td>
                                     <td><%= post.dateStringMin %></td>
                                 </tr>
                             <% }); %>
@@ -79,7 +79,7 @@
                             </tr>
                             <% posts.admitCards.posts.forEach((post) => { %>
                                 <tr>
-                                    <td><a href="<%= config.root %>/post/<%= post.id %>" class="link"><%= post.title %></a></td>
+                                    <td><a href="<%= config.root %>/post/<%= post.link %>" class="link"><%= post.title %></a></td>
                                     <td><%= post.lastDateStringMin %></td>
                                 </tr>
                             <% }); %>
@@ -91,7 +91,7 @@
                             </tr>
                             <% posts.answerKeys.posts.forEach((post) => { %>
                                 <tr>
-                                    <td><a href="<%= config.root %>/post/<%= post.id %>" class="link"><%= post.title %></a></td>
+                                    <td><a href="<%= config.root %>/post/<%= post.link %>" class="link"><%= post.title %></a></td>
                                     <td><%= post.dateStringMin %></td>
                                 </tr>
                             <% }); %>
@@ -103,7 +103,7 @@
                             </tr>
                             <% posts.syllabus.posts.forEach((post) => { %>
                                 <tr>
-                                    <td><a href="<%= config.root %>/post/<%= post.id %>" class="link"><%= post.title %></a></td>
+                                    <td><a href="<%= config.root %>/post/<%= post.link %>" class="link"><%= post.title %></a></td>
                                     <td><%= post.dateStringMin %></td>
                                 </tr>
                             <% }); %>

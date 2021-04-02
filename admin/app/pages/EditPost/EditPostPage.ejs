@@ -7,7 +7,7 @@
 
     <span class="label">Post Image</span>
     <input name="image" class="input" placeholder="Select a thumbnail for this post..." type="file" /><br />
-    <i>To keep the thumbnail unchanged, do not select any file.</i><p />
+    <i>To keep the thumbnail unchanged, do not select any file.</i><p></p>
     
     <span class="label">Body</span>
     <textarea name="body" id="postBodyEditor"><%= post.body %></textarea>
@@ -30,7 +30,12 @@
     <span class="label">Last Date</span>
     <input value="<%= lastDateVal %>" oninput="document.getElementById('lastDate').value=this.valueAsNumber/1000;" class="input" type="date" />
 
+    <span class="label">Custom Permalink</span>
+    <input value="<%= post.permalink %>" id="permalink-inp" class="input" placeholder="Enter a custom permalink for this post..." type="text" />
+    <div class="permalink-preview"><%= siteRoot %>/post/<span id="permalink-preview"><%= post.permalink %></span></div>
+
     <input id="lastDate" type="hidden" name="lastDate" value="0" />
+    <input id="permalink-value" type="hidden" name="permalink" value="<%= post.permalink %>" />
     <input value="<%= post.author %>" type="hidden" name="author" value="Administrator" />
     <p></p>
     <a id="post-btn" class="btn btn-primary btn-full-width"><span class="fa fa-edit"></span> Update Post</a>
