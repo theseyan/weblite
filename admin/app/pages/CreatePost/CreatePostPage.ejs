@@ -20,6 +20,9 @@
     <span class="label">Last Date</span>
     <input oninput="document.getElementById('lastDate').value=this.valueAsNumber/1000;" class="input" type="date" />
     
+    <span class="label">Image Alternative Text</span>
+    <input name="imageAlt" class="input" placeholder="Enter alternative text..." type="text" />
+
     <span class="label">Custom Permalink</span>
     <input id="permalink-inp" class="input" placeholder="Enter a custom permalink for this post..." type="text" />
     <div class="permalink-preview"><%= siteRoot %>/post/<span id="permalink-preview"></span></div>

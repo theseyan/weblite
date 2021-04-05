@@ -33,7 +33,8 @@ module.exports = {
                     author: body.author,
                     category: body.cat,
                     permalink: body.permalink,
-                    lastDate: Number(body.lastDate)
+                    lastDate: Number(body.lastDate),
+                    imageAlt: body.imageAlt
                 };
 
                 if(newThumb===true) Object.assign(args, {image: req.file.filename});

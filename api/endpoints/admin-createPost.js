@@ -29,7 +29,8 @@ module.exports = {
                 author: req.body.author,
                 category: req.body.cat,
                 permalink: req.body.permalink,
-                lastDate: Number(req.body.lastDate)
+                lastDate: Number(req.body.lastDate),
+                imageAlt: req.body.imageAlt
             }, (data) => {
                 if(data.error) {
                     res.status(500).send({

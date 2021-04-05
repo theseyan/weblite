@@ -78,7 +78,7 @@ module.exports = {
     },
 
     createPost: (data, cb) => {
-        db.query(`INSERT INTO posts (title, image, body, cat, tags, author, date, lastDate, permalink) VALUES ('${data.title}', '${data.image}', '${data.body}', '${data.category}', '${data.tags}', '${data.author}', '${Math.floor((new Date()).getTime() / 1000)}', '${data.lastDate}', '${data.permalink}')`, (err, res) => {
+        db.query(`INSERT INTO posts (title, image, body, cat, tags, author, date, lastDate, permalink, image_alt) VALUES ('${data.title}', '${data.image}', '${data.body}', '${data.category}', '${data.tags}', '${data.author}', '${Math.floor((new Date()).getTime() / 1000)}', '${data.lastDate}', '${data.permalink}', '${data.imageAlt}')`, (err, res) => {
             if(err) {
                 cb({error: err});
                 return;
@@ -95,7 +95,7 @@ module.exports = {
                 cb({error: error});
                 return;
             }
-            db.query(`UPDATE posts SET title = '${data.title}', body = '${data.body}', cat = '${data.category}', tags = '${data.tags}', ` + (data.image ? `image = '${data.image}',` : ``) + ` author = '${data.author}', lastUpdated = '${Math.floor((new Date()).getTime() / 1000)}', lastDate = '${data.lastDate}', permalink = '${data.permalink}' WHERE id = ${data.id}`, (err, res) => {
+            db.query(`UPDATE posts SET title = '${data.title}', body = '${data.body}', cat = '${data.category}', tags = '${data.tags}', ` + (data.image ? `image = '${data.image}',` : ``) + ` author = '${data.author}', lastUpdated = '${Math.floor((new Date()).getTime() / 1000)}', lastDate = '${data.lastDate}', permalink = '${data.permalink}', image_alt = '${data.imageAlt}' WHERE id = ${data.id}`, (err, res) => {
                 if(err) {
                     if(data.image) fs.unlink('.' + config.website.staticRoot + config.website.postImages + '/' + data.image, (err) => {});
                     cb({error: err});

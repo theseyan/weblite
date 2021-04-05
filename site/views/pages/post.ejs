@@ -16,7 +16,7 @@
                     <span class="date">Posted on <%= post.dateString %></span>
                     <h2 class="title"><%= post.title %><div></div></h2>
                     <div class="image">
-                        <img src="<%= config.root + config.postImages %>/<%= post.image %>" />
+                        <img alt="<%= post.image_alt %>" src="<%= config.root + config.postImages %>/<%= post.image %>" />
                     </div>
                     <div class="tags">
                         <% post.tags.split(",").forEach((tag) => { %>
