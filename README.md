@@ -1,5 +1,5 @@
 <p align="center">
-  <img width=300 src="/branding/logo-full-whitebg.png"></img>
+  <img width=300 src="/branding/logo-full-transparentbg.png"></img>
 </p>
 
 # weblite
