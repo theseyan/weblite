@@ -4,7 +4,7 @@ html, body {
     font-family: Montserrat, Roboto, "Segoe UI", Nunito, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f7f7f7;
+    background-color: white;
 }
 .header {
     background-color: white;
@@ -12,54 +12,74 @@ html, body {
     align-items: center;
     height: 60px;
     padding: 0px 30px;
-    box-shadow: 0px 2px 5px #00000017;
     z-index: 1;
     position: relative;
 }
-.header > .title {
-    font-weight: 600;
-    color: #128cda;
-    font-size: 17px;
-    width: 100%;
+.header.shadow {
+    box-shadow: 0px 2px 5px #00000017;
 }
 .header > .logo {
     width: 25px;
     margin-right: 10px;
 }
+.header .site-display {
+    padding: 7px 10px;
+    border-radius: 50px;
+    box-shadow: 0px 1px 3px #0000001f;
+}
+.header .site-display > span.fa {
+    color: #828282;
+    margin-right: 10px;
+}
 .sidebar {
     width: 250px;
     height: 100vh;
-    background-color: #3091ec;
-    box-shadow: 2px 5px 5px #00000026;
+    background-color: #cef0ff;
     color: white;
     float: left;
 }
+.sidebar .branding {
+    padding: 25px 30px;
+}
+.sidebar .branding .logo {
+    width: 25px;
+    float: left;
+    margin-right: 10px;
+}
+.sidebar .branding .title {
+    color: #29b364;
+    font-weight: 600;
+    font-size: 20px;
+}
 .sidebar .topic {
     display: block;
-    padding:15px 30px 10px;
+    padding: 15px 30px 10px;
     text-transform: uppercase;
     font-size: 13px;
     font-weight: 600;
-    color: #d0e8ff;
+    color: #3bad73;
 }
 .sidebar .item {
-    color: white;
+    color: #313131;
     text-decoration: none;
     display: block;
-    padding: 10px 30px;
-    font-size: 16px;
-    font-weight: 600;
-    background-color: #0000000f;
+    padding: 10px 50px;
+    font-size: 15px;
+    font-weight: 500;
+    background-color: #ffffff08;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
 }
 .sidebar .item > span.fa {
     position: absolute;
     margin-left: -22px;
-    margin-top: 2px;
-    color: #a0d1ff;
-    font-size: 15px;
+    margin-top: 4px;
+    color: #51b38b;
+    font-size: 14px;
 }
 .sidebar .item:hover {
-    background-color: #0000001f;
+    background-color: #0000000a;
 }
 .body {
     height: calc(100vh - 60px);
@@ -71,13 +91,14 @@ html, body {
 }
 .body > .title {
     font-size: 28px;
-    color: #0084e2;
+    color: #2f2f2f;
+    margin-bottom: 30px;
 }
 .body > .title::after {
     content: "";
     display: block;
     height: 5px;
-    background-color: #d2d2d2;
+    background-color: #e2e2e2;
     width: 10%;
     border-radius: 10px;
 }
@@ -116,11 +137,11 @@ html, body {
     cursor: pointer;
 }
 .btn-primary {
-    background-color: #2281ec;
+    background-color: #2BB761;
     color: white;
 }
 .btn-primary:hover {
-    background-color: #1e74d6;
+    background-color: #279c54;
 }
 .btn-danger {
     background-color: #d24f4f;
@@ -244,6 +265,7 @@ html, body {
 }
 .header .right {
     min-width: max-content;
+    margin-left: auto;
 }
 .header .menu-btn {
     font-size: 20px;
