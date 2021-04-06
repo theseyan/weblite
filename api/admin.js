@@ -33,7 +33,7 @@ module.exports = {
 
     login: (data, cb) => {
 
-        db.query(`SELECT * FROM admin_users WHERE uname = '${data.username}' AND password = '${data.password}'`, (err, res) => {
+        db.execute(`SELECT * FROM admin_users WHERE uname = ? AND password = ?`, [data.username, data.password], (err, res) => {
             if(err) {
                 cb({error: err});
                 return;
@@ -95,7 +95,7 @@ module.exports = {
                 cb({error: error});
                 return;
             }
-            db.query(`UPDATE posts SET title = ?, body = ?, cat = ?, tags = ?, ` + (data.image ? `image = '${data.image}',` : ``) + ` author = ?, lastUpdated = ?, lastDate = ?, permalink = ?, image_alt = ? WHERE id = ?`, [data.title, data.body, data.category, data.tags, data.author, Math.floor((new Date()).getTime() / 1000), data.lastDate, data.permalink, data.imageAlt, data.id], (err, res) => {
+            db.execute(`UPDATE posts SET title = ?, body = ?, cat = ?, tags = ?, ` + (data.image ? `image = '${data.image}',` : ``) + ` author = ?, lastUpdated = ?, lastDate = ?, permalink = ?, image_alt = ? WHERE id = ?`, [data.title, data.body, data.category, data.tags, data.author, Math.floor((new Date()).getTime() / 1000), data.lastDate, data.permalink, data.imageAlt, data.id], (err, res) => {
                 if(err) {
                     if(data.image) fs.unlink('.' + config.website.staticRoot + config.website.postImages + '/' + data.image, (err) => {});
                     cb({error: err});
@@ -383,7 +383,7 @@ module.exports = {
     },
 
     createTag: (data, cb) => {
-        db.query(`SELECT image FROM posts WHERE id = ${data.id}`, (err, res) => {
+        db.execute(`SELECT image FROM posts WHERE id = ?`, [data.id], (err, res) => {
             if(err) {
                 cb({error: err});
                 return;
