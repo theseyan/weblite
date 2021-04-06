@@ -5,6 +5,7 @@
         transition: transform 200ms;
         z-index: 11;
         width: 60% !important;
+        background-color: white !important;
     }
     .header .menu-btn {
         display: inline-block !important;
