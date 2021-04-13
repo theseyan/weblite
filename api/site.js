@@ -8,7 +8,7 @@ var db = require('../db');
 module.exports = {
 
     getPosts: (data, cb) => {
-        db.query('SELECT * FROM posts WHERE ' + data.query + ' ORDER BY ' + (data.orderBy ? data.orderBy : 1) + (data.limit ? " LIMIT " + data.limit : ""), (err, res) => {
+        db.query('SELECT * FROM posts WHERE type = "public" AND (' + data.query + ') ORDER BY ' + (data.orderBy ? data.orderBy : 1) + (data.limit ? " LIMIT " + data.limit : ""), (err, res) => {
             if(err) {
                 cb({error: err});
                 return;

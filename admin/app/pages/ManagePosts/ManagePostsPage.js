@@ -4,13 +4,20 @@ import {Notify} from '../../UI';
 import Template from './ManagePostsPage.ejs';
 import Placeholder from './Placeholder.ejs';
 
-Router.on('/managePosts', () => {
+Router.on('/managePosts/:type', ({data}) => {
     Page.setContent(Placeholder());
 
+    var params = data;
+    var validTypes = ['draft', 'public', 'private'];
+    if(validTypes.indexOf(params.type) == -1) {
+        Notify('error', 'Failed to fetch posts because of invalid post type');
+        return;
+    }
+
     Util.ajaxReq({
-        type: 'post',
+        type: 'get',
         url: window.config.apiUrl + '/admin/getPosts',
-        content: '',
+        content: `type=${params.type}`,
         headers: [{
             header: 'Authorization',
             content: 'Basic ' + Session.token
@@ -21,7 +28,8 @@ Router.on('/managePosts', () => {
 
             Page.setContent(Template({
                 posts: posts,
-                adminUrl: window.config.adminUrl
+                adminUrl: window.config.adminUrl,
+                type: params.type
             }));
         },
         onerror: function(err) {

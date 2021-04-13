@@ -15,7 +15,7 @@
         "managePosts": {
             "label": "Manage Posts",
             "icon": "fa fa-edit",
-            "route": "/managePosts"
+            "route": "/managePosts/public"
         },
         "gallery": {
             "label": "Media Gallery",

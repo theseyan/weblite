@@ -1,9 +1,63 @@
 import {Util} from './Core';
 
-export var Notify = (type, text) => {
-    alert(text);
-};
+var Notifications = [];
+var NotifTimeout = null;
 
+var CloseNotification = () => {
+    var notifBox = Util._('notification');
+    var icon = Util._('notification.icon');
+    var text = Util._('notification.text');
+    var closeBtn = Util._('notification.closeBtn');
+
+    notifBox.style.transform = "translateY(110%)";
+
+    setTimeout(() => {
+        icon.classList.remove('fa-times');
+        icon.classList.remove('fa-check');
+        text.innerHTML = "";
+        clearTimeout(NotifTimeout);
+        NotifTimeout = null;
+
+        RenderNotifications();
+    }, 200);
+};
+var RenderNotifications = () => {
+    if(NotifTimeout != null) return;
+    if(Notifications.length < 1) {
+        clearTimeout(NotifTimeout);
+        NotifTimeout = null;
+        return;
+    };
+
+    var notifBox = Util._('notification');
+    var icon = Util._('notification.icon');
+    var text = Util._('notification.text');
+    var closeBtn = Util._('notification.closeBtn');
+    var notification = Notifications[0];
+
+    if(notification.type == 'error' || notification.type == 'failure') {
+        icon.classList.remove('fa-check');
+        icon.classList.add('fa-times');
+    }else if(notification.type == 'success') {
+        icon.classList.remove('fa-times');
+        icon.classList.add('fa-check');
+    }
+    text.innerHTML = notification.text;
+    notifBox.style.transform = "translateY(-20px)";
+
+    closeBtn.onclick = CloseNotification;
+
+    Notifications.shift();
+    NotifTimeout = setTimeout(CloseNotification, 5000);
+};
+export var Notify = (type, text) => {
+    Notifications.push({
+        type: type,
+        text: text
+    });
+    RenderNotifications();
+};
+window.Notify = Notify;
 export var Confirm = (title, text, next) => {
     var c = confirm(text);
     next(c);

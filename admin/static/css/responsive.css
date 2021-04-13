@@ -13,4 +13,7 @@
     .header .lu-txt {
         display: none;
     }
+    .notification {
+        width: 75% !important;
+    }
 }

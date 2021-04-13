@@ -1,16 +1,21 @@
 import {Router} from '../../Router';
 import {Page, Session, Util} from '../../Core';
-import {Notify} from '../../UI';
+import {Notify, Confirm} from '../../UI';
 import Template from './CreatePostPage.ejs';
 import Placeholder from './Placeholder.ejs';
 
 Router.on('/createPost', () => {
+    var isAutoSaved = !(typeof localStorage['weblite-createPost-autoSave']=="undefined");
     Page.setContent(Placeholder());
 
     Util.loadScript('/assets/tinymce/js/tinymce/tinymce.min.js', () => {
         
         Page.setContent(Template({
-            siteRoot: window.config.websiteUrl
+            siteRoot: window.config.websiteUrl,
+            autoSaved: isAutoSaved===false ? false : {
+                data: JSON.parse(localStorage.getItem('weblite-createPost-autoSave')),
+                lastSave: localStorage.getItem('weblite-createPost-lastSave')
+            }
         }));
 
         window.tinyMCE.init({
@@ -26,7 +31,8 @@ Router.on('/createPost', () => {
             'forecolor backcolor emoticons | help'
         });
 
-        Util._('post-btn').onclick = (evt) => {
+
+        var submitForm = (evt) => {
             window.tinymce.triggerSave(true, true);
             var html = evt.currentTarget.innerHTML;
             var btn = evt.currentTarget;
@@ -37,6 +43,11 @@ Router.on('/createPost', () => {
                 btn.innerHTML = html;
                 btn.classList.remove('disabled');
                 Util._('cp-form').reset();
+                Util._('permalink-preview').innerHTML = "";
+
+                // Clear autosave
+                localStorage.removeItem('weblite-createPost-autoSave');
+                localStorage.removeItem('weblite-createPost-lastSave');
 
                 Notify('success', 'Post published successfully');
             }, (err) => {
@@ -46,6 +57,7 @@ Router.on('/createPost', () => {
                 Notify('failure', 'An error occured: ' + err);
             });
         };
+        Util._('post-btn').onclick = submitForm;
 
         Util._('permalink-inp').oninput = () => {
             var val = Util._('permalink-inp').value;
@@ -54,6 +66,60 @@ Router.on('/createPost', () => {
             Util._('permalink-value').value = val;
             Util._('permalink-preview').innerHTML = val;
         };
+
+        // Local Autosave
+        var form = Util._('cp-form');
+        var registerAutoSave = () => {
+            setInterval(() => {
+                if(window.tinymce.activeEditor.getContent() == "" && Util._('title').value == "") return;
+
+                window.tinymce.triggerSave(true, true);
+                var data = new FormData(form);
+                var fields = {};
+                for(var pair of data.entries()) {
+                    fields[pair[0]] = pair[1];
+                }
+
+                localStorage.setItem('weblite-createPost-autoSave', JSON.stringify(fields));
+                localStorage.setItem('weblite-createPost-lastSave', Date());
+            }, 10000);
+        };
+        form.addEventListener('input', () => {
+            if(isAutoSaved===true) {
+                Confirm('Continue editing?', 'Editing a new post will overwrite the previous autosaved post. Continue?', (res) => {
+                    if(res === true) registerAutoSave();
+                });
+            }else registerAutoSave();
+        }, {once: true});
+
+        // Resume Autosaved Post button
+        if(isAutoSaved===true) {
+            Util._('resumeEditingBtn').addEventListener('click', () => {
+                Util._('autosavedMessageBox').remove();
+                var post = JSON.parse(localStorage.getItem('weblite-createPost-autoSave'));
+                Util._('title').value = post.title;
+                Util._('cat').value = post.cat;
+                Util._('tags').value = post.tags;
+                Util._('date').valueAsNumber = post.lastDate * 1000;
+                Util._('lastDate').value = post.lastDate;
+                Util._('imageAlt').value = post.imageAlt;
+                Util._('permalink-inp').value = post.permalink;
+                Util._('permalink-preview').innerHTML = post.permalink;
+                Util._('postBodyEditor').value = post.body;
+                window.tinymce.activeEditor.render();
+                isAutoSaved = false;
+            });
+            Util._('closeAutosavedBtn').addEventListener('click', function() {
+                this.parentNode.remove();
+                isAutoSaved = false;
+            });
+        }
+
+        // Save as Draft button
+        Util._('draft-btn').addEventListener('click', (evt) => {
+            Util._('postType').value = 'draft';
+            submitForm(evt);
+        });
 
     }, (err) => {
         Notify('failure', 'An error occured: ' + err);

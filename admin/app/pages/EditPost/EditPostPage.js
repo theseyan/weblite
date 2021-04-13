@@ -8,9 +8,9 @@ Router.on('/editPost/:id', ({data}) => {
     Page.setContent(Placeholder());
 
     Util.ajaxReq({
-        type: 'post',
-        url: window.config.apiUrl + '/admin/getPosts?id=' + data.id,
-        content: '',
+        type: 'get',
+        url: window.config.apiUrl + '/admin/getPosts',
+        content: `id=${data.id}`,
         headers: [{
             header: 'Authorization',
             content: 'Basic ' + Session.token
@@ -60,6 +60,51 @@ Router.on('/editPost/:id', ({data}) => {
                     });
                 };
 
+                Util._('draft-publish-btn').onclick = (evt) => {
+                    window.tinymce.triggerSave(true, true);
+                    var html = evt.currentTarget.innerHTML;
+                    var btn = evt.currentTarget;
+                    btn.innerHTML = "<span class='fa fa-spin fa-circle-notch'></span> Publishing as Post...";
+                    btn.classList.add('disabled');
+                    
+                    Util.submitForm(Util._('cp-form'), window.config.apiUrl + '/admin/createPost', (data) => {
+                        btn.innerHTML = html;
+                        btn.classList.remove('disabled');
+        
+                        Notify('success', 'Post published successfully');
+                    }, (err) => {
+                        btn.innerHTML = html;
+                        btn.classList.remove('disabled');
+        
+                        Notify('failure', 'An error occured: ' + err);
+                    });
+
+                    /*Util.ajaxReq({
+                        type: 'post',
+                        url: window.config.apiUrl + '/admin/createPost',
+                        content: {
+                            id: post.id
+                        },
+                        headers: [{
+                            header: 'Authorization',
+                            content: 'Basic ' + Session.token
+                        }],
+                        onload: (data) => {
+                            btn.innerHTML = html;
+                            btn.classList.remove('disabled');
+            
+                            Notify('success', 'Draft was successfully published as post');
+                        },
+                        onerror: (err) => {
+                            btn.innerHTML = html;
+                            btn.classList.remove('disabled');
+            
+                            Notify('failure', 'An error occured: ' + err);
+                        }
+                    });*/
+
+                };
+
                 Util._('permalink-inp').oninput = () => {
                     var val = Util._('permalink-inp').value;
                     val = encodeURIComponent(val.replace(/\s+/g, '-').toLowerCase());
@@ -74,6 +119,7 @@ Router.on('/editPost/:id', ({data}) => {
         },
         onerror: function(err) {
             Notify('failure', 'Failed to fetch post: ' + err);
+            console.log(err);
         }
     });
 });

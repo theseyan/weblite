@@ -1,8 +1,17 @@
 <h1 class="title">Create a new Post</h1>
 
+<% if(autoSaved != false) { %>
+<div id="autosavedMessageBox" class="message-box info">
+    <span id="closeAutosavedBtn" class="close-btn fa fa-times-circle"></span>
+    Continue editing "<%= autoSaved.data.title %>"? [autosaved]
+    <br />
+    <span id="resumeEditingBtn" class="link">Resume Editing</span>
+</div>
+<% } %>
+
 <form id="cp-form" enctype="multipart/form-data" class="form">
     <span class="label">Post Title</span>
-    <input name="title" class="input" placeholder="Enter a title for this post..." type="text" />
+    <input id="title" name="title" class="input" placeholder="Enter a title for this post..." type="text" />
 
     <span class="label">Post Image</span>
     <input name="image" class="input" placeholder="Select a thumbnail for this post..." type="file" />
@@ -12,16 +21,16 @@
     <br />
 
     <span class="label">Category</span>
-    <input name="cat" class="input" placeholder="Enter the category of this post" type="text" />
+    <input id="cat" name="cat" class="input" placeholder="Enter the category of this post" type="text" />
 
     <span class="label">Tags</span>
-    <input name="tags" class="input" placeholder="Enter a comma separated list of tags..." type="text" />
+    <input id="tags" name="tags" class="input" placeholder="Enter a comma separated list of tags..." type="text" />
 
     <span class="label">Last Date</span>
-    <input oninput="document.getElementById('lastDate').value=this.valueAsNumber/1000;" class="input" type="date" />
+    <input id="date" oninput="document.getElementById('lastDate').value=this.valueAsNumber/1000;" class="input" type="date" />
     
     <span class="label">Image Alternative Text</span>
-    <input name="imageAlt" class="input" placeholder="Enter alternative text..." type="text" />
+    <input id="imageAlt" name="imageAlt" class="input" placeholder="Enter alternative text..." type="text" />
 
     <span class="label">Custom Permalink</span>
     <input id="permalink-inp" class="input" placeholder="Enter a custom permalink for this post..." type="text" />
@@ -30,8 +39,10 @@
     <input id="lastDate" type="hidden" name="lastDate" value="0" />
     <input id="permalink-value" type="hidden" name="permalink" value="" />
     <input type="hidden" name="author" value="Administrator" />
+    <input id="postType" type="hidden" name="type" value="public" />
 
     <p></p>
     <a id="post-btn" class="btn btn-primary btn-full-width"><span class="fa fa-plus-circle"></span> Post</a>
+    <a id="draft-btn" class="btn btn-secondary btn-full-width"><span class="fa fa-plus-circle"></span> Save as draft</a>
     <br /><br />
 </form>

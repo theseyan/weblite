@@ -1,4 +1,15 @@
 <h1 class="title">Manage Posts</h1>
+<div class="navbar">
+    <a href="<%= adminUrl %>/#/managePosts/public" class="item <%= (type==="public") ? "active" : "" %>">
+        <span>Public</span>
+    </a>
+    <a href="<%= adminUrl %>/#/managePosts/private" class="item <%= (type==="private") ? "active" : "" %>">
+        <span>Private</span>
+    </a>
+    <a href="<%= adminUrl %>/#/managePosts/draft" class="item <%= (type==="draft") ? "active" : "" %>">
+        <span>Drafts</span>
+    </a>
+</div>
 <div class="posts-list">
     <% posts.forEach(post => { %>
         <div class="post">

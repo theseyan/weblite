@@ -7,7 +7,7 @@
 
     <span class="label">Post Image</span>
     <input name="image" class="input" placeholder="Select a thumbnail for this post..." type="file" /><br />
-    <i>To keep the thumbnail unchanged, do not select any file.</i><p></p>
+    <% if(post.type != "draft") { %><i>To keep the thumbnail unchanged, do not select any file.</i><p></p><% } %>
     
     <span class="label">Body</span>
     <textarea name="body" id="postBodyEditor"><%= post.body %></textarea>
@@ -42,5 +42,10 @@
     <input value="<%= post.author %>" type="hidden" name="author" value="Administrator" />
     <p></p>
     <a id="post-btn" class="btn btn-primary btn-full-width"><span class="fa fa-edit"></span> Update Post</a>
-    <br /><br />
+    <% if(post.type === "draft") { %>
+        <a id="draft-publish-btn" class="btn btn-secondary btn-full-width"><span class="fa fa-globe"></span> Publish to Public</a>
+    <% } %>
+    <p>
+        <i><span class="fa fa-info-circle"></span>  Publishing will not update this draft with your current edits. It will create a new post, and the draft will not be deleted.</i>
+    </p>
 </form>

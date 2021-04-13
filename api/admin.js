@@ -78,7 +78,7 @@ module.exports = {
     },
 
     createPost: (data, cb) => {
-        db.execute(`INSERT INTO posts (title, image, body, cat, tags, author, date, lastDate, permalink, image_alt) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`, [data.title, data.image, data.body, data.category, data.tags, data.author, Math.floor((new Date()).getTime() / 1000), data.lastDate, data.permalink, data.imageAlt], (err, res) => {
+        db.execute(`INSERT INTO posts (title, image, body, cat, tags, author, date, lastDate, permalink, image_alt, type) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`, [data.title, data.image, data.body, data.category, data.tags, data.author, Math.floor((new Date()).getTime() / 1000), data.lastDate, data.permalink, data.imageAlt, data.type], (err, res) => {
             if(err) {
                 cb({error: err});
                 return;
@@ -147,7 +147,7 @@ module.exports = {
     },
 
     getPosts: (data, cb) => {
-        db.query('SELECT ' + (data.select ? data.select : '*') + ' FROM posts WHERE ' + data.query + ' ORDER BY ' + (data.orderBy ? data.orderBy : 1), (err, res) => {
+        db.query('SELECT ' + (data.select ? data.select : '*') + ' FROM posts WHERE ' + (data.type ? (`type = "${data.type}" AND `) : '') + `(${data.query})` + ' ORDER BY ' + (data.orderBy ? data.orderBy : 1), (err, res) => {
             if(err) {
                 cb({error: err});
                 return;
