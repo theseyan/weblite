@@ -32,9 +32,9 @@ module.exports = {
 };
 
 global.Vacancies = {};
-var states = global.Data.Collections.subMenus.indianStates;
 
 global.updateVacanciesCounter = () => {
+    var states = global.Data.Collections.subMenus.indianStates;
     function add(id, total) {
         global.Vacancies[id] = total;
     }
