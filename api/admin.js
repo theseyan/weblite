@@ -116,6 +116,7 @@ module.exports = {
                 }
             });
         });
+        global.updateVacanciesCounter();
     },
 
     deletePost: (data, cb) => {
@@ -145,6 +146,7 @@ module.exports = {
                 });
             });
         });
+        global.updateVacanciesCounter();
     },
 
     getPosts: (data, cb) => {
