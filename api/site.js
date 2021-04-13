@@ -34,14 +34,17 @@ module.exports = {
 global.Vacancies = {};
 var states = global.Data.Collections.subMenus.indianStates;
 
-function add(id, total) {
-    global.Vacancies[id] = total;
-}
+global.updateVacanciesCounter = () => {
+    function add(id, total) {
+        global.Vacancies[id] = total;
+    }
 
-for(var id in states) {
-    (function(id) {
-        db.query("SELECT COUNT(*) AS total FROM posts WHERE tags LIKE '%" + id + "%'", (err, res) => {
-            add(id, res[0].total);
-        });
-    })(id);
-}
+    for(var id in states) {
+        (function(id) {
+            db.query("SELECT COUNT(*) AS total FROM posts WHERE tags LIKE '%" + id + "%'", (err, res) => {
+                add(id, res[0].total);
+            });
+        })(id);
+    }
+};
+global.updateVacanciesCounter();

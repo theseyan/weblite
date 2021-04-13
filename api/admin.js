@@ -85,6 +85,7 @@ module.exports = {
             }
 
             cb({result: res});
+            global.updateVacanciesCounter();
         });
     },
 
