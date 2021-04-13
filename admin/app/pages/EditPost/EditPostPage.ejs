@@ -37,15 +37,18 @@
     <input value="<%= post.permalink %>" id="permalink-inp" class="input" placeholder="Enter a custom permalink for this post..." type="text" />
     <div class="permalink-preview"><%= siteRoot %>/post/<span id="permalink-preview"><%= post.permalink %></span></div>
 
-    <input id="lastDate" type="hidden" name="lastDate" value="0" />
+    <input id="lastDate" type="hidden" name="lastDate" value="<%= post.lastDate %>" />
     <input id="permalink-value" type="hidden" name="permalink" value="<%= post.permalink %>" />
     <input value="<%= post.author %>" type="hidden" name="author" value="Administrator" />
     <p></p>
     <a id="post-btn" class="btn btn-primary btn-full-width"><span class="fa fa-edit"></span> Update Post</a>
     <% if(post.type === "draft") { %>
         <a id="draft-publish-btn" class="btn btn-secondary btn-full-width"><span class="fa fa-globe"></span> Publish to Public</a>
+        
+        <p>
+            <i><span class="fa fa-info-circle"></span>  Publishing will not update this draft with your current edits. It will create a new post, and the draft will not be deleted.</i>
+        </p>
+    <% } else { %>
+        <p></p>
     <% } %>
-    <p>
-        <i><span class="fa fa-info-circle"></span>  Publishing will not update this draft with your current edits. It will create a new post, and the draft will not be deleted.</i>
-    </p>
 </form>
