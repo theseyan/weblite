@@ -74,43 +74,43 @@ module.exports = {
             api.getPosts({
                 query: "tags LIKE '%government%'",
                 orderBy: 'date DESC',
-                limit: 3
+                limit: 10
             }, (result) => add('government', result));
 
             api.getPosts({
                 query: 1,
                 orderBy: 'date DESC',
-                limit: 8
+                limit: 10
             }, (result) => add('latest', result));
 
             api.getPosts({
                 query: "tags LIKE '%state%'",
                 orderBy: 'date DESC',
-                limit: 3
+                limit: 10
             }, (result) => add('state', result));
 
             api.getPosts({
                 query: "tags LIKE '%exam%'",
                 orderBy: 'date DESC',
-                limit: 3
+                limit: 10
             }, (result) => add('exams', result));
 
             api.getPosts({
                 query: "tags LIKE '%admit-cards%'",
                 orderBy: 'date DESC',
-                limit: 3
+                limit: 10
             }, (result) => add('admitCards', result));
 
             api.getPosts({
                 query: "tags LIKE '%syllabus%'",
                 orderBy: 'date DESC',
-                limit: 3
+                limit: 10
             }, (result) => add('syllabus', result));
 
             api.getPosts({
                 query: "tags LIKE '%answer-keys%'",
                 orderBy: 'date DESC',
-                limit: 3
+                limit: 10
             }, (result) => add('answerKeys', result));
         });
 
@@ -133,13 +133,13 @@ module.exports = {
         // Posts Page
         app.get('/posts/:t', function(req, res) {
             api.getPosts({
-                query: `tags LIKE '%${req.params.t}%'`,
+                query: req.params.t=='all' ? 1 : `tags LIKE '%${req.params.t}%'`,
                 orderBy: 'date DESC'
             }, (result) => {
                 res.render('pages/posts', Object.assign(data(req, res), {
                     tag: req.params.t,
                     posts: result.posts,
-                    label: "Jobs tagged "
+                    label: req.params.t=='all' ? "Jobs: " : "Jobs tagged "
                 }));
             });
         });
