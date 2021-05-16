@@ -1,0 +1,19 @@
+<h1 class="title">Tags</h1>
+<a href="<%= adminUrl %>/#/tags/create" class="btn btn-primary"><span class="fa fa-plus-circle"></span> Create Tag</a>
+<br /><br />
+<div class="navbar">
+    <a class="item active">
+        <span>All Tags</span>
+    </a>
+</div>
+<div class="posts-list">
+    <% tags.forEach(tag => { %>
+        <div class="post">
+            <span class="title"><span class="id"><%= tag.tag %></span><%= tag.label %></span>
+            <div class="right">
+                <a class="icon" href="<%= adminUrl %>/#/tags/edit/<%= tag.id %>"><span class="fa fa-edit"></span></a>
+                <a class="icon delete" href="<%= adminUrl %>/#/tags/delete/<%= tag.id %>"><span class="fa fa-trash"></span></a>
+            </div>
+        </div>
+    <% }); %>
+</div>

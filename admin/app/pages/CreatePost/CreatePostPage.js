@@ -3,6 +3,33 @@ import {Page, Session, Util} from '../../Core';
 import {Notify, Confirm} from '../../UI';
 import Template from './CreatePostPage.ejs';
 import Placeholder from './Placeholder.ejs';
+import {Tags} from '../../components/Tags/Tags';
+import {InputDropdown} from '../../components/InputDropdown/InputDropdown';
+
+var searchTags = (q, cb) => {
+    Util.ajaxReq({
+        type: 'post',
+        url: window.config.apiUrl + '/tags/get',
+        content: {
+            query: `tag LIKE "${q}%" OR label LIKE "${q}%" LIMIT 5`
+        },
+        headers: [{
+            header: 'Authorization',
+            content: 'Basic ' + Session.token
+        }],
+        onload: function(data) {
+            data = JSON.parse(data);
+            var tags = JSON.parse(data.tags);
+            
+            cb({
+                tags: tags
+            });
+        },
+        onerror: function(err) {
+            Notify('failure', 'Failed to search for tags: ' + err);
+        }
+    });
+};
 
 Router.on('/createPost', () => {
     var isAutoSaved = !(typeof localStorage['weblite-createPost-autoSave']=="undefined");
@@ -17,6 +44,40 @@ Router.on('/createPost', () => {
                 lastSave: localStorage.getItem('weblite-createPost-lastSave')
             }
         }));
+
+        var tagsBox = new Tags(Util._('tags-box'));
+        var inputDropdown = new InputDropdown(Util._('tagsDropdown'));
+
+        var updateTagIds = () => {
+            var ids = [];
+            tagsBox.tags.forEach(tag => {
+                if(ids.indexOf(tag.id) != -1) return;
+                ids.push(tag.id);
+            });
+
+            Util._('tags.ids').value = ids.join(',');
+        };
+
+        Util._('tags').addEventListener('input', (evt) => {
+            inputDropdown.showDropdown();
+            var value = Util._('tags').value;
+            searchTags(value, (data) => {
+
+                inputDropdown.clearItems();
+                data.tags.forEach((item) => {
+                    inputDropdown.addItem({
+                        content: item.label,
+                        onaction: () => {
+                            tagsBox.add(item);
+                            inputDropdown.hideDropdown();
+                            Util._('tags').value = "";
+                            updateTagIds();
+                        }
+                    });
+                });
+
+            });
+        });
 
         window.tinyMCE.init({
             selector:'textarea#postBodyEditor',
@@ -44,6 +105,7 @@ Router.on('/createPost', () => {
                 btn.classList.remove('disabled');
                 Util._('cp-form').reset();
                 Util._('permalink-preview').innerHTML = "";
+                tagsBox.clear();
 
                 // Clear autosave
                 localStorage.removeItem('weblite-createPost-autoSave');

@@ -11,12 +11,12 @@ module.exports = {
         var type = req.query.type ? req.query.type : null;
 
         var params = req.query.id ? {
-            query: `id = '${req.query.id}'`,
+            query: `post.id = '${req.query.id}'`,
             type: type
         } : {
-            select: 'id, title, image, cat, author',
+            select: 'post.id, post.title, post.image, post.cat, post.author',
             query: '1',
-            orderBy: 'date DESC',
+            orderBy: 'post.date DESC',
             type: type
         };
 

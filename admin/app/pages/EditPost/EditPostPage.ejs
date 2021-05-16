@@ -17,7 +17,11 @@
     <input value="<%= post.cat %>"  name="cat" class="input" placeholder="Enter the category of this post" type="text" />
 
     <span class="label">Tags</span>
-    <input value="<%= post.tags %>" name="tags" class="input" placeholder="Enter a comma separated list of tags..." type="text" />
+    <div class="tags" id="tags-box"></div>
+    <div id="tagsDropdown" class="inp-dropdown">
+        <input autocomplete="off" id="tags" class="input" placeholder="Search for tags to add..." type="text" />
+        <div class="dropdown"></div>
+    </div>
 
     <%
         function zero(num) {
@@ -40,6 +44,7 @@
     <input id="lastDate" type="hidden" name="lastDate" value="<%= post.lastDate %>" />
     <input id="permalink-value" type="hidden" name="permalink" value="<%= post.permalink %>" />
     <input value="<%= post.author %>" type="hidden" name="author" value="Administrator" />
+    <input id="tags.ids" type="hidden" name="tags" value="" />
     <p></p>
     <a id="post-btn" class="btn btn-primary btn-full-width"><span class="fa fa-edit"></span> Update Post</a>
     <% if(post.type === "draft") { %>

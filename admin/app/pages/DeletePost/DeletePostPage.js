@@ -27,7 +27,7 @@ Router.on('/deletePost/:id', ({data}) => {
                     else Router.navigate('/');
                 },
                 onerror: function(err) {
-                    Notify('failure', 'Failed to fetch posts: ' + err);
+                    Notify('failure', 'Failed to delete post: ' + err);
 
                     if(window.history.length > 2) window.history.back();
                     else Router.navigate('/');

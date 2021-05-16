@@ -53,6 +53,50 @@ module.exports = {
 
     },
 
+    createTag: (data, cb) => {
+        db.execute("INSERT INTO `tags` (`tag`, `label`, `description`, `path`) VALUES (?, ?, ?, ?)", [data.tag, data.label, data.description, ''], (err, res) => {
+            if(err) {
+                cb({error: err});
+                return;
+            }
+
+            cb({result: res});
+        });
+    },
+
+    deleteTag: (id, cb) => {
+        db.execute("DELETE FROM `tags` WHERE `tags`.`id` = ?", [id], (err, res) => {
+            if(err) {
+                cb({error: err});
+                return;
+            }
+
+            cb({result: res});
+        });
+    },
+
+    editTag: (data, cb) => {
+        db.execute("UPDATE `tags` SET `tag` = ?, `label` = ?, `description` = ? WHERE `tags`.`id` = ?", [data.tag, data.label, data.description, data.id], (err, res) => {
+            if(err) {
+                cb({error: err});
+                return;
+            }
+
+            cb({result: res});
+        });
+    },
+
+    getTags: (q, cb) => {
+        db.execute("SELECT * FROM tags WHERE " + q, [], (err, res) => {
+            if(err) {
+                cb({error: err});
+                return;
+            }
+
+            cb({result: res});
+        });
+    },
+
     uploadImage: (field, req, res, cb, src) => {
         var upload = multer({ storage: typeof src=="undefined" ? storage : createStorage(src), fileFilter: helpers.imageFilter }).single(field);
 
@@ -78,70 +122,114 @@ module.exports = {
     },
 
     createPost: (data, cb) => {
-        db.execute(`INSERT INTO posts (title, image, body, cat, tags, author, date, lastDate, permalink, image_alt, type) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`, [data.title, data.image, data.body, data.category, data.tags, data.author, Math.floor((new Date()).getTime() / 1000), data.lastDate, data.permalink, data.imageAlt, data.type], (err, res) => {
+        var tags = data.tags.split(',');
+
+        db.execute(`INSERT INTO posts (title, image, body, cat, author, date, lastDate, permalink, image_alt, type) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`, [data.title, data.image, data.body, data.category, data.author, Math.floor((new Date()).getTime() / 1000), data.lastDate, data.permalink, data.imageAlt, data.type], (err, res) => {
             if(err) {
                 cb({error: err});
                 return;
             }
 
-            cb({result: res});
-            global.updateVacanciesCounter();
+            var insertStr = "";
+            tags.forEach(tag => {
+                insertStr = insertStr + `(${tag}, ${res.insertId}),`;
+            });
+            insertStr = insertStr.substring(0, insertStr.length-1);
+            
+            db.execute(`INSERT INTO tagmap (tag_id, post_id) VALUES ${insertStr}`, [], (err, tagres) => {
+                cb({result: res});
+                global.updateVacanciesCounter();
+            });
         });
     },
 
     editPost: (data, cb) => {
-        db.execute(`SELECT image FROM posts WHERE id = ?`, [data.id], (error, result) => {
-            if(error) {
-                if(data.image) fs.unlink('.' + config.website.staticRoot + config.website.postImages + '/' + data.image, (err) => {});
-                cb({error: error});
-                return;
-            }
-            db.execute(`UPDATE posts SET title = ?, body = ?, cat = ?, tags = ?, ` + (data.image ? `image = '${data.image}',` : ``) + ` author = ?, lastUpdated = ?, lastDate = ?, permalink = ?, image_alt = ? WHERE id = ?`, [data.title, data.body, data.category, data.tags, data.author, Math.floor((new Date()).getTime() / 1000), data.lastDate, data.permalink, data.imageAlt, data.id], (err, res) => {
-                if(err) {
+        var tags = data.tags.split(',');
+
+        var update = () => {
+            db.execute(`SELECT image FROM posts WHERE id = ?`, [data.id], (error, result) => {
+                if(error) {
                     if(data.image) fs.unlink('.' + config.website.staticRoot + config.website.postImages + '/' + data.image, (err) => {});
-                    cb({error: err});
+                    cb({error: error});
                     return;
                 }
-    
-                if(data.image) {
-                    fs.unlink('.' + config.website.staticRoot + config.website.postImages + '/' + result[0].image, (err) => {
-                        if(err) {
-                            cb({error: err});
-                            return;
-                        }
+                db.execute(`UPDATE posts SET title = ?, body = ?, cat = ?, ` + (data.image ? `image = '${data.image}',` : ``) + ` author = ?, lastUpdated = ?, lastDate = ?, permalink = ?, image_alt = ? WHERE id = ?`, [data.title, data.body, data.category, data.author, Math.floor((new Date()).getTime() / 1000), data.lastDate, data.permalink, data.imageAlt, data.id], (err, res) => {
+                    if(err) {
+                        if(data.image) fs.unlink('.' + config.website.staticRoot + config.website.postImages + '/' + data.image, (err) => {});
+                        cb({error: err});
+                        return;
+                    }
+        
+                    if(data.image) {
+                        fs.unlink('.' + config.website.staticRoot + config.website.postImages + '/' + result[0].image, (err) => {
+                            if(err) {
+                                cb({error: err});
+                                return;
+                            }
+                            cb({result: res});
+                        });
+                    }else {
                         cb({result: res});
-                    });
-                }else {
-                    cb({result: res});
-                }
+                    }
+                });
             });
-        });
-        global.updateVacanciesCounter();
-    },
+        }
 
-    deletePost: (data, cb) => {
-        db.execute(`SELECT image FROM posts WHERE id = ?`, [data.id], (err, res) => {
+        db.execute(`DELETE FROM tagmap WHERE post_id = ?`, [data.id], (err, deleteRes) => {
             if(err) {
                 cb({error: err});
                 return;
             }
-
-            // Delete image file
-            fs.unlink('.' + config.website.staticRoot + config.website.postImages + '/' + res[0].image, (err) => {
-                if(err) {
-                    cb({error: err});
-                    return;
-                }
-
-                // Delete the post
-                db.execute(`DELETE FROM posts WHERE id = ?`, [data.id], (err, res) => {
+            
+            if(data.tags != '' && tags.length > 0) {
+                var insertStr = "";
+                tags.forEach(tag => {
+                    insertStr = insertStr + `(${tag}, ${data.id}),`;
+                });
+                insertStr = insertStr.substring(0, insertStr.length-1);
+                db.execute(`INSERT INTO tagmap (tag_id, post_id) VALUES ${insertStr}`, [], (err, tagres) => {
                     if(err) {
                         cb({error: err});
                         return;
                     }
 
-                    cb({
-                        result: res
+                    update();
+                    global.updateVacanciesCounter();
+                });
+            }else update();
+        });
+    },
+
+    deletePost: (data, cb) => {
+        db.execute(`SELECT image, id FROM posts WHERE id = ?`, [data.id], (err, res) => {
+            if(err) {
+                cb({error: err});
+                return;
+            }
+
+            db.execute(`DELETE FROM tagmap WHERE post_id = ?`, [res[0].id], (err, deleteRes) => {
+                if(err) {
+                    cb({error: err});
+                    return;
+                }
+
+                // Delete image file
+                fs.unlink('.' + config.website.staticRoot + config.website.postImages + '/' + res[0].image, (err) => {
+                    if(err) {
+                        cb({error: err});
+                        return;
+                    }
+
+                    // Delete the post
+                    db.execute(`DELETE FROM posts WHERE id = ?`, [data.id], (err, res) => {
+                        if(err) {
+                            cb({error: err});
+                            return;
+                        }
+
+                        cb({
+                            result: res
+                        });
                     });
                 });
             });
@@ -150,7 +238,15 @@ module.exports = {
     },
 
     getPosts: (data, cb) => {
-        db.query('SELECT ' + (data.select ? data.select : '*') + ' FROM posts WHERE ' + (data.type ? (`type = "${data.type}" AND `) : '') + `(${data.query})` + ' ORDER BY ' + (data.orderBy ? data.orderBy : 1), (err, res) => {
+        var q = data.query ? data.query : 1;
+        if(data.tags && data.tags.length > 0) {
+            var tags = "'" + data.tags.join("','") + "'";
+            var strict = data.strictTags ? data.strictTags : false;
+            var query = `SELECT ${(data.select ? data.select : 'post.*')}, (SELECT GROUP_CONCAT(t.id, ":", t.tag) FROM tagmap tm, tags t WHERE tm.post_id = post.id AND tm.tag_id = t.id) AS tags FROM tagmap tm, posts post, tags t WHERE tm.tag_id = t.id AND (t.tag IN (${tags})) AND post.id = tm.post_id AND (${(data.type ? (`post.type = "${data.type}" AND `) : '')} ${q}) GROUP BY post.id ${strict==true ? ('HAVING COUNT( post.id )='+data.tags.length) : ''} ORDER BY ${(data.orderBy ? data.orderBy : 1)}`;
+        }else {
+            var query = 'SELECT ' + (data.select ? data.select : 'post.*') + ', (SELECT GROUP_CONCAT(t.id, ":", t.tag) FROM tagmap tm, tags t WHERE tm.post_id = post.id AND tm.tag_id = t.id) AS tags FROM posts post WHERE ' + (data.type ? (`post.type = "${data.type}" AND `) : '') + `(${q})` + ' ORDER BY ' + (data.orderBy ? data.orderBy : 1);
+        }
+        db.execute(query, [], (err, res) => {
             if(err) {
                 cb({error: err});
                 return;
@@ -384,14 +480,5 @@ module.exports = {
             cb({});
         });
     },
-
-    createTag: (data, cb) => {
-        db.execute(`SELECT image FROM posts WHERE id = ?`, [data.id], (err, res) => {
-            if(err) {
-                cb({error: err});
-                return;
-            }
-        });
-    }
 
 };

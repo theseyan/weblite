@@ -17,6 +17,11 @@
             "icon": "fa fa-edit",
             "route": "/managePosts/public"
         },
+        "Tags" : {
+            "label": "Tags",
+            "icon": "fa fa-tags",
+            "route": "/tags"
+        },
         "gallery": {
             "label": "Media Gallery",
             "icon": "fa fa-photo-video",

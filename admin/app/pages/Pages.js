@@ -7,5 +7,6 @@ import './ManagePosts/ManagePostsPage';
 import './CreatePost/CreatePostPage';
 import './Gallery/GalleryPage';
 import './Update/UpdatePage';
+import './Tags/TagsPage';
 
 Router.resolve();

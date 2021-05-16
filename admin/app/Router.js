@@ -17,6 +17,12 @@ Router.reload = () => {
     Router.navigate(Router.getCurrentLocation().hashString);
 };
 
+// Back button behaviour
+Router.back = () => {
+    if(window.history.length > 2) window.history.back();
+    else Router.navigate('/');
+};
+
 Router.hooks({
     before(done, match) {
         if(localStorage.getItem('wa-authToken')==null || localStorage.getItem('wa-username')==null) {

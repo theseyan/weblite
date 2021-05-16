@@ -72,44 +72,44 @@ module.exports = {
                 }
             }
             api.getPosts({
-                query: "tags LIKE '%government%'",
-                orderBy: 'date DESC',
+                tags: ['government'],
+                orderBy: 'post.date DESC',
                 limit: 10
             }, (result) => add('government', result));
 
             api.getPosts({
                 query: 1,
-                orderBy: 'date DESC',
+                orderBy: 'post.date DESC',
                 limit: 10
             }, (result) => add('latest', result));
 
             api.getPosts({
-                query: "tags LIKE '%state%'",
-                orderBy: 'date DESC',
+                tags: ['state'],
+                orderBy: 'post.date DESC',
                 limit: 10
             }, (result) => add('state', result));
 
             api.getPosts({
-                query: "tags LIKE '%exam%'",
-                orderBy: 'date DESC',
+                tags: ['exam'],
+                orderBy: 'post.date DESC',
                 limit: 10
             }, (result) => add('exams', result));
 
             api.getPosts({
-                query: "tags LIKE '%admit-cards%'",
-                orderBy: 'date DESC',
+                tags: ['admit-cards'],
+                orderBy: 'post.date DESC',
                 limit: 10
             }, (result) => add('admitCards', result));
 
             api.getPosts({
-                query: "tags LIKE '%syllabus%'",
-                orderBy: 'date DESC',
+                tags: ['syllabus'],
+                orderBy: 'post.date DESC',
                 limit: 10
             }, (result) => add('syllabus', result));
 
             api.getPosts({
-                query: "tags LIKE '%answer-keys%'",
-                orderBy: 'date DESC',
+                tags: ['answer-keys'],
+                orderBy: 'post.date DESC',
                 limit: 10
             }, (result) => add('answerKeys', result));
         });
@@ -132,10 +132,14 @@ module.exports = {
 
         // Posts Page
         app.get('/posts/:t', function(req, res) {
-            api.getPosts({
-                query: req.params.t=='all' ? 1 : `tags LIKE '%${req.params.t}%'`,
+            var config = req.params.t=='all' ? {
+                query: 1,
                 orderBy: 'date DESC'
-            }, (result) => {
+            } : {
+                tags: [req.params.t],
+                orderBy: 'date DESC'
+            };
+            api.getPosts(config, (result) => {
                 res.render('pages/posts', Object.assign(data(req, res), {
                     tag: req.params.t,
                     posts: result.posts,
@@ -147,7 +151,7 @@ module.exports = {
         // States Page
         app.get('/state/:state', function(req, res) {
             api.getPosts({
-                query: `tags LIKE '%${req.params.state}%'`,
+                tags: [req.params.state],
                 orderBy: 'date DESC'
             }, (result) => {
                 res.render('pages/posts', Object.assign(data(req, res), {
@@ -161,7 +165,7 @@ module.exports = {
         // Search Page
         app.get('/search/:q', function(req, res) {
             api.getPosts({
-                query: `title LIKE '%${req.params.q}%' OR cat LIKE '%${req.params.q}%' OR tags LIKE '%${req.params.q}%'`,
+                query: `title LIKE '%${req.params.q}%' OR cat LIKE '%${req.params.q}%'`,
                 orderBy: 'date DESC'
             }, (result) => {
                 res.render('pages/search', Object.assign(data(req, res), {
@@ -169,13 +173,6 @@ module.exports = {
                     posts: result.posts
                 }));
             });
-        });
-
-        // Posts Page
-        app.get('/posts/:q', function(req, res) {
-            res.render('pages/posts', Object.assign(data(req, res), {
-                query: req.params.q
-            }));
         });
 
         // About Page

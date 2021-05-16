@@ -8,7 +8,15 @@ var db = require('../db');
 module.exports = {
 
     getPosts: (data, cb) => {
-        db.query('SELECT * FROM posts WHERE type = "public" AND (' + data.query + ') ORDER BY ' + (data.orderBy ? data.orderBy : 1) + (data.limit ? " LIMIT " + data.limit : ""), (err, res) => {
+        var q = data.query ? data.query : 1;
+        if(data.tags && data.tags.length > 0) {
+            var tags = "'" + data.tags.join("','") + "'";
+            var strict = data.strictTags ? data.strictTags : false;
+            var query = `SELECT ${(data.select ? data.select : 'post.*')}, (SELECT GROUP_CONCAT(t.id, ":", t.tag) FROM tagmap tm, tags t WHERE tm.post_id = post.id AND tm.tag_id = t.id) AS tags FROM tagmap tm, posts post, tags t WHERE tm.tag_id = t.id AND (t.tag IN (${tags})) AND post.id = tm.post_id AND (${(data.type ? (`post.type = "${data.type}" AND `) : '')} ${q}) GROUP BY post.id ${strict==true ? ('HAVING COUNT( post.id )='+data.tags.length) : ''} ORDER BY ${(data.orderBy ? data.orderBy : 1)} ${(data.limit ? " LIMIT " + data.limit : "")}`;
+        }else {
+            var query = 'SELECT ' + (data.select ? data.select : 'post.*') + ', (SELECT GROUP_CONCAT(t.id, ":", t.tag) FROM tagmap tm, tags t WHERE tm.post_id = post.id AND tm.tag_id = t.id) AS tags FROM posts post WHERE ' + (data.type ? (`post.type = "${data.type}" AND `) : '') + `(${q})` + ' ORDER BY ' + (data.orderBy ? data.orderBy : 1) + (data.limit ? " LIMIT " + data.limit : "");
+        }
+        db.execute(query, [], (err, res) => {
             if(err) {
                 cb({error: err});
                 return;
@@ -27,7 +35,7 @@ module.exports = {
 
             cb({posts: res});
         });
-    }
+    },
 
 };
 
@@ -41,7 +49,7 @@ global.updateVacanciesCounter = () => {
 
     for(var id in states) {
         (function(id) {
-            db.query("SELECT COUNT(*) AS total FROM posts WHERE tags LIKE '%" + id + "%'", (err, res) => {
+            db.query(`SELECT COUNT(*) as total FROM tagmap tm, posts post, tags t WHERE tm.tag_id = t.id AND (t.tag = '${id}') AND post.id = tm.post_id`, (err, res) => {
                 add(id, res[0].total);
             });
         })(id);

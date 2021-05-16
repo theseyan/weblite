@@ -113,6 +113,9 @@ html, body {
     margin-bottom: 15px;
     background-color: white;
 }
+.form textarea.input {
+    height: 100px;
+}
 .form .input:focus, .form .input:active {
     border: 2px solid #69b6ff;
     outline:none;
@@ -554,4 +557,43 @@ html, body {
 .navbar > .item > span {
     font-weight: 600;
     color: #424242;
+}
+.inp-dropdown {
+    margin-bottom: 15px;
+    width: 60%;
+    position: relative;
+}
+.inp-dropdown input {
+    margin-bottom: 0 !important;
+    width: calc(100% - 34px) !important;
+}
+.inp-dropdown .dropdown {
+    display: none;
+    background-color: white;
+    border-radius: 0px 0px 7px 7px;
+    padding: 0px 0px 5px;
+    position: absolute;
+    width: 100%;
+    box-shadow: 0px 3px 3px #0000002e;
+}
+.inp-dropdown .dropdown .item {
+    display: block;
+    padding: 10px 15px;
+    cursor: pointer;
+}
+.inp-dropdown .dropdown .item.active, .inp-dropdown .dropdown .item:hover {
+    background-color: #efefef;
+}
+.tags {
+    margin: 10px 0px;
+}
+.tags .tag {
+    background-color: #e2e2e2;
+    padding: 5px 7px;
+    display: inline-block;
+    border-radius: 50px;
+    margin-right: 5px;
+}
+.tags .tag .fa {
+    cursor: pointer;
 }
