@@ -9,6 +9,7 @@ module.exports = {
 
     getPosts: (data, cb) => {
         var q = data.query ? data.query : 1;
+        if(!data.type) data.type = 'public';
         if(data.tags && data.tags.length > 0) {
             var tags = "'" + data.tags.join("','") + "'";
             var strict = data.strictTags ? data.strictTags : false;

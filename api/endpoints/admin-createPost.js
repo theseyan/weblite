@@ -15,9 +15,9 @@ var notifyOneSignal = (id, permalink, title, image) => {
         included_segments: ["Subscribed Users"]
     };
 
-    client.createNotification(notification).then(response => {}).catch(e => {
+    /*client.createNotification(notification).then(response => {}).catch(e => {
         console.error(e);
-    });
+    });*/
 };
 
 module.exports = {

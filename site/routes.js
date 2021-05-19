@@ -117,7 +117,7 @@ module.exports = {
         // View Post Page
         app.get('/post/:id', function(req, res) {
             api.getPosts({
-                query: `id = '${req.params.id}' OR permalink = '${req.params.id}'`
+                query: `post.id = '${req.params.id}' OR post.permalink = '${req.params.id}'`
             }, (result) => {
                 if(result.error) {
                     console.log(result.error);
