@@ -136,6 +136,26 @@ Router.on('/editPost/:id', ({data}) => {
                     });
                 };
 
+                if(Util._('draft-publish-btn')) Util._('draft-publish-btn').onclick = (evt) => {
+                    window.tinymce.triggerSave(true, true);
+                    var html = evt.currentTarget.innerHTML;
+                    var btn = evt.currentTarget;
+                    btn.innerHTML = "<span class='fa fa-spin fa-circle-notch'></span> Publishing as Post...";
+                    btn.classList.add('disabled');
+                
+                    Util.submitForm(Util._('cp-form'), window.config.apiUrl + '/admin/createPost', (data) => {
+                        btn.innerHTML = html;
+                        btn.classList.remove('disabled');
+        
+                        Notify('success', 'Post published successfully');
+                    }, (err) => {
+                        btn.innerHTML = html;
+                        btn.classList.remove('disabled');
+        
+                        Notify('failure', 'An error occured: ' + err);
+                    });
+                };
+
                 Util._('permalink-inp').oninput = () => {
                     var val = Util._('permalink-inp').value;
                     val = encodeURIComponent(val.replace(/\s+/g, '-').toLowerCase());
