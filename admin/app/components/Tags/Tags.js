@@ -21,6 +21,7 @@ export var Tags = function(node) {
         this.node.appendChild(tag);
 
         this.events.fire('add', data);
+        this.events.fire('input', data);
     };
 
     this.remove = (data) => {
@@ -31,12 +32,14 @@ export var Tags = function(node) {
         this.tags.splice(index, 1);
 
         this.events.fire('remove', tag);
+        this.events.fire('input', tag);
     };
 
     this.clear = () => {
         this.node.innerHTML = "";
         this.tags = [];
         this.events.fire('clear', {});
+        this.events.fire('input', {});
     };
 
 };

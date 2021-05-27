@@ -54,45 +54,94 @@ module.exports = {
     },
 
     createTag: (data, cb) => {
-        db.execute("INSERT INTO `tags` (`tag`, `label`, `description`, `path`) VALUES (?, ?, ?, ?)", [data.tag, data.label, data.description, ''], (err, res) => {
-            if(err) {
-                cb({error: err});
-                return;
-            }
+        var path = "";
+        function cont() {
+            db.execute("INSERT INTO `tags` (`tag`, `label`, `description`, `path`) VALUES (?, ?, ?, ?)", [data.tag, data.label, data.description, path], (err, res) => {
+                if(err) {
+                    cb({error: err});
+                    return;
+                }
+    
+                cb({result: res});
+            });
+        }
 
-            cb({result: res});
+        db.execute(`SELECT AUTO_INCREMENT as id FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = ? AND TABLE_NAME = ?`, [config.database.db, 'tags'], (err, res) => {
+            var id = res[0].id;
+            if(!data.parent || data.parent == "") {
+                path = `/` + id;
+                cont();
+            }else {
+                db.execute(`SELECT path FROM tags WHERE id = ?`, [data.parent], (err, res) => {
+                    path = res[0].path + '/' + id;
+                    cont();
+                });
+            }
         });
     },
 
     deleteTag: (id, cb) => {
-        db.execute("DELETE FROM `tags` WHERE `tags`.`id` = ?", [id], (err, res) => {
-            if(err) {
-                cb({error: err});
-                return;
-            }
+        db.execute("SELECT path FROM tags WHERE id = ?", [id], (err, res) => {
+            var path = res[0].path;
+            db.execute("DELETE FROM `tags` WHERE `tags`.`id` = ?", [id], (err, res) => {
+                if(err) {
+                    cb({error: err});
+                    return;
+                }
+    
+                db.execute(`UPDATE tags SET path = CONCAT('/', id) WHERE path LIKE "${path}%"`, [], (err, res) => {
+                    if(err) {
+                        cb({error: err});
+                        return;
+                    }
 
-            cb({result: res});
+                    cb({result: res});
+                });
+            });
         });
     },
 
     editTag: (data, cb) => {
-        db.execute("UPDATE `tags` SET `tag` = ?, `label` = ?, `description` = ? WHERE `tags`.`id` = ?", [data.tag, data.label, data.description, data.id], (err, res) => {
-            if(err) {
-                cb({error: err});
-                return;
-            }
+        var path = "";
+        var oldPath = "";
+        function cont() {
+            db.execute(`UPDATE tags SET path = REPLACE(path, ?, ?) WHERE path LIKE "${oldPath}%"`, [oldPath, path], (err, res) => {
+                if(err) {
+                    cb({error: err});
+                    return;
+                }
 
-            cb({result: res});
+                db.execute("UPDATE `tags` SET `tag` = ?, `label` = ?, `description` = ?, `path` = ? WHERE `tags`.`id` = ?", [data.tag, data.label, data.description, path, data.id], (err, res) => {
+                    if(err) {
+                        cb({error: err});
+                        return;
+                    }
+    
+                    cb({result: res});
+                });
+            });   
+        }
+
+        db.execute(`SELECT path FROM tags WHERE id = ?`, [data.id], (err, res) => {
+            oldPath = res[0].path;
+            if(!data.parent || data.parent == "" || data.parent == data.id) {
+                path = `/` + data.id;
+                cont();
+            }else {
+                db.execute(`SELECT path FROM tags WHERE id = ?`, [data.parent], (err, res) => {
+                    path = res[0].path + '/' + data.id;
+                    cont();
+                });
+            }
         });
     },
 
     getTags: (q, cb) => {
-        db.execute("SELECT * FROM tags WHERE " + q, [], (err, res) => {
+        db.execute(`SELECT *, (SELECT CONCAT(id, '::', tag) FROM tags WHERE path = IF(REPLACE(t.path, CONCAT('/', t.id), '')="", CONCAT("/", t.id), REPLACE(t.path, CONCAT('/', t.id), '')) LIMIT 1) as parent FROM tags t WHERE ` + q, [], (err, res) => {
             if(err) {
                 cb({error: err});
                 return;
             }
-
             cb({result: res});
         });
     },
@@ -242,7 +291,7 @@ module.exports = {
         if(data.tags && data.tags.length > 0) {
             var tags = "'" + data.tags.join("','") + "'";
             var strict = data.strictTags ? data.strictTags : false;
-            var query = `SELECT ${(data.select ? data.select : 'post.*')}, (SELECT GROUP_CONCAT(t.id, ":", t.tag) FROM tagmap tm, tags t WHERE tm.post_id = post.id AND tm.tag_id = t.id) AS tags FROM tagmap tm, posts post, tags t WHERE tm.tag_id = t.id AND (t.tag IN (${tags})) AND post.id = tm.post_id AND (${(data.type ? (`post.type = "${data.type}" AND `) : '')} ${q}) GROUP BY post.id ${strict==true ? ('HAVING COUNT( post.id )='+data.tags.length) : ''} ORDER BY ${(data.orderBy ? data.orderBy : 1)}`;
+            var query = `SELECT ${(data.select ? data.select : 'post.*')}, (SELECT GROUP_CONCAT(t.id, ":", t.tag) FROM tagmap tm, tags t WHERE tm.post_id = post.id AND tm.tag_id = t.id) AS tags FROM tagmap tm, posts post, tags t WHERE tm.tag_id = t.id AND (t.tag IN (${tags}) OR t.path LIKE CONCAT((SELECT path FROM tags WHERE tag IN (${tags})), "%")) AND post.id = tm.post_id AND (${(data.type ? (`post.type = "${data.type}" AND `) : '')} ${q}) GROUP BY post.id ${strict==true ? ('HAVING COUNT( post.id )='+data.tags.length) : ''} ORDER BY ${(data.orderBy ? data.orderBy : 1)} ${(data.limit ? " LIMIT " + data.limit : "")}`;
         }else {
             var query = 'SELECT ' + (data.select ? data.select : 'post.*') + ', (SELECT GROUP_CONCAT(t.id, ":", t.tag) FROM tagmap tm, tags t WHERE tm.post_id = post.id AND tm.tag_id = t.id) AS tags FROM posts post WHERE ' + (data.type ? (`post.type = "${data.type}" AND `) : '') + `(${q})` + ' ORDER BY ' + (data.orderBy ? data.orderBy : 1);
         }

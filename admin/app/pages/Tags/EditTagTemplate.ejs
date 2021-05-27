@@ -10,6 +10,14 @@
     <span class="label">Description</span>
     <textarea class="input" name="description"><%= tag.description %></textarea>
 
+    <span class="label">Parent Tag</span>
+    <div class="tags" id="tags-box"></div>
+    <div id="tagsDropdown" class="inp-dropdown">
+        <input autocomplete="off" id="tags" class="input" placeholder="Search for a tag..." type="text" />
+        <div class="dropdown"></div>
+    </div>
+
+    <input type="hidden" id="parentTag" name="parent" value="<%= tag.parent.split('::')[0] %>" />
     <input type="hidden" name="id" value="<%= tag.id %>" />
 
     <p></p>
