@@ -3,8 +3,8 @@ var api = require('../api/site');
 var feed = require('../api/rssFeed');
 
 var data = (req, res) => {
-    var menus = global.Data.Menus;
     var collections = global.Data.Collections;
+    var menus = collections.menus;
     var indianStates = collections.subMenus.indianStates;
     var jobs = collections.subMenus.jobs;
     var mainMenu = menus.main.MainMenu;
@@ -67,15 +67,15 @@ module.exports = {
                 }
                 results[name] = result;
 
-                if(Object.keys(results).length >= 7) {
+                if(Object.keys(results).length >= 6) {
                     res.render('pages/index', Object.assign(data(req, res), {posts: results}));
                 }
             }
-            api.getPosts({
+            /*api.getPosts({
                 tags: ['government'],
                 orderBy: 'post.date DESC',
                 limit: 10
-            }, (result) => add('government', result));
+            }, (result) => add('government', result));*/
 
             api.getPosts({
                 query: 1,

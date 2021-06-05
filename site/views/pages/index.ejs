@@ -38,10 +38,10 @@
                     <div>
                         <table>
                             <tr>
-                                <th>Latest Govt. Jobs</th>
+                                <th>Latest Jobs</th>
                                 <th>Last Date</th>
                             </tr>
-                            <% posts.government.posts.forEach((post) => { %>
+                            <% posts.latest.posts.forEach((post) => { %>
                                 <tr>
                                     <td><a href="<%= config.root %>/post/<%= post.link %>" class="link"><%= post.title %></a></td>
                                     <td><%= post.lastDateStringMin %></td>

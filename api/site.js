@@ -50,7 +50,7 @@ global.updateVacanciesCounter = () => {
 
     for(var id in states) {
         (function(id) {
-            db.query(`SELECT COUNT(*) as total FROM tagmap tm, posts post, tags t WHERE tm.tag_id = t.id AND (t.tag = '${id}') AND post.id = tm.post_id`, (err, res) => {
+            db.query(`SELECT COUNT(*) as total FROM tagmap tm, posts post, tags t WHERE tm.tag_id = t.id AND (t.tag = '${id}' OR t.path LIKE CONCAT((SELECT path FROM tags WHERE tag = '${id}'), "%")) AND post.id = tm.post_id`, (err, res) => {
                 add(id, res[0].total);
             });
         })(id);

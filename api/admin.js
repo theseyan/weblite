@@ -96,6 +96,7 @@ module.exports = {
                     }
 
                     cb({result: res});
+                    global.updateVacanciesCounter();
                 });
             });
         });
@@ -118,6 +119,7 @@ module.exports = {
                     }
     
                     cb({result: res});
+                    global.updateVacanciesCounter();
                 });
             });   
         }

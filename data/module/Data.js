@@ -3,8 +3,7 @@ var fs = require('fs');
 
 // JSON Data files
 var sources = {
-    "Collections": "./site/src/data/Collections.json",
-    "Menus": "./site/src/data/Menus.json"
+    "Collections": "./site/src/data/Collections.json"
 };
 
 // Holds live data
