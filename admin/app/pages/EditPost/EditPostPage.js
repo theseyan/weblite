@@ -111,9 +111,13 @@ Router.on('/editPost/:id', ({data}) => {
                         'searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media nonbreaking',
                         'table emoticons template paste help'
                     ],
-                    toolbar: 'undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | ' +
+                    toolbar: 'fullscreen | undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | ' +
                     'bullist numlist outdent indent | link image | print preview media fullpage | ' +
-                    'forecolor backcolor emoticons | help'
+                    'forecolor backcolor emoticons | help',
+                    mobile: {
+                        menubar: true,
+                    },
+                    contextmenu: 'paste link'
                 });
         
                 Util._('post-btn').onclick = (evt) => {
