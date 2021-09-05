@@ -44,6 +44,7 @@ module.exports = {
                 var draft = result.posts[0];
 
                 admin.createPost({
+                    description: draft.description,
                     title: draft.title,
                     image: draft.image,
                     body: draft.body,
@@ -88,6 +89,7 @@ module.exports = {
 
                 // Create the bare post
                 admin.createPost({
+                    description: req.body.description,
                     title: req.body.title,
                     image: req.file.filename,
                     body: req.body.body,

@@ -26,6 +26,7 @@ module.exports = {
                 }
 
                 var args = {
+                    description: body.description,
                     id: body.id,
                     title: body.title,
                     body: body.body,

@@ -8,7 +8,7 @@ var data = (req, res) => {
     var indianStates = collections.subMenus.indianStates;
     var jobs = collections.subMenus.jobs;
     var mainMenu = menus.main.MainMenu;
-    var footerMenu = menus.footer;
+    var footerMenu = menus.main.footer;
     var sidebarMenu = collections.sidebar.latestNotifications;
     var vacancies = global.Vacancies;
 

@@ -175,7 +175,7 @@ module.exports = {
     createPost: (data, cb) => {
         var tags = data.tags.split(',');
 
-        db.execute(`INSERT INTO posts (title, image, body, cat, author, date, lastDate, permalink, image_alt, type) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`, [data.title, data.image, data.body, data.category, data.author, Math.floor((new Date()).getTime() / 1000), data.lastDate, data.permalink, data.imageAlt, data.type], (err, res) => {
+        db.execute(`INSERT INTO posts (title, image, body, cat, author, date, lastDate, permalink, image_alt, type, description) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`, [data.title, data.image, data.body, data.category, data.author, Math.floor((new Date()).getTime() / 1000), data.lastDate, data.permalink, data.imageAlt, data.type, data.description], (err, res) => {
             if(err) {
                 cb({error: err});
                 return;
@@ -204,7 +204,7 @@ module.exports = {
                     cb({error: error});
                     return;
                 }
-                db.execute(`UPDATE posts SET title = ?, body = ?, cat = ?, ` + (data.image ? `image = '${data.image}',` : ``) + ` author = ?, lastUpdated = ?, lastDate = ?, permalink = ?, image_alt = ? WHERE id = ?`, [data.title, data.body, data.category, data.author, Math.floor((new Date()).getTime() / 1000), data.lastDate, data.permalink, data.imageAlt, data.id], (err, res) => {
+                db.execute(`UPDATE posts SET title = ?, body = ?, cat = ?, ` + (data.image ? `image = '${data.image}',` : ``) + ` author = ?, lastUpdated = ?, lastDate = ?, permalink = ?, image_alt = ?, description = ? WHERE id = ?`, [data.title, data.body, data.category, data.author, Math.floor((new Date()).getTime() / 1000), data.lastDate, data.permalink, data.imageAlt, data.description, data.id], (err, res) => {
                     if(err) {
                         if(data.image) fs.unlink('.' + config.website.staticRoot + config.website.postImages + '/' + data.image, (err) => {});
                         cb({error: err});
